@@ -1,0 +1,75 @@
+.carousel-section {
+    height: 400px;
+    background-color: #1ebfb3;
+
+}
+
+body {
+    background-color: #007CE0;
+}
+
+.contentBackground{
+    background-color: #eee;
+}
+
+h2 {
+    margin: 60px 0;
+    font-size: 24px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+.tool {
+    position: relative;
+    margin-bottom: 50px;
+}
+.tool.with-image{
+    padding-top: 50px;
+}
+
+.tool .tool-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.tool.with-image .tool-content {
+    height: 355px;
+    padding-top: 50px;
+}
+
+.tool .tool-content {
+    height: 305px;
+    padding: 1px 50px 50px;
+    background-color: #fff;
+    text-align: center;
+}
+.tool .tool-content h3 {
+    font-size: 24px;
+    margin: 30px 0;
+    font-family: 'Gotham-Medium', sans-serif;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+}
+.tool .tool-content .description {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    height: 100px;
+}
+.tool .tool-content .secondary-actions {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+.tool .tool-content .bottom {
+}
+.tool .tool-content .btn-primary {
+    margin: 15px 0;
+}
