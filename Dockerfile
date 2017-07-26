@@ -4,7 +4,7 @@ RUN apk add --update-cache \
         nginx && \
     rm -rv /var/cache/apk/* && \
     rm -rf /var/www && \
-    mkdir -p /run/nginx/ &&
+    mkdir -p /run/nginx/
 
 COPY index.html /var/www/
 COPY assets /var/www/assets
