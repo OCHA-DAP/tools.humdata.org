@@ -4,9 +4,10 @@ RUN apk add --update-cache \
         nginx && \
     rm -rv /var/cache/apk/* && \
     rm -rf /var/www && \
-    mkdir -p /run/nginx/
+    mkdir -p /run/nginx/ &&
 
-COPY assets index.html /var/www/
+COPY index.html /var/www/
+COPY assets /var/www/assets
 COPY docker/default.conf /etc/nginx/conf.d/
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
