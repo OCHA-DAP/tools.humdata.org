@@ -1,5 +1,4 @@
-FROM unocha/alpine-base-s6:3.6
-
+FROM unocha/alpine-base:3.6
 
 RUN apk add --update-cache \
         nginx && \
@@ -9,6 +8,8 @@ RUN apk add --update-cache \
 COPY assets index.html /var/www/
 COPY docker/default.conf /etc/nginx/conf.d/
 
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
 EXPOSE 80
 
 VOLUME [/var/log/nginx /var/www]
@@ -17,4 +18,4 @@ VOLUME [/var/log/nginx /var/www]
 # - Conf: /etc/nginx/conf.d (default.conf)
 # - Cache: /var/cache/nginx
 # - Logs: /var/log/nginx
-# - Data: /srv/www/html
+# - Data: /var/www
