@@ -3,7 +3,8 @@ FROM unocha/alpine-base:3.6
 RUN apk add --update-cache \
         nginx && \
     rm -rv /var/cache/apk/* && \
-    rm -rf /var/www
+    rm -rf /var/www && \
+    mkdir -p /run/nginx/
 
 COPY assets index.html /var/www/
 COPY docker/default.conf /etc/nginx/conf.d/
