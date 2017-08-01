@@ -31,9 +31,10 @@ h2 {
 
 .tool .tool-image {
     position: absolute;
-    top: 0;
+    top: -35px;
     left: 50%;
     transform: translate(-50%, 0);
+    height: 150px;
 }
 .tool.with-image .tool-content {
     height: 355px;
