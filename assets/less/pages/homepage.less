@@ -1,0 +1,57 @@
+h2 {
+  margin: 60px 0;
+  .sourceSansProFont(600, 24px);
+  color: @darkGrayColor;
+  text-align: center;
+}
+
+.tool {
+  position: relative;
+  margin-bottom: 50px;
+
+  &.with-image{
+    padding-top: 50px;
+    .tool-content {
+      height: 355px;
+      padding-top: 50px;
+    }
+  }
+
+  .tool-image {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 150px;
+  }
+  .tool-content {
+    height: 305px;
+    padding: 1px 50px 50px;
+    background-color: @whiteColor;
+    text-align: center;
+
+    .description {
+      margin-top: 30px;
+      margin-bottom: 0;
+      .sourceSansProFont(400, 16px);
+      color: @blackColor;
+      height: 100px;
+    }
+
+
+    .tool-title {
+      margin: 30px 0;
+      .gothamMediumFont(24px);
+      color: @darkGrayColor;
+      text-align: center;
+    }
+
+    .secondary-actions {
+      .sourceSansProFont(400, 14px);
+    }
+
+    .btn-primary {
+      margin: 15px 0;
+    }
+  }
+}
