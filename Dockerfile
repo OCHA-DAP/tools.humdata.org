@@ -6,7 +6,7 @@ RUN apk add --update-cache \
     rm -rf /var/www && \
     mkdir -p /run/nginx/
 
-COPY index.html /var/www/
+COPY *.html /var/www/
 COPY assets /var/www/assets
 COPY docker/default.conf /etc/nginx/conf.d/
 
