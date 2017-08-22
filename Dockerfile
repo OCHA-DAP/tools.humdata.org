@@ -14,7 +14,7 @@ ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
 EXPOSE 80
 
-VOLUME [/var/log/nginx /var/www]
+VOLUME /var/log/nginx /var/www
 
 # Volumes
 # - Conf: /etc/nginx/conf.d (default.conf)
