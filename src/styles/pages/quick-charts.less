@@ -1,57 +1,91 @@
 .gif-demo-image {
-  overflow: hidden;
-  text-align: left;
-  width: 850px;
-  position: relative;
-  right: 35px;
+    overflow: hidden;
+    text-align: left;
+    width: 850px;
+    position: relative;
+    right: 35px;
 
-  img {
-    height: 560px;
-  }
+    img {
+        height: 560px;
+    }
 }
 
 @qcLeftPadding: 60px;
 .qc-left-padding {
-  padding-left: @qcLeftPadding;
+    padding-left: @qcLeftPadding;
 }
 
 .product-header {
-  padding-left: @qcLeftPadding;
-  .img-content {
-    text-align: center;
-  }
+    padding-left: @qcLeftPadding;
+    .img-content {
+        text-align: center;
+    }
 
-  h1 {
-    color: @darkGrayColor;
-    .gothamBookFont(48px);
-    line-height: 1;
-  }
+    h1 {
+        color: @darkGrayColor;
+        .gothamBookFont(48px);
+        line-height: 1;
+    }
 }
 
 .qc-section {
-  .sourceSansProFont(400, 18px);
-  .title {
-    .gothamBookFont(36px);
-    color: @darkGrayColor;
-    line-height: 1.2;
-  }
-  p.description {
-    color: @darkGrayColor;
-    .gothamBookFont(24px);
-    line-height: 1.2;
-  }
+    .sourceSansProFont(400, 18px);
+    .title {
+        .gothamBookFont(36px);
+        color: @darkGrayColor;
+        line-height: 1.2;
+    }
+    p.description {
+        color: @darkGrayColor;
+        .gothamBookFont(24px);
+        line-height: 1.2;
+    }
 
-  a {
-    text-decoration: underline;
-  }
+    a {
+        text-decoration: underline;
+    }
 }
 
-.qc-select-section {
-  .select2-container {
+.select2-container {
     //display: inline-block;
-    border: 1px solid @lightGrayColor;
+    //border: 1px solid @lightGrayColor;
     .select2-choice {
-      padding: 20px;
+        padding: 20px;
     }
-  }
+    .select2-results__option {
+        .sourceSansProFont(400, 14px);
+        color: @darkGrayColor;
+    }
+    &.select2-container--open{
+        .select2-selection--single {
+            .select2-selection__arrow {
+                b {
+                    border-width: 0 12px 15px 12px;
+                    border-bottom-color: @blueColor;
+                }
+            }
+        }
+    }
+
+    .select2-selection--single {
+        border-radius: 0;
+        border-color: @lightGrayColor;
+        height: 70px;
+        .select2-selection__rendered {
+            padding: 21px;
+            text-align: left;
+            .sourceSansProFont(400, 18px);
+            color: @darkGrayColor;
+        }
+        .select2-selection__arrow {
+            height: 68px;
+            width: 60px;
+            b {
+                border-width: 15px 12px 0 12px;
+                border-top-color: @blueColor;
+                margin: 0;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
 }
