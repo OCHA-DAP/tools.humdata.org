@@ -17,7 +17,7 @@ $(document).ready(function() {
         $("#quick-chart-dataset").attr("href", datasetUrl);
     };
 
-    // $("#quick-chart-select").select2();
+    $("#quick-chart-select").select2();
     $("#quick-chart-select").change(function(event) {
         var idx = this.value;
         changeSelection(idx);

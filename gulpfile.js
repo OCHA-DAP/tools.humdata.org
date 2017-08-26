@@ -21,17 +21,22 @@ var gulp = require('gulp'),
 /* baseDirs: baseDirs for the project */
 
 var baseDirs = {
-    dist:'dist/',
-    src:'src/',
-    assets: 'dist/assets/'
+    dist: 'dist/',
+    src: 'src/',
+    assets: 'dist/assets/',
+    hdxStyle: 'src/hdx-styles/src/common/',
+    vendor: 'node_modules/'
 };
 
 /* routes: object that contains the paths */
 
 var routes = {
     styles: {
- 		less: baseDirs.src+'styles/*.less',
-        _less: baseDirs.src+'styles/_includes/*.less',
+        vendor: [
+            baseDirs.vendor+'select2/dist/css/select2.min.css'
+        ],
+        less: baseDirs.src+'styles/*.less',
+        _less: baseDirs.src+'styles/**/*.less',
         css: baseDirs.assets+'css/'
     },
 
@@ -39,8 +44,17 @@ var routes = {
         html: baseDirs.src+'templates/*.html'
     },
 
+    dependencies: {
+
+    },
+
     scripts: {
-        base:baseDirs.src+'scripts/',
+        vendor: [
+            baseDirs.vendor+'jquery/dist/jquery.min.js',
+            baseDirs.vendor+'bootstrap/dist/js/bootstrap.min.js',
+            baseDirs.vendor+'select2/dist/js/select2.min.js'
+        ],
+        base: baseDirs.src+'scripts/',
         js: baseDirs.src+'scripts/*.js',
         jsmin: baseDirs.assets+'js/'
     },
@@ -51,7 +65,9 @@ var routes = {
         imgmin: baseDirs.assets+'images/',
         cssFiles: baseDirs.assets+'css/*.css',
         htmlFiles: baseDirs.dist+'*.html',
-        styleCss: baseDirs.assets+'css/style.css'
+        styleCss: baseDirs.assets+'css/style.css',
+        hdxStyleFonts: baseDirs.hdxStyle+'fonts/**/*',
+        hdxStyleImages: baseDirs.hdxStyle+'images/**/*'
     },
 
     deployDirs: {
@@ -79,6 +95,17 @@ gulp.task('templates', function() {
 // SCSS
 
 gulp.task('styles', function() {
+    gulp.src(routes.styles.vendor, {base: '.'})
+        .pipe(plumber({
+            errorHandler: notify.onError({
+                title: "Error: Compiling Vendor CSS.",
+                message:"<%= error.message %>"
+            })
+        }))
+        .pipe(rename('vendor.css'))
+        .pipe(gulp.dest(routes.styles.css))
+        .pipe(browserSync.stream());
+
     return gulp.src(routes.styles.less)
         .pipe(plumber({
             errorHandler: notify.onError({
@@ -91,8 +118,8 @@ gulp.task('styles', function() {
             .pipe(autoprefixer('last 3 versions'))
             .pipe(minifyCss())
         .pipe(sourcemaps.write())
-        .pipe(cssimport({}))
-        .pipe(rename('style.css'))
+        // .pipe(cssimport({}))
+        // .pipe(rename('style.css'))
         .pipe(gulp.dest(routes.styles.css))
         .pipe(browserSync.stream())
         .pipe(notify({
@@ -104,6 +131,17 @@ gulp.task('styles', function() {
 /* Scripts (js) ES6 => ES5, minify and concat into a single file.*/
 
 gulp.task('scripts', function() {
+    gulp.src(routes.scripts.vendor, {base: '.'})
+        .pipe(plumber({
+            errorHandler: notify.onError({
+                title: "Error: Babel and Concat failed.",
+                message:"<%= error.message %>"
+            })
+        }))
+        .pipe(concat('vendor.js'))
+        .pipe(babel())
+        // .pipe(uglify())
+        .pipe(gulp.dest(routes.scripts.jsmin));
     return gulp.src(routes.scripts.js)
         .pipe(plumber({
             errorHandler: notify.onError({
@@ -222,16 +260,19 @@ gulp.task('critical', function () {
 });
 
 /* Temporary bla */
-gulp.task('temp', function() {
-    gulp.src('src/temp/**/*')
-        .pipe(gulp.dest('dist/temp/'));
+gulp.task('hdxAssets', function() {
+    gulp.src(routes.files.hdxStyleFonts)
+    .pipe(gulp.dest(baseDirs.assets + 'fonts/'));
+
+    gulp.src(routes.files.hdxStyleImages)
+        .pipe(gulp.dest(baseDirs.assets + 'images/'));
 });
 
 
 
-gulp.task('dev', ['templates', 'styles', 'scripts',  'images', 'temp', 'serve']);
+gulp.task('dev', ['templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve']);
 
-gulp.task('build', ['templates', 'styles', 'scripts', 'images', 'temp']);
+gulp.task('build', ['templates', 'styles', 'scripts', 'images', 'hdxAssets']);
 
 gulp.task('optimize', ['uncss', 'critical', 'images']);
 
