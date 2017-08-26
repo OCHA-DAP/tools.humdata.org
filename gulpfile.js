@@ -184,19 +184,19 @@ gulp.task('images', function() {
 /* Preproduction beautifiying task (SCSS, JS) */
 
 gulp.task('beautify', function() {
-    gulp.src(routes.scripts.js)
-        .pipe(beautify({indentSize: 4}))
-        .pipe(plumber({
-            errorHandler: notify.onError({
-                title: "Error: Beautify failed.",
-                message:"<%= error.message %>"
-            })
-        }))
-        .pipe(gulp.dest(routes.scripts.base))
-        .pipe(notify({
-            title: 'JS Beautified!',
-            message: 'beautify task completed.'
-        }));
+    // gulp.src(routes.scripts.js)
+    //     .pipe(beautify({indentSize: 4}))
+    //     .pipe(plumber({
+    //         errorHandler: notify.onError({
+    //             title: "Error: Beautify failed.",
+    //             message:"<%= error.message %>"
+    //         })
+    //     }))
+    //     .pipe(gulp.dest(routes.scripts.base))
+    //     .pipe(notify({
+    //         title: 'JS Beautified!',
+    //         message: 'beautify task completed.'
+    //     }));
 });
 
 /* Serving (browserSync) and watching for changes in files */
