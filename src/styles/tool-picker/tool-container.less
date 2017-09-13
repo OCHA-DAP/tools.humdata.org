@@ -1,0 +1,37 @@
+@toolContainerPadding: 35px;
+@toolContainerWidth: 1170px;
+@toolPickerArrowSize: 12px;
+
+.tool-container {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: @toolContainerWidth;
+    .container-arrow {
+        position: absolute;
+        top: 1*@toolPickerBoxSize + @toolPickerBoxSize/2;
+        left: @toolContainerPadding + @toolPickerBoxSize - @toolPickerArrowSize + 1;
+        margin-top: -@toolPickerArrowSize;
+        border: @toolPickerArrowSize solid transparent;
+        border-right-color: @whiteColor;
+        border-left-width: 0;
+        width: 0;
+        height: 0;
+
+    }
+    .container-padding {
+        padding-left: @toolContainerPadding + @toolPickerBoxSize;
+        padding-top: @toolContainerPadding;
+        padding-bottom: @toolContainerPadding;
+        height: 800px;
+    }
+
+    .tool-content {
+        width: 100%;
+        height: 100%;
+        background-color: @whiteColor;
+        border-radius: 10px;
+    }
+}
