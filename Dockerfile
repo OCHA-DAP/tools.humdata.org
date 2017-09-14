@@ -1,4 +1,21 @@
-FROM unocha/alpine-base:3.6
+FROM alpine:3.6 AS builder
+
+WORKDIR /src
+
+COPY . .
+
+RUN apk add --update-cache \
+	nodejs \
+	nodejs-npm \
+	git \
+	build-base \
+    libtool \
+    file \
+    zlib && \
+    npm install && \
+    ./node_modules/.bin/gulp build
+
+FROM alpine:3.6
 
 RUN apk add --update-cache \
         nginx && \
@@ -6,9 +23,7 @@ RUN apk add --update-cache \
     rm -rf /var/www && \
     mkdir -p /run/nginx/
 
-COPY *.html /var/www/
-COPY assets /var/www/assets
-COPY docker/default.conf /etc/nginx/conf.d/
+COPY --from=builder /src/dist /var/www/
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
