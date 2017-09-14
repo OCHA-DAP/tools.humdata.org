@@ -177,7 +177,7 @@ gulp.task('lint', function() {
 
 gulp.task('images', function() {
     gulp.src(routes.files.images)
-        .pipe(imagemin())
+        // .pipe(imagemin())
         .pipe(gulp.dest(routes.files.imgmin));
 });
 
