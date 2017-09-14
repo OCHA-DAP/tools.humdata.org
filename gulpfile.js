@@ -264,7 +264,7 @@ gulp.task('hdxAssets', function() {
     gulp.src(routes.files.hdxStyleFonts)
     .pipe(gulp.dest(baseDirs.assets + 'fonts/'));
 
-    gulp.src(routes.files.hdxStyleImages)
+    return gulp.src(routes.files.hdxStyleImages)
         .pipe(gulp.dest(baseDirs.assets + 'images/'));
 });
 
