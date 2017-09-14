@@ -11,9 +11,11 @@ RUN apk add --update-cache \
 	build-base \
     libtool \
     file \
-    zlib && \
-    npm install && \
-    ./node_modules/.bin/gulp build
+    zlib
+
+RUN npm install
+
+RUN ./node_modules/.bin/gulp build
 
 FROM alpine:3.6
 
@@ -24,6 +26,7 @@ RUN apk add --update-cache \
     mkdir -p /run/nginx/
 
 COPY --from=builder /src/dist /var/www/
+COPY --from=builder /src/docker/default.conf /etc/nginx/conf.d/
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
