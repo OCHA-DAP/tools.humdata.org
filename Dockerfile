@@ -26,7 +26,7 @@ RUN apk add --update-cache \
     mkdir -p /run/nginx/
 
 COPY --from=builder /src/dist /var/www/
-
+COPY --from=builder /src/docker/default.conf /etc/nginx/conf.d/
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
