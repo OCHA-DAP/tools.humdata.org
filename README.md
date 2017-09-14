@@ -12,16 +12,11 @@
 
 ## Install and Use
 
-### Install
+### Install & Use
 
 ```bash
-npm install -g tools
-```
-
-### Use 
-
-```bash
-yo tools
+npm install
+./node_modules/.bin/gulp
 ```
 
 # Author 
