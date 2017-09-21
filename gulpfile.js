@@ -41,7 +41,7 @@ var routes = {
     },
 
     templates: {
-        html: baseDirs.src+'templates/*.html'
+        html: baseDirs.src+'templates/**/*'
     },
 
     dependencies: {
@@ -64,7 +64,7 @@ var routes = {
         images: baseDirs.src+'images/*',
         imgmin: baseDirs.assets+'images/',
         cssFiles: baseDirs.assets+'css/*.css',
-        htmlFiles: baseDirs.dist+'*.html',
+        htmlFiles: baseDirs.dist+'**/*',
         styleCss: baseDirs.assets+'css/style.css',
         hdxStyleFonts: baseDirs.hdxStyle+'fonts/**/*',
         hdxStyleImages: baseDirs.hdxStyle+'images/**/*'
