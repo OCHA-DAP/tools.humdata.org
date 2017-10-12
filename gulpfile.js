@@ -41,7 +41,7 @@ var routes = {
     },
 
     templates: {
-        html: baseDirs.src+'templates/*.html'
+        html: baseDirs.src+'templates/**/*'
     },
 
     dependencies: {
@@ -64,7 +64,7 @@ var routes = {
         images: baseDirs.src+'images/*',
         imgmin: baseDirs.assets+'images/',
         cssFiles: baseDirs.assets+'css/*.css',
-        htmlFiles: baseDirs.dist+'*.html',
+        htmlFiles: baseDirs.dist+'**/*',
         styleCss: baseDirs.assets+'css/style.css',
         hdxStyleFonts: baseDirs.hdxStyle+'fonts/**/*',
         hdxStyleImages: baseDirs.hdxStyle+'images/**/*'
@@ -85,11 +85,11 @@ gulp.task('templates', function() {
     return gulp.src(routes.templates.html)
         .pipe(minifyHTML({collapseWhitespace: true}))
         .pipe(browserSync.stream())
-        .pipe(gulp.dest(routes.files.html))
-        .pipe(notify({
-            title: 'HTML minified succesfully!',
-            message: 'templates task completed.'
-        }));
+        .pipe(gulp.dest(routes.files.html));
+        // .pipe(notify({
+        //     title: 'HTML minified succesfully!',
+        //     message: 'templates task completed.'
+        // }));
 });
 
 // SCSS
@@ -121,11 +121,11 @@ gulp.task('styles', function() {
         // .pipe(cssimport({}))
         // .pipe(rename('style.css'))
         .pipe(gulp.dest(routes.styles.css))
-        .pipe(browserSync.stream())
-        .pipe(notify({
-            title: 'Less Compiled and Minified succesfully!',
-            message: 'less task completed.',
-        }));
+        .pipe(browserSync.stream());
+        // .pipe(notify({
+        //     title: 'Less Compiled and Minified succesfully!',
+        //     message: 'less task completed.',
+        // }));
 });
 
 /* Scripts (js) ES6 => ES5, minify and concat into a single file.*/
@@ -155,11 +155,11 @@ gulp.task('scripts', function() {
             .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(routes.scripts.jsmin))
-        .pipe(browserSync.stream())
-        .pipe(notify({
-            title: 'JavaScript Minified and Concatenated!',
-            message: 'your js files has been minified and concatenated.'
-        }));
+        .pipe(browserSync.stream());
+        // .pipe(notify({
+        //     title: 'JavaScript Minified and Concatenated!',
+        //     message: 'your js files has been minified and concatenated.'
+        // }));
 });
 
 /* Lint, lint the JavaScript files */
@@ -177,7 +177,7 @@ gulp.task('lint', function() {
 
 gulp.task('images', function() {
     gulp.src(routes.files.images)
-        .pipe(imagemin())
+        // .pipe(imagemin())
         .pipe(gulp.dest(routes.files.imgmin));
 });
 
@@ -226,11 +226,11 @@ gulp.task('uncss', function() {
             })
         }))
         .pipe(minifyCss())
-        .pipe(gulp.dest(routes.styles.css))
-        .pipe(notify({
-            title: 'Project Optimized!',
-            message: 'UnCSS completed!'
-        }));
+        .pipe(gulp.dest(routes.styles.css));
+        // .pipe(notify({
+        //     title: 'Project Optimized!',
+        //     message: 'UnCSS completed!'
+        // }));
 });
 
 /* Extract CSS critical-path */
@@ -252,11 +252,11 @@ gulp.task('critical', function () {
                 message:"<%= error.message %>"
             })
         }))
-        .pipe(gulp.dest(baseDirs.dist))
-        .pipe(notify({
-            title: 'Critical Path completed!',
-            message: 'css critical path done!'
-        }));
+        .pipe(gulp.dest(baseDirs.dist));
+        // .pipe(notify({
+        //     title: 'Critical Path completed!',
+        //     message: 'css critical path done!'
+        // }));
 });
 
 /* Temporary bla */
@@ -264,7 +264,7 @@ gulp.task('hdxAssets', function() {
     gulp.src(routes.files.hdxStyleFonts)
     .pipe(gulp.dest(baseDirs.assets + 'fonts/'));
 
-    gulp.src(routes.files.hdxStyleImages)
+    return gulp.src(routes.files.hdxStyleImages)
         .pipe(gulp.dest(baseDirs.assets + 'images/'));
 });
 

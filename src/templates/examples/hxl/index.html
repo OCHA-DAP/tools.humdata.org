@@ -31,13 +31,13 @@
                         <div class="header-nav">
                             <span class="table-valign pull-left">
                                 <span class="hdxLogo table-valign-content">
-                                    <a class="logo" href="/"><div class="logo-img" alt="Humanitaria n Data Exchange Logo"></div><span id="hdxVersion">0.0.1Beta</span></a>
+                                    <a class="logo" href="/"><div class="logo-img" alt="Humanitarian Data Exchange Logo"></div><span id="hdxVersion">0.0.1Beta</span></a>
                                 </span>
                             </span>
 
                             <div class="table-valign pull-right">
                                 <div class="table-valign-content">
-                                    <a href="tool-base.html" >
+                                    <a href="#" >
                                         <div class="submitData">
                                             Try Quick Charts
                                         </div>
@@ -53,127 +53,19 @@
 
     <div role="main">
         <div id="content" class="container">
-            <div class="container">
-                <div class="row paddingRowHack toolbarRow">
-                    <div class="col-xs-12 paddingLeftHack paddingRightHack">
-                        <div class="pull-left">
-                            <div class="toolbar">
-                                <ol class="breadcrumb">
-                                    <li class="home"><a href="/">TOOLS Home</a></li>
-                                    <li class="active"><a href="#">Quick Charts</a></li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="paddingRowHack">
-            </div>
             <div class="container mainContent">
                 <div class="hdx-wrapper wrapper no-nav">
                     <div class="row paddingRowHack whiteBackground qc-section">
-                        <div class="paddingLeftHack paddingRightHack mTB100">
-                            <div class="row">
-                                <div class="col-xs-4 product-header" >
-                                    <div class="row">
-                                        <div class="col-xs-12 img-content">
-                                            <img src="assets/images/logo-quick-charts.png" style="height: 200px;">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <h1>Quick Charts:</h1>
-                                            <p class="description">
-                                                Automatically generate embeddable, live data charts, graphs and key figures from your spreadsheet
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-8">
-                                    <div class="gif-demo-image">
-                                        <img src="assets/images/gif-demo.png">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row paddingRowHack contentBackground qc-section">
-                        <div class="paddingLeftHack paddingRightHack mTB100">
-                            <div class="row">
-                                <div class="col-xs-6 center">
-                                    <img style="height: 348px" src="assets/images/data-source.png">
-                                </div>
-                                <div class="col-xs-5">
-                                    <p class="title mTop60">
-                                        Works with your spreadsheet
-                                    </p>
-                                    <p class="description mTop30">
-                                        Add a spreadsheet or CSV file via a URL, from your desktop or simply paste in.
-                                    </p>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row paddingRowHack whiteBackground qc-section">
-                        <div class="paddingLeftHack paddingRightHack mTB100">
+                        <div class="paddingLeftHack paddingRightHack">
                             <div class="row">
-                                <div class="col-xs-6 qc-left-padding">
-                                    <p class="title">
-                                        Chart Types
-                                    </p>
-                                    <p class="description mTop30">
-                                        Quick Charts scans your spreadsheet and looks for the best way to visually
-                                        represent your data. Chart types include bar, pie, line chart and key figures.
-                                    </p>
+                                <div class="col-xs-12 examples hxl">
+                                    <iframe src="https://ocha-dap.github.io/hxl-example/" width="1170" height="1000"></iframe>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row paddingRowHack contentBackground qc-section">
-                        <div class="paddingLeftHack paddingRightHack mTB100">
-                            <div class="row">
-                                <div class="col-xs-6 center">
-                                    <img style="height: 151px; margin-top: 30px;" src="assets/images/share-with.png">
-                                </div>
-                                <div class="col-xs-5">
-                                    <p class="title">
-                                        Share with your colleagues + community
-                                    </p>
-                                    <p class="description mTop30">
-                                        Once you create Quick Charts, you can simply embed, download or share the URL
-                                    </p>
-                                </div>
 
-                            </div>
-                        </div>
                     </div>
-                    <div class="row paddingRowHack whiteBackground qc-section qc-select-section">
-                        <div class="paddingLeftHack paddingRightHack mTB100">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="center qc-select-section">
-                                        <p class="title">
-                                            See live examples
-                                        </p>
-                                        <select id="quick-chart-select" style="width: 500px;">
-                                            <option value="0" selected="selected">Madagascar - Cyclone Enawo Needs Assessment Data</option>
-                                            <option value="1">Zika Cases per Country in South and Central America</option>
-                                            <option value="2">Afghanistan - Natural disaster incidents in 2016</option>
-                                            <option value="3">Ebola - West Africa - Ebola Treatment Centres, Isolation Wards Hospitals and Transit Centres</option>
-                                            <option value="4">INSO Key Data Dashboard, Jan 2016 to July 2017</option>
-                                            <option value="5">Chad - Population statistics 2017 (admin 0-3)</option>
-                                        </select>
-                                        <p class="mTop10">
-                                            <a id="quick-chart-dataset" href="#" target="_blank">Go to the dataset</a> or <a href="#">see a list of chart recipes</a>
-                                        </p>
-                                        <iframe id="quick-chart-iframe" src="" style="border:none; width:100%; min-height:560px"></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
