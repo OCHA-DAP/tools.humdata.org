@@ -30,4 +30,12 @@ $(document).ready(function() {
     });
 
     changeSelection(0);
+
+    var hash = window.location.hash;
+    if (hash) {
+        // $(hash).scrollTo();
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 2000);
+    }
 });
