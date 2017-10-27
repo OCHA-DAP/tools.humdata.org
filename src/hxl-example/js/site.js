@@ -93,7 +93,7 @@ $.when(tagsCall,indexCall).then(function(tagsArgs,indexArgs){
         //define click event for each tag
         $(t['#meta+tag']).on('click',function(){
             var tag = $('#tag'+ index);
-            $('body').animate({scrollTop: tag.offset().top}, 'slow');
+            $('html').animate({scrollTop: tag.offset().top-90}, 'slow');
         });
     });
 });

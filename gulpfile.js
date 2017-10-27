@@ -24,8 +24,10 @@ var baseDirs = {
     dist: 'dist/',
     src: 'src/',
     assets: 'dist/assets/',
+    examples: 'dist/examples',
     hdxStyle: 'src/hdx-styles/src/common/',
-    vendor: 'node_modules/'
+    vendor: 'node_modules/',
+    hxlExample: 'src/hxl-example/**/*'
 };
 
 /* routes: object that contains the paths */
@@ -42,6 +44,10 @@ var routes = {
 
     templates: {
         html: baseDirs.src+'templates/**/*'
+    },
+
+    examples: {
+        hxl: baseDirs.examples+'/hxl/'
     },
 
     dependencies: {
@@ -67,7 +73,8 @@ var routes = {
         htmlFiles: baseDirs.dist+'**/*',
         styleCss: baseDirs.assets+'css/style.css',
         hdxStyleFonts: baseDirs.hdxStyle+'fonts/**/*',
-        hdxStyleImages: baseDirs.hdxStyle+'images/**/*'
+        hdxStyleImages: baseDirs.hdxStyle+'images/**/*',
+        hxlExample: baseDirs.hxlExample+'**/*'
     },
 
     deployDirs: {
@@ -78,6 +85,14 @@ var routes = {
 };
 
 /* Compiling Tasks */
+
+
+//copy hxl example files
+gulp.task('copy', function () {
+    gulp.src(routes.files.hxlExample)
+        .pipe(gulp.dest(routes.examples.hxl));
+});
+
 
 // Templating
 
@@ -270,9 +285,9 @@ gulp.task('hdxAssets', function() {
 
 
 
-gulp.task('dev', ['templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve']);
+gulp.task('dev', ['copy', 'templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve']);
 
-gulp.task('build', ['templates', 'styles', 'scripts', 'images', 'hdxAssets']);
+gulp.task('build', ['copy', 'templates', 'styles', 'scripts', 'images', 'hdxAssets']);
 
 gulp.task('optimize', ['uncss', 'critical', 'images']);
 
