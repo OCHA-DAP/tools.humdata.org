@@ -172,8 +172,25 @@
         </div>
     </footer>
 
+    <script src="js/site.js"></script>
     <script type="text/javascript" src="/assets/js/vendor.js"></script>
     <script type="text/javascript" src="/assets/js/script.js"></script>
-    <script src="js/site.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#tags").on("click", function(ev){
+                var target = ev.target;
+                var targetStr = "#" + target.id;
+                if (target.nodeName === "P") {
+                    console.log("clicked " + targetStr);
+                    mixpanel.track("link click", {
+                        "page title": document.title,
+                        "link type": "hxl example tag",
+                        "destination url": targetStr
+                    });
+                }
+
+            });
+        });
+    </script>
 </body>
 </html>

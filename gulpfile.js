@@ -16,9 +16,19 @@ var gulp = require('gulp'),
     cssimport = require('gulp-cssimport'),
     beautify = require('gulp-beautify'),
     sourcemaps = require('gulp-sourcemaps'),
-    critical = require('critical').stream;
+    critical = require('critical').stream,
+    argv = require('yargs').argv,
+    gutil = require('gulp-util');
 
 /* baseDirs: baseDirs for the project */
+
+// Set production flag
+var isProduction = false;
+gutil.log("Testing out the production flag");
+if (argv.production) {
+    gutil.log("Production Mode - ON");
+    isProduction = true;
+}
 
 var baseDirs = {
     dist: 'dist/',
@@ -56,6 +66,7 @@ var routes = {
 
     scripts: {
         vendor: [
+            baseDirs.src+'config/analytics.js',
             baseDirs.vendor+'jquery/dist/jquery.min.js',
             baseDirs.vendor+'bootstrap/dist/js/bootstrap.min.js',
             baseDirs.vendor+'select2/dist/js/select2.min.js'
@@ -83,6 +94,14 @@ var routes = {
         ftpUploadDir: 'FTP-DIRECTORY'
     }
 };
+
+
+/* Production overrides */
+if (isProduction) {
+    routes.scripts.vendor.unshift(baseDirs.src+'config/production.js'); //production config file
+} else {
+    routes.scripts.vendor.unshift(baseDirs.src+'config/default.js'); //main config file
+}
 
 /* Compiling Tasks */
 
@@ -282,8 +301,6 @@ gulp.task('hdxAssets', function() {
     return gulp.src(routes.files.hdxStyleImages)
         .pipe(gulp.dest(baseDirs.assets + 'images/'));
 });
-
-
 
 gulp.task('dev', ['copy', 'templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve']);
 

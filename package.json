@@ -41,9 +41,11 @@
     "gulp-sourcemaps": "^2.1.1",
     "gulp-uglify": "^2.0.0",
     "gulp-uncss": "^1.0.6",
+    "gulp-util": "^3.0.8",
     "jquery": "^3.2.1",
     "jshint": "^2.9.5",
-    "select2": "^4.0.3"
+    "select2": "^4.0.3",
+    "yargs": "^10.0.3"
   },
   "devDependencies": {
     "mocha": "*"
