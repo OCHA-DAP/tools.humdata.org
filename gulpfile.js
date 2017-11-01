@@ -26,6 +26,7 @@ var gulp = require('gulp'),
 var isProduction = false;
 gutil.log("Testing out the production flag");
 if (argv.production) {
+    //trigger with gulp --production
     gutil.log("Production Mode - ON");
     isProduction = true;
 }

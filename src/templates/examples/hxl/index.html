@@ -181,7 +181,7 @@
                 var target = ev.target;
                 var targetStr = "#" + target.id;
                 if (target.nodeName === "P") {
-                    console.log("clicked " + targetStr);
+//                    console.log("clicked " + targetStr);
                     mixpanel.track("link click", {
                         "page title": document.title,
                         "link type": "hxl example tag",
