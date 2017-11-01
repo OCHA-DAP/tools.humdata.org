@@ -8,7 +8,10 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: @toolContainerWidth;
+    min-width: @toolContainerWidth;
+    width: 100%;
+    padding-right: @toolContainerPadding;
+
     .container-arrow {
         position: absolute;
         top: 1*@toolPickerBoxSize + @toolPickerBoxSize/2;
@@ -25,7 +28,8 @@
         padding-left: @toolContainerPadding + @toolPickerBoxSize;
         padding-top: @toolContainerPadding;
         padding-bottom: @toolContainerPadding;
-        height: 800px;
+        min-height: 800px;
+        height: 100%;
     }
 
     .tool-content {

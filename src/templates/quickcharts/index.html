@@ -101,15 +101,49 @@
                         <div class="paddingLeftHack paddingRightHack mTB100">
                             <div class="row">
                                 <div class="col-xs-6 center">
-                                    <img style="height: 348px" src="/assets/images/data-source.png">
+                                    <img style="height: 600px; padding-top: 175px; padding-bottom: 100px;" src="/assets/images/quick-charts-how.png">
                                 </div>
                                 <div class="col-xs-5">
-                                    <p class="title mTop60">
-                                        Works with your spreadsheet
-                                    </p>
-                                    <p class="description mTop30">
-                                        Add a spreadsheet or CSV file via a URL, from your desktop or simply paste in.
-                                    </p>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p class="title mTop60">
+                                                How it works
+                                            </p>
+                                            <p class="description mTop30">
+                                                Quick Charts is powered by <b>HXL tags</b> - a simple standard for interoperable data. Quick Charts scans HXL tags in your spreadsheet to generate bar, pie line charts, and key figures. Supported tags include:
+                                            </p>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <ul class="tag-list">
+                                                        <li>#country</li>
+                                                        <li>#adm1</li>
+                                                        <li>#adm2</li>
+                                                        <li>#adm3</li>
+                                                        <li>#adm4</li>
+                                                        <li>#adm5</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <ul class="tag-list">
+                                                        <li>#affected</li>
+                                                        <li>#inneed</li>
+                                                        <li>#reached</li>
+                                                        <li>#targeted</li>
+                                                        <li>#population</li>
+                                                        <li>#date</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <p class="description">
+                                                If your spreadsheet doesn’t have HXL tags - use <b>HXL assist</b> to add them or to learn more about how charts are made, see our <b>documentation page</b>.
+                                            </p>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -118,14 +152,16 @@
                     <div class="row paddingRowHack whiteBackground qc-section">
                         <div class="paddingLeftHack paddingRightHack mTB100">
                             <div class="row">
-                                <div class="col-xs-6 qc-left-padding">
-                                    <p class="title">
-                                        Chart Types
+                                <div class="col-xs-offset-1 col-xs-5">
+                                    <p class="title mTop60">
+                                        Works with your spreadsheet
                                     </p>
                                     <p class="description mTop30">
-                                        Quick Charts scans your spreadsheet and looks for the best way to visually
-                                        represent your data. Chart types include bar, pie, line chart and key figures.
+                                        Simply select a spreadsheet from an URL or cloud services such as google drive and dropbox.
                                     </p>
+                                </div>
+                                <div class="col-xs-5 center">
+                                    <img style="height: 348px" src="/assets/images/data-source.png">
                                 </div>
                             </div>
                         </div>
@@ -148,7 +184,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row paddingRowHack whiteBackground qc-section qc-select-section">
+                    <div id="examples" class="row paddingRowHack whiteBackground qc-section qc-select-section">
                         <div class="paddingLeftHack paddingRightHack mTB100">
                             <div class="row">
                                 <div class="col-xs-12">
@@ -157,8 +193,8 @@
                                             See live examples
                                         </p>
                                         <select id="quick-chart-select" style="width: 500px;">
-                                            <option value="0" selected="selected">Madagascar - Cyclone Enawo Needs Assessment Data</option>
-                                            <option value="1">Zika Cases per Country in South and Central America</option>
+                                            <option value="0" selected="selected">Zika Cases per Country in South and Central America</option>
+                                            <option value="1">Madagascar - Cyclone Enawo Needs Assessment Data</option>
                                             <option value="2">Afghanistan - Natural disaster incidents in 2016</option>
                                             <option value="3">Ebola - West Africa - Ebola Treatment Centres, Isolation Wards Hospitals and Transit Centres</option>
                                             <option value="4">INSO Key Data Dashboard, Jan 2016 to July 2017</option>
