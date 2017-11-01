@@ -5,10 +5,16 @@
 
     <link rel="stylesheet" type="text/css" href="/assets/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+    <link rel="stylesheet" type="text/css" href="dist/assets/css/style.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/icons/hdx.ico">
     <title>HXL Example | HDX Tools</title>
 
-<body>
+<body class="hxl-example">
 
     <header class="newHeader header-fixed">
         <div class="homepage-header-user-bg">
@@ -34,16 +40,6 @@
                                     <a class="logo" href="/"><div class="logo-img" alt="Humanitarian Data Exchange Logo"></div><span id="hdxVersion">0.0.1Beta</span></a>
                                 </span>
                             </span>
-
-                            <div class="table-valign pull-right">
-                                <div class="table-valign-content">
-                                    <a href="#" >
-                                        <div class="submitData">
-                                            Try Quick Charts
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -52,15 +48,24 @@
     </header>
 
     <div role="main">
-        <div id="content" class="container">
+        <div class="container">
             <div class="container mainContent">
                 <div class="hdx-wrapper wrapper no-nav">
-                    <div class="row paddingRowHack whiteBackground qc-section">
+                    <div class="row paddingRowHack whiteBackground hxl-example-section">
 
                         <div class="paddingLeftHack paddingRightHack">
+                            <div id="header" class="row">
+                                <div class="col-xs-12">
+                                    <h1>HXL Example <span><a href="http://hxlstandard.org/" target="_blank">hxlstandard.org</a></span></h1>
+                                </div>
+                            </div>
                             <div class="row">
-                                <div class="col-xs-12 examples hxl">
-                                    <iframe src="https://ocha-dap.github.io/hxl-example/" width="1170" height="1000"></iframe>
+                                <div class="col-md-2">
+                                    <div id="tags" data-spy="affix" data-offset-top="175" data-offset-bottom="310"></div>
+                                </div>
+                                <div class="col-md-10" id="content">
+
+
                                 </div>
                             </div>
                         </div>
@@ -169,5 +174,6 @@
 
     <script type="text/javascript" src="/assets/js/vendor.js"></script>
     <script type="text/javascript" src="/assets/js/script.js"></script>
+    <script src="js/site.js"></script>
 </body>
 </html>
