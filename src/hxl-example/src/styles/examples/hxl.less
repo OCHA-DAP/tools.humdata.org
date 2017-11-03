@@ -1,0 +1,108 @@
+.hxl-example {
+    background: none;
+    color: @darkGrayColor;
+    min-width: 0;
+}
+h1 {
+    .gothamBookFont(48px);
+    color: @darkGrayColor;
+    line-height: 1;
+    span {
+        a {
+            .sourceSansProFont(400, 16px); 
+        }
+    }
+}
+h2 {
+    .gothamMediumFont(36px);
+}
+h3 {
+    .gothamBoldFont(24px);
+    color: @darkGrayColor;
+}
+h4 {
+    .gothamBoldFont(16px);
+    color: @darkGrayColor;
+    height: auto;
+    line-height: 20px;
+    margin-bottom: 3px;
+    margin-top: 0;
+}
+h5 {
+    .sourceSansProFont(700, 13px);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+td {
+    font-size: 14px;
+    padding: 5px;
+}
+a {
+    .sourceSansProFont(600, 14px);
+}
+.sample-name {
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+.sampletable {
+    margin-top: 16px;
+    margin-bottom: 40px;
+}
+.overview {
+    background-color: #fcf2f2;
+    border-top: 4px solid @orangeColor;
+    padding-bottom: 25px;
+    padding-left: 20px;
+}
+.overview-tag {
+    color: @orangeColor;
+    margin-top: 10px;
+}
+.tagdescription {
+    .sourceSansProFont(400, 16px);
+    margin-bottom: 25px;
+}
+.attributes p {
+    .sourceSansProFont(600, 14px);
+    margin-bottom: 0;
+}
+#header {
+    margin-bottom: 22px;
+}
+#hover {
+    .gothamBookFont(24px);
+    color: @darkGrayColor;
+}
+#noexample {
+    margin: 20px 0 40px;
+}
+.tag {
+    color: @orangeColor;
+    cursor: pointer;
+    margin-bottom: 0;
+    &:hover,
+    &:focus {
+        color: darken(@orangeColor, 20%);
+    }
+}
+.tag_cat {
+    margin-bottom: 20px;
+}
+.highlight0 {
+    color: @darkGrayColor;
+}
+.row0 {
+    .gothamBoldFont(16px);
+    color: @darkGrayColor;
+}
+.row1 {
+    color: @orangeColor;
+}
+.affix {
+    height: 100vh;//575px;
+    overflow-y: auto;
+    padding-top: 10px;
+    padding-right: 15px;
+    top: 0;
+    width: 185px;
+}

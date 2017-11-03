@@ -16,16 +16,29 @@ var gulp = require('gulp'),
     cssimport = require('gulp-cssimport'),
     beautify = require('gulp-beautify'),
     sourcemaps = require('gulp-sourcemaps'),
-    critical = require('critical').stream;
+    critical = require('critical').stream,
+    argv = require('yargs').argv,
+    gutil = require('gulp-util');
 
 /* baseDirs: baseDirs for the project */
+
+// Set production flag
+var isProduction = false;
+gutil.log("Testing out the production flag");
+if (argv.production) {
+    //trigger with gulp --production
+    gutil.log("Production Mode - ON");
+    isProduction = true;
+}
 
 var baseDirs = {
     dist: 'dist/',
     src: 'src/',
     assets: 'dist/assets/',
+    examples: 'dist/examples',
     hdxStyle: 'src/hdx-styles/src/common/',
-    vendor: 'node_modules/'
+    vendor: 'node_modules/',
+    hxlExample: 'src/hxl-example/**/*'
 };
 
 /* routes: object that contains the paths */
@@ -44,12 +57,17 @@ var routes = {
         html: baseDirs.src+'templates/**/*'
     },
 
+    examples: {
+        hxl: baseDirs.examples+'/hxl/'
+    },
+
     dependencies: {
 
     },
 
     scripts: {
         vendor: [
+            baseDirs.src+'config/analytics.js',
             baseDirs.vendor+'jquery/dist/jquery.min.js',
             baseDirs.vendor+'bootstrap/dist/js/bootstrap.min.js',
             baseDirs.vendor+'select2/dist/js/select2.min.js'
@@ -67,7 +85,8 @@ var routes = {
         htmlFiles: baseDirs.dist+'**/*',
         styleCss: baseDirs.assets+'css/style.css',
         hdxStyleFonts: baseDirs.hdxStyle+'fonts/**/*',
-        hdxStyleImages: baseDirs.hdxStyle+'images/**/*'
+        hdxStyleImages: baseDirs.hdxStyle+'images/**/*',
+        hxlExample: baseDirs.hxlExample+'**/*'
     },
 
     deployDirs: {
@@ -77,7 +96,23 @@ var routes = {
     }
 };
 
+
+/* Production overrides */
+if (isProduction) {
+    routes.scripts.vendor.unshift(baseDirs.src+'config/production.js'); //production config file
+} else {
+    routes.scripts.vendor.unshift(baseDirs.src+'config/default.js'); //main config file
+}
+
 /* Compiling Tasks */
+
+
+//copy hxl example files
+gulp.task('copy', function () {
+    gulp.src(routes.files.hxlExample)
+        .pipe(gulp.dest(routes.examples.hxl));
+});
+
 
 // Templating
 
@@ -268,11 +303,9 @@ gulp.task('hdxAssets', function() {
         .pipe(gulp.dest(baseDirs.assets + 'images/'));
 });
 
+gulp.task('dev', ['copy', 'templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve']);
 
-
-gulp.task('dev', ['templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve']);
-
-gulp.task('build', ['templates', 'styles', 'scripts', 'images', 'hdxAssets']);
+gulp.task('build', ['copy', 'templates', 'styles', 'scripts', 'images', 'hdxAssets']);
 
 gulp.task('optimize', ['uncss', 'critical', 'images']);
 
