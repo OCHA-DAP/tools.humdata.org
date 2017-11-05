@@ -2507,15 +2507,17 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
     });
   });
 }(jQuery);
-/*! Select2 4.0.3 | https://github.com/select2/select2/blob/master/LICENSE.md */!function (a) {
-  "function" == typeof define && define.amd ? define(["jquery"], a) : a("object" == typeof exports ? require("jquery") : jQuery);
+/*! Select2 4.0.5 | https://github.com/select2/select2/blob/master/LICENSE.md */!function (a) {
+  "function" == typeof define && define.amd ? define(["jquery"], a) : "object" == typeof module && module.exports ? module.exports = function (b, c) {
+    return void 0 === c && (c = "undefined" != typeof window ? require("jquery") : require("jquery")(b)), a(c), c;
+  } : a(jQuery);
 }(function (a) {
   var b = function () {
     if (a && a.fn && a.fn.select2 && a.fn.select2.amd) var b = a.fn.select2.amd;var b;return function () {
       if (!b || !b.requirejs) {
         b ? c = b : b = {};var a, c, d;!function (b) {
           function e(a, b) {
-            return u.call(a, b);
+            return v.call(a, b);
           }function f(a, b) {
             var c,
                 d,
@@ -2528,22 +2530,23 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
                 k,
                 l,
                 m,
-                n = b && b.split("/"),
-                o = s.map,
-                p = o && o["*"] || {};if (a && "." === a.charAt(0)) if (b) {
-              for (a = a.split("/"), g = a.length - 1, s.nodeIdCompat && w.test(a[g]) && (a[g] = a[g].replace(w, "")), a = n.slice(0, n.length - 1).concat(a), k = 0; k < a.length; k += 1) if (m = a[k], "." === m) a.splice(k, 1), k -= 1;else if (".." === m) {
-                if (1 === k && (".." === a[2] || ".." === a[0])) break;k > 0 && (a.splice(k - 1, 2), k -= 2);
+                n,
+                o = b && b.split("/"),
+                p = t.map,
+                q = p && p["*"] || {};if (a) {
+              for (a = a.split("/"), g = a.length - 1, t.nodeIdCompat && x.test(a[g]) && (a[g] = a[g].replace(x, "")), "." === a[0].charAt(0) && o && (n = o.slice(0, o.length - 1), a = n.concat(a)), k = 0; k < a.length; k++) if ("." === (m = a[k])) a.splice(k, 1), k -= 1;else if (".." === m) {
+                if (0 === k || 1 === k && ".." === a[2] || ".." === a[k - 1]) continue;k > 0 && (a.splice(k - 1, 2), k -= 2);
               }a = a.join("/");
-            } else 0 === a.indexOf("./") && (a = a.substring(2));if ((n || p) && o) {
+            }if ((o || q) && p) {
               for (c = a.split("/"), k = c.length; k > 0; k -= 1) {
-                if (d = c.slice(0, k).join("/"), n) for (l = n.length; l > 0; l -= 1) if (e = o[n.slice(0, l).join("/")], e && (e = e[d])) {
+                if (d = c.slice(0, k).join("/"), o) for (l = o.length; l > 0; l -= 1) if ((e = p[o.slice(0, l).join("/")]) && (e = e[d])) {
                   f = e, h = k;break;
-                }if (f) break;!i && p && p[d] && (i = p[d], j = k);
+                }if (f) break;!i && q && q[d] && (i = q[d], j = k);
               }!f && i && (f = i, h = j), f && (c.splice(0, h, f), a = c.join("/"));
             }return a;
           }function g(a, c) {
             return function () {
-              var d = v.call(arguments, 0);return "string" != typeof d[0] && 1 === d.length && d.push(null), n.apply(b, d.concat([a, c]));
+              var d = w.call(arguments, 0);return "string" != typeof d[0] && 1 === d.length && d.push(null), o.apply(b, d.concat([a, c]));
             };
           }function h(a) {
             return function (b) {
@@ -2551,62 +2554,66 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
             };
           }function i(a) {
             return function (b) {
-              q[a] = b;
+              r[a] = b;
             };
           }function j(a) {
-            if (e(r, a)) {
-              var c = r[a];delete r[a], t[a] = !0, m.apply(b, c);
-            }if (!e(q, a) && !e(t, a)) throw new Error("No " + a);return q[a];
+            if (e(s, a)) {
+              var c = s[a];delete s[a], u[a] = !0, n.apply(b, c);
+            }if (!e(r, a) && !e(u, a)) throw new Error("No " + a);return r[a];
           }function k(a) {
             var b,
                 c = a ? a.indexOf("!") : -1;return c > -1 && (b = a.substring(0, c), a = a.substring(c + 1, a.length)), [b, a];
           }function l(a) {
+            return a ? k(a) : [];
+          }function m(a) {
             return function () {
-              return s && s.config && s.config[a] || {};
+              return t && t.config && t.config[a] || {};
             };
-          }var m,
-              n,
+          }var n,
               o,
               p,
-              q = {},
+              q,
               r = {},
               s = {},
               t = {},
-              u = Object.prototype.hasOwnProperty,
-              v = [].slice,
-              w = /\.js$/;o = function (a, b) {
+              u = {},
+              v = Object.prototype.hasOwnProperty,
+              w = [].slice,
+              x = /\.js$/;p = function (a, b) {
             var c,
                 d = k(a),
-                e = d[0];return a = d[1], e && (e = f(e, b), c = j(e)), e ? a = c && c.normalize ? c.normalize(a, h(b)) : f(a, b) : (a = f(a, b), d = k(a), e = d[0], a = d[1], e && (c = j(e))), { f: e ? e + "!" + a : a, n: a, pr: e, p: c };
-          }, p = { require: function (a) {
+                e = d[0],
+                g = b[1];return a = d[1], e && (e = f(e, g), c = j(e)), e ? a = c && c.normalize ? c.normalize(a, h(g)) : f(a, g) : (a = f(a, g), d = k(a), e = d[0], a = d[1], e && (c = j(e))), { f: e ? e + "!" + a : a, n: a, pr: e, p: c };
+          }, q = { require: function (a) {
               return g(a);
             }, exports: function (a) {
-              var b = q[a];return "undefined" != typeof b ? b : q[a] = {};
+              var b = r[a];return void 0 !== b ? b : r[a] = {};
             }, module: function (a) {
-              return { id: a, uri: "", exports: q[a], config: l(a) };
-            } }, m = function (a, c, d, f) {
+              return { id: a, uri: "", exports: r[a], config: m(a) };
+            } }, n = function (a, c, d, f) {
             var h,
                 k,
-                l,
                 m,
                 n,
-                s,
-                u = [],
-                v = typeof d;if (f = f || a, "undefined" === v || "function" === v) {
-              for (c = !c.length && d.length ? ["require", "exports", "module"] : c, n = 0; n < c.length; n += 1) if (m = o(c[n], f), k = m.f, "require" === k) u[n] = p.require(a);else if ("exports" === k) u[n] = p.exports(a), s = !0;else if ("module" === k) h = u[n] = p.module(a);else if (e(q, k) || e(r, k) || e(t, k)) u[n] = j(k);else {
-                if (!m.p) throw new Error(a + " missing " + k);m.p.load(m.n, g(f, !0), i(k), {}), u[n] = q[k];
-              }l = d ? d.apply(q[a], u) : void 0, a && (h && h.exports !== b && h.exports !== q[a] ? q[a] = h.exports : l === b && s || (q[a] = l));
-            } else a && (q[a] = d);
-          }, a = c = n = function (a, c, d, e, f) {
-            if ("string" == typeof a) return p[a] ? p[a](c) : j(o(a, c).f);if (!a.splice) {
-              if (s = a, s.deps && n(s.deps, s.callback), !c) return;c.splice ? (a = c, c = d, d = null) : a = b;
-            }return c = c || function () {}, "function" == typeof d && (d = e, e = f), e ? m(b, a, c, d) : setTimeout(function () {
-              m(b, a, c, d);
-            }, 4), n;
-          }, n.config = function (a) {
-            return n(a);
-          }, a._defined = q, d = function (a, b, c) {
-            if ("string" != typeof a) throw new Error("See almond README: incorrect module build, no module name");b.splice || (c = b, b = []), e(q, a) || e(r, a) || (r[a] = [a, b, c]);
+                o,
+                t,
+                v,
+                w = [],
+                x = typeof d;if (f = f || a, t = l(f), "undefined" === x || "function" === x) {
+              for (c = !c.length && d.length ? ["require", "exports", "module"] : c, o = 0; o < c.length; o += 1) if (n = p(c[o], t), "require" === (k = n.f)) w[o] = q.require(a);else if ("exports" === k) w[o] = q.exports(a), v = !0;else if ("module" === k) h = w[o] = q.module(a);else if (e(r, k) || e(s, k) || e(u, k)) w[o] = j(k);else {
+                if (!n.p) throw new Error(a + " missing " + k);n.p.load(n.n, g(f, !0), i(k), {}), w[o] = r[k];
+              }m = d ? d.apply(r[a], w) : void 0, a && (h && h.exports !== b && h.exports !== r[a] ? r[a] = h.exports : m === b && v || (r[a] = m));
+            } else a && (r[a] = d);
+          }, a = c = o = function (a, c, d, e, f) {
+            if ("string" == typeof a) return q[a] ? q[a](c) : j(p(a, l(c)).f);if (!a.splice) {
+              if (t = a, t.deps && o(t.deps, t.callback), !c) return;c.splice ? (a = c, c = d, d = null) : a = b;
+            }return c = c || function () {}, "function" == typeof d && (d = e, e = f), e ? n(b, a, c, d) : setTimeout(function () {
+              n(b, a, c, d);
+            }, 4), o;
+          }, o.config = function (a) {
+            return o(a);
+          }, a._defined = r, d = function (a, b, c) {
+            if ("string" != typeof a) throw new Error("See almond README: incorrect module build, no module name");b.splice || (c = b, b = []), e(r, a) || e(s, a) || (s[a] = [a, b, c]);
           }, d.amd = { jQuery: !0 };
         }(), b.requirejs = a, b.require = c, b.define = d;
       }
@@ -2616,7 +2623,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       function b(a) {
         var b = a.prototype,
             c = [];for (var d in b) {
-          var e = b[d];"function" == typeof e && "constructor" !== d && c.push(d);
+          "function" == typeof b[d] && "constructor" !== d && c.push(d);
         }return c;
       }var c = {};c.Extend = function (a, b) {
         function c() {
@@ -2634,7 +2641,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
           var i = g[h];d.prototype[i] = a.prototype[i];
         }for (var j = function (a) {
           var b = function () {};(a in d.prototype) && (b = d.prototype[a]);var e = c.prototype[a];return function () {
-            var a = Array.prototype.unshift;return a.call(arguments, b), e.apply(this, arguments);
+            return Array.prototype.unshift.call(arguments, b), e.apply(this, arguments);
           };
         }, k = 0; k < f.length; k++) {
           var l = f[k];d.prototype[l] = j(l);
@@ -2647,10 +2654,10 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         var b = Array.prototype.slice,
             c = b.call(arguments, 1);this.listeners = this.listeners || {}, null == c && (c = []), 0 === c.length && c.push({}), c[0]._type = a, a in this.listeners && this.invoke(this.listeners[a], b.call(arguments, 1)), "*" in this.listeners && this.invoke(this.listeners["*"], arguments);
       }, d.prototype.invoke = function (a, b) {
-        for (var c = 0, d = a.length; d > c; c++) a[c].apply(this, b);
+        for (var c = 0, d = a.length; c < d; c++) a[c].apply(this, b);
       }, c.Observable = d, c.generateChars = function (a) {
-        for (var b = "", c = 0; a > c; c++) {
-          var d = Math.floor(36 * Math.random());b += d.toString(36);
+        for (var b = "", c = 0; c < a; c++) {
+          b += Math.floor(36 * Math.random()).toString(36);
         }return b;
       }, c.bind = function (a, b) {
         return function () {
@@ -2668,7 +2675,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, c.hasScroll = function (b, c) {
         var d = a(c),
             e = c.style.overflowX,
-            f = c.style.overflowY;return e !== f || "hidden" !== f && "visible" !== f ? "scroll" === e || "scroll" === f ? !0 : d.innerHeight() < c.scrollHeight || d.innerWidth() < c.scrollWidth : !1;
+            f = c.style.overflowY;return (e !== f || "hidden" !== f && "visible" !== f) && ("scroll" === e || "scroll" === f || d.innerHeight() < c.scrollHeight || d.innerWidth() < c.scrollWidth);
       }, c.escapeMarkup = function (a) {
         var b = { "\\": "&#92;", "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;", "/": "&#47;" };return "string" != typeof a ? a : String(a).replace(/[&<>"'\/\\]/g, function (a) {
           return b[a];
@@ -2698,9 +2705,9 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
               e = this.option(d);b.push(e);
         }this.$results.append(b);
       }, c.prototype.position = function (a, b) {
-        var c = b.find(".select2-results");c.append(a);
+        b.find(".select2-results").append(a);
       }, c.prototype.sort = function (a) {
-        var b = this.options.get("sorter");return b(a);
+        return this.options.get("sorter")(a);
       }, c.prototype.highlightFirstItem = function () {
         var a = this.$results.find(".select2-results__option[aria-selected]"),
             b = a.filter("[aria-selected=true]");b.length > 0 ? b.first().trigger("mouseenter") : a.first().trigger("mouseenter"), this.ensureHighlightVisible();
@@ -2708,8 +2715,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         var b = this;this.data.current(function (c) {
           var d = a.map(c, function (a) {
             return a.id.toString();
-          }),
-              e = b.$results.find(".select2-results__option[aria-selected]");e.each(function () {
+          });b.$results.find(".select2-results__option[aria-selected]").each(function () {
             var b = a(this),
                 c = a.data(this, "data"),
                 e = "" + c.id;null != c.element && c.element.selected || null == c.element && a.inArray(e, d) > -1 ? b.attr("aria-selected", "true") : b.attr("aria-selected", "false");
@@ -2729,7 +2735,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
               h = document.createElement("strong");h.className = "select2-results__group";a(h);this.template(b, h);for (var i = [], j = 0; j < b.children.length; j++) {
             var k = b.children[j],
                 l = this.option(k);i.push(l);
-          }var m = a("<ul></ul>", { "class": "select2-results__options select2-results__options--nested" });m.append(i), g.append(h), g.append(m);
+          }var m = a("<ul></ul>", { class: "select2-results__options select2-results__options--nested" });m.append(i), g.append(h), g.append(m);
         } else this.template(b, c);return a.data(c, "data", b), c;
       }, c.prototype.bind = function (b, c) {
         var d = this,
@@ -2759,7 +2765,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
               c = b.index(a);if (0 !== c) {
             var e = c - 1;0 === a.length && (e = 0);var f = b.eq(e);f.trigger("mouseenter");var g = d.$results.offset().top,
                 h = f.offset().top,
-                i = d.$results.scrollTop() + (h - g);0 === e ? d.$results.scrollTop(0) : 0 > h - g && d.$results.scrollTop(i);
+                i = d.$results.scrollTop() + (h - g);0 === e ? d.$results.scrollTop(0) : h - g < 0 && d.$results.scrollTop(i);
           }
         }), b.on("results:next", function () {
           var a = d.getHighlightedResults(),
@@ -2781,12 +2787,12 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
               f = a.deltaY < 0 && c <= d.$results.height();e ? (d.$results.scrollTop(0), a.preventDefault(), a.stopPropagation()) : f && (d.$results.scrollTop(d.$results.get(0).scrollHeight - d.$results.height()), a.preventDefault(), a.stopPropagation());
         }), this.$results.on("mouseup", ".select2-results__option[aria-selected]", function (b) {
           var c = a(this),
-              e = c.data("data");return "true" === c.attr("aria-selected") ? void (d.options.get("multiple") ? d.trigger("unselect", { originalEvent: b, data: e }) : d.trigger("close", {})) : void d.trigger("select", { originalEvent: b, data: e });
+              e = c.data("data");if ("true" === c.attr("aria-selected")) return void (d.options.get("multiple") ? d.trigger("unselect", { originalEvent: b, data: e }) : d.trigger("close", {}));d.trigger("select", { originalEvent: b, data: e });
         }), this.$results.on("mouseenter", ".select2-results__option[aria-selected]", function (b) {
           var c = a(this).data("data");d.getHighlightedResults().removeClass("select2-results__option--highlighted"), d.trigger("results:focus", { data: c, element: a(this) });
         });
       }, c.prototype.getHighlightedResults = function () {
-        var a = this.$results.find(".select2-results__option--highlighted");return a;
+        return this.$results.find(".select2-results__option--highlighted");
       }, c.prototype.destroy = function () {
         this.$results.remove();
       }, c.prototype.ensureHighlightVisible = function () {
@@ -2796,7 +2802,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
               d = this.$results.offset().top,
               e = a.offset().top,
               f = this.$results.scrollTop() + (e - d),
-              g = e - d;f -= 2 * a.outerHeight(!1), 2 >= c ? this.$results.scrollTop(0) : (g > this.$results.outerHeight() || 0 > g) && this.$results.scrollTop(f);
+              g = e - d;f -= 2 * a.outerHeight(!1), c <= 2 ? this.$results.scrollTop(0) : (g > this.$results.outerHeight() || g < 0) && this.$results.scrollTop(f);
         }
       }, c.prototype.template = function (b, c) {
         var d = this.options.get("templateResult"),
@@ -2804,7 +2810,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
             f = d(b, c);null == f ? c.style.display = "none" : "string" == typeof f ? c.innerHTML = e(f) : a(c).append(f);
       }, c;
     }), b.define("select2/keys", [], function () {
-      var a = { BACKSPACE: 8, TAB: 9, ENTER: 13, SHIFT: 16, CTRL: 17, ALT: 18, ESC: 27, SPACE: 32, PAGE_UP: 33, PAGE_DOWN: 34, END: 35, HOME: 36, LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40, DELETE: 46 };return a;
+      return { BACKSPACE: 8, TAB: 9, ENTER: 13, SHIFT: 16, CTRL: 17, ALT: 18, ESC: 27, SPACE: 32, PAGE_UP: 33, PAGE_DOWN: 34, END: 35, HOME: 36, LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40, DELETE: 46 };
     }), b.define("select2/selection/base", ["jquery", "../utils", "../keys"], function (a, b, c) {
       function d(a, b) {
         this.$element = a, this.options = b, d.__super__.constructor.call(this);
@@ -2812,7 +2818,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         var b = a('<span class="select2-selection" role="combobox"  aria-haspopup="true" aria-expanded="false"></span>');return this._tabindex = 0, null != this.$element.data("old-tabindex") ? this._tabindex = this.$element.data("old-tabindex") : null != this.$element.attr("tabindex") && (this._tabindex = this.$element.attr("tabindex")), b.attr("title", this.$element.attr("title")), b.attr("tabindex", this._tabindex), this.$selection = b, b;
       }, d.prototype.bind = function (a, b) {
         var d = this,
-            e = (a.id + "-container", a.id + "-results");this.container = a, this.$selection.on("focus", function (a) {
+            e = (a.id, a.id + "-results");this.container = a, this.$selection.on("focus", function (a) {
           d.trigger("focus", a);
         }), this.$selection.on("blur", function (a) {
           d._handleBlur(a);
@@ -2838,17 +2844,14 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, d.prototype._attachCloseHandler = function (b) {
         a(document.body).on("mousedown.select2." + b.id, function (b) {
           var c = a(b.target),
-              d = c.closest(".select2"),
-              e = a(".select2.select2-container--open");e.each(function () {
-            var b = a(this);if (this != d[0]) {
-              var c = b.data("element");c.select2("close");
-            }
+              d = c.closest(".select2");a(".select2.select2-container--open").each(function () {
+            var b = a(this);this != d[0] && b.data("element").select2("close");
           });
         });
       }, d.prototype._detachCloseHandler = function (b) {
         a(document.body).off("mousedown.select2." + b.id);
       }, d.prototype.position = function (a, b) {
-        var c = b.find(".selection");c.append(a);
+        b.find(".selection").append(a);
       }, d.prototype.destroy = function () {
         this._detachCloseHandler(this.container);
       }, d.prototype.update = function (a) {
@@ -2870,8 +2873,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, e.prototype.clear = function () {
         this.$selection.find(".select2-selection__rendered").empty();
       }, e.prototype.display = function (a, b) {
-        var c = this.options.get("templateSelection"),
-            d = this.options.get("escapeMarkup");return d(c(a, b));
+        var c = this.options.get("templateSelection");return this.options.get("escapeMarkup")(c(a, b));
       }, e.prototype.selectionContainer = function () {
         return a("<span></span>");
       }, e.prototype.update = function (a) {
@@ -2897,10 +2899,9 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, d.prototype.clear = function () {
         this.$selection.find(".select2-selection__rendered").empty();
       }, d.prototype.display = function (a, b) {
-        var c = this.options.get("templateSelection"),
-            d = this.options.get("escapeMarkup");return d(c(a, b));
+        var c = this.options.get("templateSelection");return this.options.get("escapeMarkup")(c(a, b));
       }, d.prototype.selectionContainer = function () {
-        var b = a('<li class="select2-selection__choice"><span class="select2-selection__choice__remove" role="presentation">&times;</span></li>');return b;
+        return a('<li class="select2-selection__choice"><span class="select2-selection__choice__remove" role="presentation">&times;</span></li>');
       }, d.prototype.update = function (a) {
         if (this.clear(), 0 !== a.length) {
           for (var b = [], d = 0; d < a.length; d++) {
@@ -2918,8 +2919,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, b.prototype.createPlaceholder = function (a, b) {
         var c = this.selectionContainer();return c.html(this.display(b)), c.addClass("select2-selection__placeholder").removeClass("select2-selection__choice"), c;
       }, b.prototype.update = function (a, b) {
-        var c = 1 == b.length && b[0].id != this.placeholder.id,
-            d = b.length > 1;if (d || c) return a.call(this, b);this.clear();var e = this.createPlaceholder(this.placeholder);this.$selection.find(".select2-selection__rendered").append(e);
+        var c = 1 == b.length && b[0].id != this.placeholder.id;if (b.length > 1 || c) return a.call(this, b);this.clear();var d = this.createPlaceholder(this.placeholder);this.$selection.find(".select2-selection__rendered").append(d);
       }, b;
     }), b.define("select2/selection/allowClear", ["jquery", "../keys"], function (a, b) {
       function c() {}return c.prototype.bind = function (a, b, c) {
@@ -2937,7 +2937,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
           }
         }
       }, c.prototype._handleKeyboardClear = function (a, c, d) {
-        d.isOpen() || (c.which == b.DELETE || c.which == b.BACKSPACE) && this._handleClear(c);
+        d.isOpen() || c.which != b.DELETE && c.which != b.BACKSPACE || this._handleClear(c);
       }, c.prototype.update = function (b, c) {
         if (b.call(this, c), !(this.$selection.find(".select2-selection__placeholder").length > 0 || 0 === c.length)) {
           var d = a('<span class="select2-selection__clear">&times;</span>');d.data("data", c), this.$selection.find(".select2-selection__rendered").prepend(d);
@@ -2947,7 +2947,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       function d(a, b, c) {
         a.call(this, b, c);
       }return d.prototype.render = function (b) {
-        var c = a('<li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="-1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" /></li>');this.$searchContainer = c, this.$search = c.find("input");var d = b.call(this);return this._transferTabIndex(), d;
+        var c = a('<li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="-1" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="textbox" aria-autocomplete="list" /></li>');this.$searchContainer = c, this.$search = c.find("input");var d = b.call(this);return this._transferTabIndex(), d;
       }, d.prototype.bind = function (a, b, d) {
         var e = this;a.call(this, b, d), b.on("open", function () {
           e.$search.trigger("focus");
@@ -2966,14 +2966,14 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         }), this.$selection.on("focusout", ".select2-search--inline", function (a) {
           e._handleBlur(a);
         }), this.$selection.on("keydown", ".select2-search--inline", function (a) {
-          a.stopPropagation(), e.trigger("keypress", a), e._keyUpPrevented = a.isDefaultPrevented();var b = a.which;if (b === c.BACKSPACE && "" === e.$search.val()) {
-            var d = e.$searchContainer.prev(".select2-selection__choice");if (d.length > 0) {
-              var f = d.data("data");e.searchRemoveChoice(f), a.preventDefault();
+          if (a.stopPropagation(), e.trigger("keypress", a), e._keyUpPrevented = a.isDefaultPrevented(), a.which === c.BACKSPACE && "" === e.$search.val()) {
+            var b = e.$searchContainer.prev(".select2-selection__choice");if (b.length > 0) {
+              var d = b.data("data");e.searchRemoveChoice(d), a.preventDefault();
             }
           }
         });var f = document.documentMode,
-            g = f && 11 >= f;this.$selection.on("input.searchcheck", ".select2-search--inline", function (a) {
-          return g ? void e.$selection.off("input.search input.searchcheck") : void e.$selection.off("keyup.search");
+            g = f && f <= 11;this.$selection.on("input.searchcheck", ".select2-search--inline", function (a) {
+          if (g) return void e.$selection.off("input.search input.searchcheck");e.$selection.off("keyup.search");
         }), this.$selection.on("keyup.search input.search", ".select2-search--inline", function (a) {
           if (g && "input" === a.type) return void e.$selection.off("input.search input.searchcheck");var b = a.which;b != c.SHIFT && b != c.CTRL && b != c.ALT && b != c.TAB && e.handleSearch(a);
         });
@@ -2991,7 +2991,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         this.trigger("unselect", { data: b }), this.$search.val(b.text), this.handleSearch();
       }, d.prototype.resizeSearch = function () {
         this.$search.css("width", "25px");var a = "";if ("" !== this.$search.attr("placeholder")) a = this.$selection.find(".select2-selection__rendered").innerWidth();else {
-          var b = this.$search.val().length + 1;a = .75 * b + "em";
+          a = .75 * (this.$search.val().length + 1) + "em";
         }this.$search.css("width", a);
       }, d;
     }), b.define("select2/selection/eventRelay", ["jquery"], function (a) {
@@ -3019,7 +3019,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         }return new c(c._cache[a]);
       }, c;
     }), b.define("select2/diacritics", [], function () {
-      var a = { "Ⓐ": "A", "Ａ": "A", "À": "A", "Á": "A", "Â": "A", "Ầ": "A", "Ấ": "A", "Ẫ": "A", "Ẩ": "A", "Ã": "A", "Ā": "A", "Ă": "A", "Ằ": "A", "Ắ": "A", "Ẵ": "A", "Ẳ": "A", "Ȧ": "A", "Ǡ": "A", "Ä": "A", "Ǟ": "A", "Ả": "A", "Å": "A", "Ǻ": "A", "Ǎ": "A", "Ȁ": "A", "Ȃ": "A", "Ạ": "A", "Ậ": "A", "Ặ": "A", "Ḁ": "A", "Ą": "A", "Ⱥ": "A", "Ɐ": "A", "Ꜳ": "AA", "Æ": "AE", "Ǽ": "AE", "Ǣ": "AE", "Ꜵ": "AO", "Ꜷ": "AU", "Ꜹ": "AV", "Ꜻ": "AV", "Ꜽ": "AY", "Ⓑ": "B", "Ｂ": "B", "Ḃ": "B", "Ḅ": "B", "Ḇ": "B", "Ƀ": "B", "Ƃ": "B", "Ɓ": "B", "Ⓒ": "C", "Ｃ": "C", "Ć": "C", "Ĉ": "C", "Ċ": "C", "Č": "C", "Ç": "C", "Ḉ": "C", "Ƈ": "C", "Ȼ": "C", "Ꜿ": "C", "Ⓓ": "D", "Ｄ": "D", "Ḋ": "D", "Ď": "D", "Ḍ": "D", "Ḑ": "D", "Ḓ": "D", "Ḏ": "D", "Đ": "D", "Ƌ": "D", "Ɗ": "D", "Ɖ": "D", "Ꝺ": "D", "Ǳ": "DZ", "Ǆ": "DZ", "ǲ": "Dz", "ǅ": "Dz", "Ⓔ": "E", "Ｅ": "E", "È": "E", "É": "E", "Ê": "E", "Ề": "E", "Ế": "E", "Ễ": "E", "Ể": "E", "Ẽ": "E", "Ē": "E", "Ḕ": "E", "Ḗ": "E", "Ĕ": "E", "Ė": "E", "Ë": "E", "Ẻ": "E", "Ě": "E", "Ȅ": "E", "Ȇ": "E", "Ẹ": "E", "Ệ": "E", "Ȩ": "E", "Ḝ": "E", "Ę": "E", "Ḙ": "E", "Ḛ": "E", "Ɛ": "E", "Ǝ": "E", "Ⓕ": "F", "Ｆ": "F", "Ḟ": "F", "Ƒ": "F", "Ꝼ": "F", "Ⓖ": "G", "Ｇ": "G", "Ǵ": "G", "Ĝ": "G", "Ḡ": "G", "Ğ": "G", "Ġ": "G", "Ǧ": "G", "Ģ": "G", "Ǥ": "G", "Ɠ": "G", "Ꞡ": "G", "Ᵹ": "G", "Ꝿ": "G", "Ⓗ": "H", "Ｈ": "H", "Ĥ": "H", "Ḣ": "H", "Ḧ": "H", "Ȟ": "H", "Ḥ": "H", "Ḩ": "H", "Ḫ": "H", "Ħ": "H", "Ⱨ": "H", "Ⱶ": "H", "Ɥ": "H", "Ⓘ": "I", "Ｉ": "I", "Ì": "I", "Í": "I", "Î": "I", "Ĩ": "I", "Ī": "I", "Ĭ": "I", "İ": "I", "Ï": "I", "Ḯ": "I", "Ỉ": "I", "Ǐ": "I", "Ȉ": "I", "Ȋ": "I", "Ị": "I", "Į": "I", "Ḭ": "I", "Ɨ": "I", "Ⓙ": "J", "Ｊ": "J", "Ĵ": "J", "Ɉ": "J", "Ⓚ": "K", "Ｋ": "K", "Ḱ": "K", "Ǩ": "K", "Ḳ": "K", "Ķ": "K", "Ḵ": "K", "Ƙ": "K", "Ⱪ": "K", "Ꝁ": "K", "Ꝃ": "K", "Ꝅ": "K", "Ꞣ": "K", "Ⓛ": "L", "Ｌ": "L", "Ŀ": "L", "Ĺ": "L", "Ľ": "L", "Ḷ": "L", "Ḹ": "L", "Ļ": "L", "Ḽ": "L", "Ḻ": "L", "Ł": "L", "Ƚ": "L", "Ɫ": "L", "Ⱡ": "L", "Ꝉ": "L", "Ꝇ": "L", "Ꞁ": "L", "Ǉ": "LJ", "ǈ": "Lj", "Ⓜ": "M", "Ｍ": "M", "Ḿ": "M", "Ṁ": "M", "Ṃ": "M", "Ɱ": "M", "Ɯ": "M", "Ⓝ": "N", "Ｎ": "N", "Ǹ": "N", "Ń": "N", "Ñ": "N", "Ṅ": "N", "Ň": "N", "Ṇ": "N", "Ņ": "N", "Ṋ": "N", "Ṉ": "N", "Ƞ": "N", "Ɲ": "N", "Ꞑ": "N", "Ꞥ": "N", "Ǌ": "NJ", "ǋ": "Nj", "Ⓞ": "O", "Ｏ": "O", "Ò": "O", "Ó": "O", "Ô": "O", "Ồ": "O", "Ố": "O", "Ỗ": "O", "Ổ": "O", "Õ": "O", "Ṍ": "O", "Ȭ": "O", "Ṏ": "O", "Ō": "O", "Ṑ": "O", "Ṓ": "O", "Ŏ": "O", "Ȯ": "O", "Ȱ": "O", "Ö": "O", "Ȫ": "O", "Ỏ": "O", "Ő": "O", "Ǒ": "O", "Ȍ": "O", "Ȏ": "O", "Ơ": "O", "Ờ": "O", "Ớ": "O", "Ỡ": "O", "Ở": "O", "Ợ": "O", "Ọ": "O", "Ộ": "O", "Ǫ": "O", "Ǭ": "O", "Ø": "O", "Ǿ": "O", "Ɔ": "O", "Ɵ": "O", "Ꝋ": "O", "Ꝍ": "O", "Ƣ": "OI", "Ꝏ": "OO", "Ȣ": "OU", "Ⓟ": "P", "Ｐ": "P", "Ṕ": "P", "Ṗ": "P", "Ƥ": "P", "Ᵽ": "P", "Ꝑ": "P", "Ꝓ": "P", "Ꝕ": "P", "Ⓠ": "Q", "Ｑ": "Q", "Ꝗ": "Q", "Ꝙ": "Q", "Ɋ": "Q", "Ⓡ": "R", "Ｒ": "R", "Ŕ": "R", "Ṙ": "R", "Ř": "R", "Ȑ": "R", "Ȓ": "R", "Ṛ": "R", "Ṝ": "R", "Ŗ": "R", "Ṟ": "R", "Ɍ": "R", "Ɽ": "R", "Ꝛ": "R", "Ꞧ": "R", "Ꞃ": "R", "Ⓢ": "S", "Ｓ": "S", "ẞ": "S", "Ś": "S", "Ṥ": "S", "Ŝ": "S", "Ṡ": "S", "Š": "S", "Ṧ": "S", "Ṣ": "S", "Ṩ": "S", "Ș": "S", "Ş": "S", "Ȿ": "S", "Ꞩ": "S", "Ꞅ": "S", "Ⓣ": "T", "Ｔ": "T", "Ṫ": "T", "Ť": "T", "Ṭ": "T", "Ț": "T", "Ţ": "T", "Ṱ": "T", "Ṯ": "T", "Ŧ": "T", "Ƭ": "T", "Ʈ": "T", "Ⱦ": "T", "Ꞇ": "T", "Ꜩ": "TZ", "Ⓤ": "U", "Ｕ": "U", "Ù": "U", "Ú": "U", "Û": "U", "Ũ": "U", "Ṹ": "U", "Ū": "U", "Ṻ": "U", "Ŭ": "U", "Ü": "U", "Ǜ": "U", "Ǘ": "U", "Ǖ": "U", "Ǚ": "U", "Ủ": "U", "Ů": "U", "Ű": "U", "Ǔ": "U", "Ȕ": "U", "Ȗ": "U", "Ư": "U", "Ừ": "U", "Ứ": "U", "Ữ": "U", "Ử": "U", "Ự": "U", "Ụ": "U", "Ṳ": "U", "Ų": "U", "Ṷ": "U", "Ṵ": "U", "Ʉ": "U", "Ⓥ": "V", "Ｖ": "V", "Ṽ": "V", "Ṿ": "V", "Ʋ": "V", "Ꝟ": "V", "Ʌ": "V", "Ꝡ": "VY", "Ⓦ": "W", "Ｗ": "W", "Ẁ": "W", "Ẃ": "W", "Ŵ": "W", "Ẇ": "W", "Ẅ": "W", "Ẉ": "W", "Ⱳ": "W", "Ⓧ": "X", "Ｘ": "X", "Ẋ": "X", "Ẍ": "X", "Ⓨ": "Y", "Ｙ": "Y", "Ỳ": "Y", "Ý": "Y", "Ŷ": "Y", "Ỹ": "Y", "Ȳ": "Y", "Ẏ": "Y", "Ÿ": "Y", "Ỷ": "Y", "Ỵ": "Y", "Ƴ": "Y", "Ɏ": "Y", "Ỿ": "Y", "Ⓩ": "Z", "Ｚ": "Z", "Ź": "Z", "Ẑ": "Z", "Ż": "Z", "Ž": "Z", "Ẓ": "Z", "Ẕ": "Z", "Ƶ": "Z", "Ȥ": "Z", "Ɀ": "Z", "Ⱬ": "Z", "Ꝣ": "Z", "ⓐ": "a", "ａ": "a", "ẚ": "a", "à": "a", "á": "a", "â": "a", "ầ": "a", "ấ": "a", "ẫ": "a", "ẩ": "a", "ã": "a", "ā": "a", "ă": "a", "ằ": "a", "ắ": "a", "ẵ": "a", "ẳ": "a", "ȧ": "a", "ǡ": "a", "ä": "a", "ǟ": "a", "ả": "a", "å": "a", "ǻ": "a", "ǎ": "a", "ȁ": "a", "ȃ": "a", "ạ": "a", "ậ": "a", "ặ": "a", "ḁ": "a", "ą": "a", "ⱥ": "a", "ɐ": "a", "ꜳ": "aa", "æ": "ae", "ǽ": "ae", "ǣ": "ae", "ꜵ": "ao", "ꜷ": "au", "ꜹ": "av", "ꜻ": "av", "ꜽ": "ay", "ⓑ": "b", "ｂ": "b", "ḃ": "b", "ḅ": "b", "ḇ": "b", "ƀ": "b", "ƃ": "b", "ɓ": "b", "ⓒ": "c", "ｃ": "c", "ć": "c", "ĉ": "c", "ċ": "c", "č": "c", "ç": "c", "ḉ": "c", "ƈ": "c", "ȼ": "c", "ꜿ": "c", "ↄ": "c", "ⓓ": "d", "ｄ": "d", "ḋ": "d", "ď": "d", "ḍ": "d", "ḑ": "d", "ḓ": "d", "ḏ": "d", "đ": "d", "ƌ": "d", "ɖ": "d", "ɗ": "d", "ꝺ": "d", "ǳ": "dz", "ǆ": "dz", "ⓔ": "e", "ｅ": "e", "è": "e", "é": "e", "ê": "e", "ề": "e", "ế": "e", "ễ": "e", "ể": "e", "ẽ": "e", "ē": "e", "ḕ": "e", "ḗ": "e", "ĕ": "e", "ė": "e", "ë": "e", "ẻ": "e", "ě": "e", "ȅ": "e", "ȇ": "e", "ẹ": "e", "ệ": "e", "ȩ": "e", "ḝ": "e", "ę": "e", "ḙ": "e", "ḛ": "e", "ɇ": "e", "ɛ": "e", "ǝ": "e", "ⓕ": "f", "ｆ": "f", "ḟ": "f", "ƒ": "f", "ꝼ": "f", "ⓖ": "g", "ｇ": "g", "ǵ": "g", "ĝ": "g", "ḡ": "g", "ğ": "g", "ġ": "g", "ǧ": "g", "ģ": "g", "ǥ": "g", "ɠ": "g", "ꞡ": "g", "ᵹ": "g", "ꝿ": "g", "ⓗ": "h", "ｈ": "h", "ĥ": "h", "ḣ": "h", "ḧ": "h", "ȟ": "h", "ḥ": "h", "ḩ": "h", "ḫ": "h", "ẖ": "h", "ħ": "h", "ⱨ": "h", "ⱶ": "h", "ɥ": "h", "ƕ": "hv", "ⓘ": "i", "ｉ": "i", "ì": "i", "í": "i", "î": "i", "ĩ": "i", "ī": "i", "ĭ": "i", "ï": "i", "ḯ": "i", "ỉ": "i", "ǐ": "i", "ȉ": "i", "ȋ": "i", "ị": "i", "į": "i", "ḭ": "i", "ɨ": "i", "ı": "i", "ⓙ": "j", "ｊ": "j", "ĵ": "j", "ǰ": "j", "ɉ": "j", "ⓚ": "k", "ｋ": "k", "ḱ": "k", "ǩ": "k", "ḳ": "k", "ķ": "k", "ḵ": "k", "ƙ": "k", "ⱪ": "k", "ꝁ": "k", "ꝃ": "k", "ꝅ": "k", "ꞣ": "k", "ⓛ": "l", "ｌ": "l", "ŀ": "l", "ĺ": "l", "ľ": "l", "ḷ": "l", "ḹ": "l", "ļ": "l", "ḽ": "l", "ḻ": "l", "ſ": "l", "ł": "l", "ƚ": "l", "ɫ": "l", "ⱡ": "l", "ꝉ": "l", "ꞁ": "l", "ꝇ": "l", "ǉ": "lj", "ⓜ": "m", "ｍ": "m", "ḿ": "m", "ṁ": "m", "ṃ": "m", "ɱ": "m", "ɯ": "m", "ⓝ": "n", "ｎ": "n", "ǹ": "n", "ń": "n", "ñ": "n", "ṅ": "n", "ň": "n", "ṇ": "n", "ņ": "n", "ṋ": "n", "ṉ": "n", "ƞ": "n", "ɲ": "n", "ŉ": "n", "ꞑ": "n", "ꞥ": "n", "ǌ": "nj", "ⓞ": "o", "ｏ": "o", "ò": "o", "ó": "o", "ô": "o", "ồ": "o", "ố": "o", "ỗ": "o", "ổ": "o", "õ": "o", "ṍ": "o", "ȭ": "o", "ṏ": "o", "ō": "o", "ṑ": "o", "ṓ": "o", "ŏ": "o", "ȯ": "o", "ȱ": "o", "ö": "o", "ȫ": "o", "ỏ": "o", "ő": "o", "ǒ": "o", "ȍ": "o", "ȏ": "o", "ơ": "o", "ờ": "o", "ớ": "o", "ỡ": "o", "ở": "o", "ợ": "o", "ọ": "o", "ộ": "o", "ǫ": "o", "ǭ": "o", "ø": "o", "ǿ": "o", "ɔ": "o", "ꝋ": "o", "ꝍ": "o", "ɵ": "o", "ƣ": "oi", "ȣ": "ou", "ꝏ": "oo", "ⓟ": "p", "ｐ": "p", "ṕ": "p", "ṗ": "p", "ƥ": "p", "ᵽ": "p", "ꝑ": "p", "ꝓ": "p", "ꝕ": "p", "ⓠ": "q", "ｑ": "q", "ɋ": "q", "ꝗ": "q", "ꝙ": "q", "ⓡ": "r", "ｒ": "r", "ŕ": "r", "ṙ": "r", "ř": "r", "ȑ": "r", "ȓ": "r", "ṛ": "r", "ṝ": "r", "ŗ": "r", "ṟ": "r", "ɍ": "r", "ɽ": "r", "ꝛ": "r", "ꞧ": "r", "ꞃ": "r", "ⓢ": "s", "ｓ": "s", "ß": "s", "ś": "s", "ṥ": "s", "ŝ": "s", "ṡ": "s", "š": "s", "ṧ": "s", "ṣ": "s", "ṩ": "s", "ș": "s", "ş": "s", "ȿ": "s", "ꞩ": "s", "ꞅ": "s", "ẛ": "s", "ⓣ": "t", "ｔ": "t", "ṫ": "t", "ẗ": "t", "ť": "t", "ṭ": "t", "ț": "t", "ţ": "t", "ṱ": "t", "ṯ": "t", "ŧ": "t", "ƭ": "t", "ʈ": "t", "ⱦ": "t", "ꞇ": "t", "ꜩ": "tz", "ⓤ": "u", "ｕ": "u", "ù": "u", "ú": "u", "û": "u", "ũ": "u", "ṹ": "u", "ū": "u", "ṻ": "u", "ŭ": "u", "ü": "u", "ǜ": "u", "ǘ": "u", "ǖ": "u", "ǚ": "u", "ủ": "u", "ů": "u", "ű": "u", "ǔ": "u", "ȕ": "u", "ȗ": "u", "ư": "u", "ừ": "u", "ứ": "u", "ữ": "u", "ử": "u", "ự": "u", "ụ": "u", "ṳ": "u", "ų": "u", "ṷ": "u", "ṵ": "u", "ʉ": "u", "ⓥ": "v", "ｖ": "v", "ṽ": "v", "ṿ": "v", "ʋ": "v", "ꝟ": "v", "ʌ": "v", "ꝡ": "vy", "ⓦ": "w", "ｗ": "w", "ẁ": "w", "ẃ": "w", "ŵ": "w", "ẇ": "w", "ẅ": "w", "ẘ": "w", "ẉ": "w", "ⱳ": "w", "ⓧ": "x", "ｘ": "x", "ẋ": "x", "ẍ": "x", "ⓨ": "y", "ｙ": "y", "ỳ": "y", "ý": "y", "ŷ": "y", "ỹ": "y", "ȳ": "y", "ẏ": "y", "ÿ": "y", "ỷ": "y", "ẙ": "y", "ỵ": "y", "ƴ": "y", "ɏ": "y", "ỿ": "y", "ⓩ": "z", "ｚ": "z", "ź": "z", "ẑ": "z", "ż": "z", "ž": "z", "ẓ": "z", "ẕ": "z", "ƶ": "z", "ȥ": "z", "ɀ": "z", "ⱬ": "z", "ꝣ": "z", "Ά": "Α", "Έ": "Ε", "Ή": "Η", "Ί": "Ι", "Ϊ": "Ι", "Ό": "Ο", "Ύ": "Υ", "Ϋ": "Υ", "Ώ": "Ω", "ά": "α", "έ": "ε", "ή": "η", "ί": "ι", "ϊ": "ι", "ΐ": "ι", "ό": "ο", "ύ": "υ", "ϋ": "υ", "ΰ": "υ", "ω": "ω", "ς": "σ" };return a;
+      return { "Ⓐ": "A", "Ａ": "A", "À": "A", "Á": "A", "Â": "A", "Ầ": "A", "Ấ": "A", "Ẫ": "A", "Ẩ": "A", "Ã": "A", "Ā": "A", "Ă": "A", "Ằ": "A", "Ắ": "A", "Ẵ": "A", "Ẳ": "A", "Ȧ": "A", "Ǡ": "A", "Ä": "A", "Ǟ": "A", "Ả": "A", "Å": "A", "Ǻ": "A", "Ǎ": "A", "Ȁ": "A", "Ȃ": "A", "Ạ": "A", "Ậ": "A", "Ặ": "A", "Ḁ": "A", "Ą": "A", "Ⱥ": "A", "Ɐ": "A", "Ꜳ": "AA", "Æ": "AE", "Ǽ": "AE", "Ǣ": "AE", "Ꜵ": "AO", "Ꜷ": "AU", "Ꜹ": "AV", "Ꜻ": "AV", "Ꜽ": "AY", "Ⓑ": "B", "Ｂ": "B", "Ḃ": "B", "Ḅ": "B", "Ḇ": "B", "Ƀ": "B", "Ƃ": "B", "Ɓ": "B", "Ⓒ": "C", "Ｃ": "C", "Ć": "C", "Ĉ": "C", "Ċ": "C", "Č": "C", "Ç": "C", "Ḉ": "C", "Ƈ": "C", "Ȼ": "C", "Ꜿ": "C", "Ⓓ": "D", "Ｄ": "D", "Ḋ": "D", "Ď": "D", "Ḍ": "D", "Ḑ": "D", "Ḓ": "D", "Ḏ": "D", "Đ": "D", "Ƌ": "D", "Ɗ": "D", "Ɖ": "D", "Ꝺ": "D", "Ǳ": "DZ", "Ǆ": "DZ", "ǲ": "Dz", "ǅ": "Dz", "Ⓔ": "E", "Ｅ": "E", "È": "E", "É": "E", "Ê": "E", "Ề": "E", "Ế": "E", "Ễ": "E", "Ể": "E", "Ẽ": "E", "Ē": "E", "Ḕ": "E", "Ḗ": "E", "Ĕ": "E", "Ė": "E", "Ë": "E", "Ẻ": "E", "Ě": "E", "Ȅ": "E", "Ȇ": "E", "Ẹ": "E", "Ệ": "E", "Ȩ": "E", "Ḝ": "E", "Ę": "E", "Ḙ": "E", "Ḛ": "E", "Ɛ": "E", "Ǝ": "E", "Ⓕ": "F", "Ｆ": "F", "Ḟ": "F", "Ƒ": "F", "Ꝼ": "F", "Ⓖ": "G", "Ｇ": "G", "Ǵ": "G", "Ĝ": "G", "Ḡ": "G", "Ğ": "G", "Ġ": "G", "Ǧ": "G", "Ģ": "G", "Ǥ": "G", "Ɠ": "G", "Ꞡ": "G", "Ᵹ": "G", "Ꝿ": "G", "Ⓗ": "H", "Ｈ": "H", "Ĥ": "H", "Ḣ": "H", "Ḧ": "H", "Ȟ": "H", "Ḥ": "H", "Ḩ": "H", "Ḫ": "H", "Ħ": "H", "Ⱨ": "H", "Ⱶ": "H", "Ɥ": "H", "Ⓘ": "I", "Ｉ": "I", "Ì": "I", "Í": "I", "Î": "I", "Ĩ": "I", "Ī": "I", "Ĭ": "I", "İ": "I", "Ï": "I", "Ḯ": "I", "Ỉ": "I", "Ǐ": "I", "Ȉ": "I", "Ȋ": "I", "Ị": "I", "Į": "I", "Ḭ": "I", "Ɨ": "I", "Ⓙ": "J", "Ｊ": "J", "Ĵ": "J", "Ɉ": "J", "Ⓚ": "K", "Ｋ": "K", "Ḱ": "K", "Ǩ": "K", "Ḳ": "K", "Ķ": "K", "Ḵ": "K", "Ƙ": "K", "Ⱪ": "K", "Ꝁ": "K", "Ꝃ": "K", "Ꝅ": "K", "Ꞣ": "K", "Ⓛ": "L", "Ｌ": "L", "Ŀ": "L", "Ĺ": "L", "Ľ": "L", "Ḷ": "L", "Ḹ": "L", "Ļ": "L", "Ḽ": "L", "Ḻ": "L", "Ł": "L", "Ƚ": "L", "Ɫ": "L", "Ⱡ": "L", "Ꝉ": "L", "Ꝇ": "L", "Ꞁ": "L", "Ǉ": "LJ", "ǈ": "Lj", "Ⓜ": "M", "Ｍ": "M", "Ḿ": "M", "Ṁ": "M", "Ṃ": "M", "Ɱ": "M", "Ɯ": "M", "Ⓝ": "N", "Ｎ": "N", "Ǹ": "N", "Ń": "N", "Ñ": "N", "Ṅ": "N", "Ň": "N", "Ṇ": "N", "Ņ": "N", "Ṋ": "N", "Ṉ": "N", "Ƞ": "N", "Ɲ": "N", "Ꞑ": "N", "Ꞥ": "N", "Ǌ": "NJ", "ǋ": "Nj", "Ⓞ": "O", "Ｏ": "O", "Ò": "O", "Ó": "O", "Ô": "O", "Ồ": "O", "Ố": "O", "Ỗ": "O", "Ổ": "O", "Õ": "O", "Ṍ": "O", "Ȭ": "O", "Ṏ": "O", "Ō": "O", "Ṑ": "O", "Ṓ": "O", "Ŏ": "O", "Ȯ": "O", "Ȱ": "O", "Ö": "O", "Ȫ": "O", "Ỏ": "O", "Ő": "O", "Ǒ": "O", "Ȍ": "O", "Ȏ": "O", "Ơ": "O", "Ờ": "O", "Ớ": "O", "Ỡ": "O", "Ở": "O", "Ợ": "O", "Ọ": "O", "Ộ": "O", "Ǫ": "O", "Ǭ": "O", "Ø": "O", "Ǿ": "O", "Ɔ": "O", "Ɵ": "O", "Ꝋ": "O", "Ꝍ": "O", "Ƣ": "OI", "Ꝏ": "OO", "Ȣ": "OU", "Ⓟ": "P", "Ｐ": "P", "Ṕ": "P", "Ṗ": "P", "Ƥ": "P", "Ᵽ": "P", "Ꝑ": "P", "Ꝓ": "P", "Ꝕ": "P", "Ⓠ": "Q", "Ｑ": "Q", "Ꝗ": "Q", "Ꝙ": "Q", "Ɋ": "Q", "Ⓡ": "R", "Ｒ": "R", "Ŕ": "R", "Ṙ": "R", "Ř": "R", "Ȑ": "R", "Ȓ": "R", "Ṛ": "R", "Ṝ": "R", "Ŗ": "R", "Ṟ": "R", "Ɍ": "R", "Ɽ": "R", "Ꝛ": "R", "Ꞧ": "R", "Ꞃ": "R", "Ⓢ": "S", "Ｓ": "S", "ẞ": "S", "Ś": "S", "Ṥ": "S", "Ŝ": "S", "Ṡ": "S", "Š": "S", "Ṧ": "S", "Ṣ": "S", "Ṩ": "S", "Ș": "S", "Ş": "S", "Ȿ": "S", "Ꞩ": "S", "Ꞅ": "S", "Ⓣ": "T", "Ｔ": "T", "Ṫ": "T", "Ť": "T", "Ṭ": "T", "Ț": "T", "Ţ": "T", "Ṱ": "T", "Ṯ": "T", "Ŧ": "T", "Ƭ": "T", "Ʈ": "T", "Ⱦ": "T", "Ꞇ": "T", "Ꜩ": "TZ", "Ⓤ": "U", "Ｕ": "U", "Ù": "U", "Ú": "U", "Û": "U", "Ũ": "U", "Ṹ": "U", "Ū": "U", "Ṻ": "U", "Ŭ": "U", "Ü": "U", "Ǜ": "U", "Ǘ": "U", "Ǖ": "U", "Ǚ": "U", "Ủ": "U", "Ů": "U", "Ű": "U", "Ǔ": "U", "Ȕ": "U", "Ȗ": "U", "Ư": "U", "Ừ": "U", "Ứ": "U", "Ữ": "U", "Ử": "U", "Ự": "U", "Ụ": "U", "Ṳ": "U", "Ų": "U", "Ṷ": "U", "Ṵ": "U", "Ʉ": "U", "Ⓥ": "V", "Ｖ": "V", "Ṽ": "V", "Ṿ": "V", "Ʋ": "V", "Ꝟ": "V", "Ʌ": "V", "Ꝡ": "VY", "Ⓦ": "W", "Ｗ": "W", "Ẁ": "W", "Ẃ": "W", "Ŵ": "W", "Ẇ": "W", "Ẅ": "W", "Ẉ": "W", "Ⱳ": "W", "Ⓧ": "X", "Ｘ": "X", "Ẋ": "X", "Ẍ": "X", "Ⓨ": "Y", "Ｙ": "Y", "Ỳ": "Y", "Ý": "Y", "Ŷ": "Y", "Ỹ": "Y", "Ȳ": "Y", "Ẏ": "Y", "Ÿ": "Y", "Ỷ": "Y", "Ỵ": "Y", "Ƴ": "Y", "Ɏ": "Y", "Ỿ": "Y", "Ⓩ": "Z", "Ｚ": "Z", "Ź": "Z", "Ẑ": "Z", "Ż": "Z", "Ž": "Z", "Ẓ": "Z", "Ẕ": "Z", "Ƶ": "Z", "Ȥ": "Z", "Ɀ": "Z", "Ⱬ": "Z", "Ꝣ": "Z", "ⓐ": "a", "ａ": "a", "ẚ": "a", "à": "a", "á": "a", "â": "a", "ầ": "a", "ấ": "a", "ẫ": "a", "ẩ": "a", "ã": "a", "ā": "a", "ă": "a", "ằ": "a", "ắ": "a", "ẵ": "a", "ẳ": "a", "ȧ": "a", "ǡ": "a", "ä": "a", "ǟ": "a", "ả": "a", "å": "a", "ǻ": "a", "ǎ": "a", "ȁ": "a", "ȃ": "a", "ạ": "a", "ậ": "a", "ặ": "a", "ḁ": "a", "ą": "a", "ⱥ": "a", "ɐ": "a", "ꜳ": "aa", "æ": "ae", "ǽ": "ae", "ǣ": "ae", "ꜵ": "ao", "ꜷ": "au", "ꜹ": "av", "ꜻ": "av", "ꜽ": "ay", "ⓑ": "b", "ｂ": "b", "ḃ": "b", "ḅ": "b", "ḇ": "b", "ƀ": "b", "ƃ": "b", "ɓ": "b", "ⓒ": "c", "ｃ": "c", "ć": "c", "ĉ": "c", "ċ": "c", "č": "c", "ç": "c", "ḉ": "c", "ƈ": "c", "ȼ": "c", "ꜿ": "c", "ↄ": "c", "ⓓ": "d", "ｄ": "d", "ḋ": "d", "ď": "d", "ḍ": "d", "ḑ": "d", "ḓ": "d", "ḏ": "d", "đ": "d", "ƌ": "d", "ɖ": "d", "ɗ": "d", "ꝺ": "d", "ǳ": "dz", "ǆ": "dz", "ⓔ": "e", "ｅ": "e", "è": "e", "é": "e", "ê": "e", "ề": "e", "ế": "e", "ễ": "e", "ể": "e", "ẽ": "e", "ē": "e", "ḕ": "e", "ḗ": "e", "ĕ": "e", "ė": "e", "ë": "e", "ẻ": "e", "ě": "e", "ȅ": "e", "ȇ": "e", "ẹ": "e", "ệ": "e", "ȩ": "e", "ḝ": "e", "ę": "e", "ḙ": "e", "ḛ": "e", "ɇ": "e", "ɛ": "e", "ǝ": "e", "ⓕ": "f", "ｆ": "f", "ḟ": "f", "ƒ": "f", "ꝼ": "f", "ⓖ": "g", "ｇ": "g", "ǵ": "g", "ĝ": "g", "ḡ": "g", "ğ": "g", "ġ": "g", "ǧ": "g", "ģ": "g", "ǥ": "g", "ɠ": "g", "ꞡ": "g", "ᵹ": "g", "ꝿ": "g", "ⓗ": "h", "ｈ": "h", "ĥ": "h", "ḣ": "h", "ḧ": "h", "ȟ": "h", "ḥ": "h", "ḩ": "h", "ḫ": "h", "ẖ": "h", "ħ": "h", "ⱨ": "h", "ⱶ": "h", "ɥ": "h", "ƕ": "hv", "ⓘ": "i", "ｉ": "i", "ì": "i", "í": "i", "î": "i", "ĩ": "i", "ī": "i", "ĭ": "i", "ï": "i", "ḯ": "i", "ỉ": "i", "ǐ": "i", "ȉ": "i", "ȋ": "i", "ị": "i", "į": "i", "ḭ": "i", "ɨ": "i", "ı": "i", "ⓙ": "j", "ｊ": "j", "ĵ": "j", "ǰ": "j", "ɉ": "j", "ⓚ": "k", "ｋ": "k", "ḱ": "k", "ǩ": "k", "ḳ": "k", "ķ": "k", "ḵ": "k", "ƙ": "k", "ⱪ": "k", "ꝁ": "k", "ꝃ": "k", "ꝅ": "k", "ꞣ": "k", "ⓛ": "l", "ｌ": "l", "ŀ": "l", "ĺ": "l", "ľ": "l", "ḷ": "l", "ḹ": "l", "ļ": "l", "ḽ": "l", "ḻ": "l", "ſ": "l", "ł": "l", "ƚ": "l", "ɫ": "l", "ⱡ": "l", "ꝉ": "l", "ꞁ": "l", "ꝇ": "l", "ǉ": "lj", "ⓜ": "m", "ｍ": "m", "ḿ": "m", "ṁ": "m", "ṃ": "m", "ɱ": "m", "ɯ": "m", "ⓝ": "n", "ｎ": "n", "ǹ": "n", "ń": "n", "ñ": "n", "ṅ": "n", "ň": "n", "ṇ": "n", "ņ": "n", "ṋ": "n", "ṉ": "n", "ƞ": "n", "ɲ": "n", "ŉ": "n", "ꞑ": "n", "ꞥ": "n", "ǌ": "nj", "ⓞ": "o", "ｏ": "o", "ò": "o", "ó": "o", "ô": "o", "ồ": "o", "ố": "o", "ỗ": "o", "ổ": "o", "õ": "o", "ṍ": "o", "ȭ": "o", "ṏ": "o", "ō": "o", "ṑ": "o", "ṓ": "o", "ŏ": "o", "ȯ": "o", "ȱ": "o", "ö": "o", "ȫ": "o", "ỏ": "o", "ő": "o", "ǒ": "o", "ȍ": "o", "ȏ": "o", "ơ": "o", "ờ": "o", "ớ": "o", "ỡ": "o", "ở": "o", "ợ": "o", "ọ": "o", "ộ": "o", "ǫ": "o", "ǭ": "o", "ø": "o", "ǿ": "o", "ɔ": "o", "ꝋ": "o", "ꝍ": "o", "ɵ": "o", "ƣ": "oi", "ȣ": "ou", "ꝏ": "oo", "ⓟ": "p", "ｐ": "p", "ṕ": "p", "ṗ": "p", "ƥ": "p", "ᵽ": "p", "ꝑ": "p", "ꝓ": "p", "ꝕ": "p", "ⓠ": "q", "ｑ": "q", "ɋ": "q", "ꝗ": "q", "ꝙ": "q", "ⓡ": "r", "ｒ": "r", "ŕ": "r", "ṙ": "r", "ř": "r", "ȑ": "r", "ȓ": "r", "ṛ": "r", "ṝ": "r", "ŗ": "r", "ṟ": "r", "ɍ": "r", "ɽ": "r", "ꝛ": "r", "ꞧ": "r", "ꞃ": "r", "ⓢ": "s", "ｓ": "s", "ß": "s", "ś": "s", "ṥ": "s", "ŝ": "s", "ṡ": "s", "š": "s", "ṧ": "s", "ṣ": "s", "ṩ": "s", "ș": "s", "ş": "s", "ȿ": "s", "ꞩ": "s", "ꞅ": "s", "ẛ": "s", "ⓣ": "t", "ｔ": "t", "ṫ": "t", "ẗ": "t", "ť": "t", "ṭ": "t", "ț": "t", "ţ": "t", "ṱ": "t", "ṯ": "t", "ŧ": "t", "ƭ": "t", "ʈ": "t", "ⱦ": "t", "ꞇ": "t", "ꜩ": "tz", "ⓤ": "u", "ｕ": "u", "ù": "u", "ú": "u", "û": "u", "ũ": "u", "ṹ": "u", "ū": "u", "ṻ": "u", "ŭ": "u", "ü": "u", "ǜ": "u", "ǘ": "u", "ǖ": "u", "ǚ": "u", "ủ": "u", "ů": "u", "ű": "u", "ǔ": "u", "ȕ": "u", "ȗ": "u", "ư": "u", "ừ": "u", "ứ": "u", "ữ": "u", "ử": "u", "ự": "u", "ụ": "u", "ṳ": "u", "ų": "u", "ṷ": "u", "ṵ": "u", "ʉ": "u", "ⓥ": "v", "ｖ": "v", "ṽ": "v", "ṿ": "v", "ʋ": "v", "ꝟ": "v", "ʌ": "v", "ꝡ": "vy", "ⓦ": "w", "ｗ": "w", "ẁ": "w", "ẃ": "w", "ŵ": "w", "ẇ": "w", "ẅ": "w", "ẘ": "w", "ẉ": "w", "ⱳ": "w", "ⓧ": "x", "ｘ": "x", "ẋ": "x", "ẍ": "x", "ⓨ": "y", "ｙ": "y", "ỳ": "y", "ý": "y", "ŷ": "y", "ỹ": "y", "ȳ": "y", "ẏ": "y", "ÿ": "y", "ỷ": "y", "ẙ": "y", "ỵ": "y", "ƴ": "y", "ɏ": "y", "ỿ": "y", "ⓩ": "z", "ｚ": "z", "ź": "z", "ẑ": "z", "ż": "z", "ž": "z", "ẓ": "z", "ẕ": "z", "ƶ": "z", "ȥ": "z", "ɀ": "z", "ⱬ": "z", "ꝣ": "z", "Ά": "Α", "Έ": "Ε", "Ή": "Η", "Ί": "Ι", "Ϊ": "Ι", "Ό": "Ο", "Ύ": "Υ", "Ϋ": "Υ", "Ώ": "Ω", "ά": "α", "έ": "ε", "ή": "η", "ί": "ι", "ϊ": "ι", "ΐ": "ι", "ό": "ο", "ύ": "υ", "ϋ": "υ", "ΰ": "υ", "ω": "ω", "ς": "σ" };
     }), b.define("select2/data/base", ["../utils"], function (a) {
       function b(a, c) {
         b.__super__.constructor.call(this);
@@ -3028,7 +3028,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, b.prototype.query = function (a, b) {
         throw new Error("The `query` method must be defined in child classes.");
       }, b.prototype.bind = function (a, b) {}, b.prototype.destroy = function () {}, b.prototype.generateResultId = function (b, c) {
-        var d = b.id + "-result-";return d += a.generateChars(4), d += null != c.id ? "-" + c.id.toString() : "-" + a.generateChars(4);
+        var d = b.id + "-result-";return d += a.generateChars(4), null != c.id ? d += "-" + c.id.toString() : d += "-" + a.generateChars(4), d;
       }, b;
     }), b.define("select2/data/select", ["./base", "../utils", "jquery"], function (a, b, c) {
       function d(a, b) {
@@ -3040,8 +3040,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
               e = d.item(a);b.push(e);
         }), a(b);
       }, d.prototype.select = function (a) {
-        var b = this;if (a.selected = !0, c(a.element).is("option")) return a.element.selected = !0, void this.$element.trigger("change");
-        if (this.$element.prop("multiple")) this.current(function (d) {
+        var b = this;if (a.selected = !0, c(a.element).is("option")) return a.element.selected = !0, void this.$element.trigger("change");if (this.$element.prop("multiple")) this.current(function (d) {
           var e = [];a = [a], a.push.apply(a, d);for (var f = 0; f < a.length; f++) {
             var g = a[f].id;-1 === c.inArray(g, e) && e.push(g);
           }b.$element.val(e), b.$element.trigger("change");
@@ -3049,11 +3048,13 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
           var d = a.id;this.$element.val(d), this.$element.trigger("change");
         }
       }, d.prototype.unselect = function (a) {
-        var b = this;if (this.$element.prop("multiple")) return a.selected = !1, c(a.element).is("option") ? (a.element.selected = !1, void this.$element.trigger("change")) : void this.current(function (d) {
-          for (var e = [], f = 0; f < d.length; f++) {
-            var g = d[f].id;g !== a.id && -1 === c.inArray(g, e) && e.push(g);
-          }b.$element.val(e), b.$element.trigger("change");
-        });
+        var b = this;if (this.$element.prop("multiple")) {
+          if (a.selected = !1, c(a.element).is("option")) return a.element.selected = !1, void this.$element.trigger("change");this.current(function (d) {
+            for (var e = [], f = 0; f < d.length; f++) {
+              var g = d[f].id;g !== a.id && -1 === c.inArray(g, e) && e.push(g);
+            }b.$element.val(e), b.$element.trigger("change");
+          });
+        }
       }, d.prototype.bind = function (a, b) {
         var c = this;this.container = a, a.on("select", function (a) {
           c.select(a.data);
@@ -3066,8 +3067,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         });
       }, d.prototype.query = function (a, b) {
         var d = [],
-            e = this,
-            f = this.$element.children();f.each(function () {
+            e = this;this.$element.children().each(function () {
           var b = c(this);if (b.is("option") || b.is("optgroup")) {
             var f = e.item(b),
                 g = e.matches(a, f);null !== g && d.push(g);
@@ -3076,10 +3076,10 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, d.prototype.addOptions = function (a) {
         b.appendMany(this.$element, a);
       }, d.prototype.option = function (a) {
-        var b;a.children ? (b = document.createElement("optgroup"), b.label = a.text) : (b = document.createElement("option"), void 0 !== b.textContent ? b.textContent = a.text : b.innerText = a.text), a.id && (b.value = a.id), a.disabled && (b.disabled = !0), a.selected && (b.selected = !0), a.title && (b.title = a.title);var d = c(b),
+        var b;a.children ? (b = document.createElement("optgroup"), b.label = a.text) : (b = document.createElement("option"), void 0 !== b.textContent ? b.textContent = a.text : b.innerText = a.text), void 0 !== a.id && (b.value = a.id), a.disabled && (b.disabled = !0), a.selected && (b.selected = !0), a.title && (b.title = a.title);var d = c(b),
             e = this._normalizeItem(a);return e.element = b, c.data(b, "data", e), d;
       }, d.prototype.item = function (a) {
-        var b = {};if (b = c.data(a[0], "data"), null != b) return b;if (a.is("option")) b = { id: a.val(), text: a.text(), disabled: a.prop("disabled"), selected: a.prop("selected"), title: a.prop("title") };else if (a.is("optgroup")) {
+        var b = {};if (null != (b = c.data(a[0], "data"))) return b;if (a.is("option")) b = { id: a.val(), text: a.text(), disabled: a.prop("disabled"), selected: a.prop("selected"), title: a.prop("title") };else if (a.is("optgroup")) {
           b = { text: a.prop("label"), children: [], title: a.prop("title") };for (var d = a.children("option"), e = [], f = 0; f < d.length; f++) {
             var g = c(d[f]),
                 h = this.item(g);e.push(h);
@@ -3088,7 +3088,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, d.prototype._normalizeItem = function (a) {
         c.isPlainObject(a) || (a = { id: a, text: a }), a = c.extend({}, { text: "" }, a);var b = { selected: !1, disabled: !1 };return null != a.id && (a.id = a.id.toString()), null != a.text && (a.text = a.text.toString()), null == a._resultId && a.id && null != this.container && (a._resultId = this.generateResultId(this.container, a)), c.extend({}, b, a);
       }, d.prototype.matches = function (a, b) {
-        var c = this.options.get("matcher");return c(a, b);
+        return this.options.get("matcher")(a, b);
       }, d;
     }), b.define("select2/data/array", ["./select", "../utils", "jquery"], function (a, b, c) {
       function d(a, b) {
@@ -3149,18 +3149,17 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         function d(a, f) {
           for (var g = a.results, h = 0; h < g.length; h++) {
             var i = g[h],
-                j = null != i.children && !d({ results: i.children }, !0),
-                k = i.text === b.term;if (k || j) return f ? !1 : (a.data = g, void c(a));
-          }if (f) return !0;var l = e.createTag(b);if (null != l) {
-            var m = e.option(l);m.attr("data-select2-tag", !0), e.addOptions([m]), e.insertTag(g, l);
+                j = null != i.children && !d({ results: i.children }, !0);if ((i.text || "").toUpperCase() === (b.term || "").toUpperCase() || j) return !f && (a.data = g, void c(a));
+          }if (f) return !0;var k = e.createTag(b);if (null != k) {
+            var l = e.option(k);l.attr("data-select2-tag", !0), e.addOptions([l]), e.insertTag(g, k);
           }a.results = g, c(a);
-        }var e = this;return this._removeOldTags(), null == b.term || null != b.page ? void a.call(this, b, c) : void a.call(this, b, d);
+        }var e = this;if (this._removeOldTags(), null == b.term || null != b.page) return void a.call(this, b, c);a.call(this, b, d);
       }, b.prototype.createTag = function (b, c) {
         var d = a.trim(c.term);return "" === d ? null : { id: d, text: d };
       }, b.prototype.insertTag = function (a, b, c) {
         b.unshift(c);
       }, b.prototype._removeOldTags = function (b) {
-        var c = (this._lastTag, this.$element.find("option[data-select2-tag]"));c.each(function () {
+        this._lastTag;this.$element.find("option[data-select2-tag]").each(function () {
           this.selected || a(this).remove();
         });
       }, b;
@@ -3171,11 +3170,10 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         a.call(this, b, c), this.$search = b.dropdown.$search || b.selection.$search || c.find(".select2-search__field");
       }, b.prototype.query = function (b, c, d) {
         function e(b) {
-          var c = g._normalizeItem(b),
-              d = g.$element.find("option").filter(function () {
+          var c = g._normalizeItem(b);if (!g.$element.find("option").filter(function () {
             return a(this).val() === c.id;
-          });if (!d.length) {
-            var e = g.option(c);e.attr("data-select2-tag", !0), g._removeOldTags(), g.addOptions([e]);
+          }).length) {
+            var d = g.option(c);d.attr("data-select2-tag", !0), g._removeOldTags(), g.addOptions([d]);
           }f(c);
         }function f(a) {
           g.trigger("select", { data: a });
@@ -3195,20 +3193,20 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       function a(a, b, c) {
         this.minimumInputLength = c.get("minimumInputLength"), a.call(this, b, c);
       }return a.prototype.query = function (a, b, c) {
-        return b.term = b.term || "", b.term.length < this.minimumInputLength ? void this.trigger("results:message", { message: "inputTooShort", args: { minimum: this.minimumInputLength, input: b.term, params: b } }) : void a.call(this, b, c);
+        if (b.term = b.term || "", b.term.length < this.minimumInputLength) return void this.trigger("results:message", { message: "inputTooShort", args: { minimum: this.minimumInputLength, input: b.term, params: b } });a.call(this, b, c);
       }, a;
     }), b.define("select2/data/maximumInputLength", [], function () {
       function a(a, b, c) {
         this.maximumInputLength = c.get("maximumInputLength"), a.call(this, b, c);
       }return a.prototype.query = function (a, b, c) {
-        return b.term = b.term || "", this.maximumInputLength > 0 && b.term.length > this.maximumInputLength ? void this.trigger("results:message", { message: "inputTooLong", args: { maximum: this.maximumInputLength, input: b.term, params: b } }) : void a.call(this, b, c);
+        if (b.term = b.term || "", this.maximumInputLength > 0 && b.term.length > this.maximumInputLength) return void this.trigger("results:message", { message: "inputTooLong", args: { maximum: this.maximumInputLength, input: b.term, params: b } });a.call(this, b, c);
       }, a;
     }), b.define("select2/data/maximumSelectionLength", [], function () {
       function a(a, b, c) {
         this.maximumSelectionLength = c.get("maximumSelectionLength"), a.call(this, b, c);
       }return a.prototype.query = function (a, b, c) {
         var d = this;this.current(function (e) {
-          var f = null != e ? e.length : 0;return d.maximumSelectionLength > 0 && f >= d.maximumSelectionLength ? void d.trigger("results:message", { message: "maximumSelected", args: { maximum: d.maximumSelectionLength } }) : void a.call(d, b, c);
+          var f = null != e ? e.length : 0;if (d.maximumSelectionLength > 0 && f >= d.maximumSelectionLength) return void d.trigger("results:message", { message: "maximumSelected", args: { maximum: d.maximumSelectionLength } });a.call(d, b, c);
         });
       }, a;
     }), b.define("select2/dropdown", ["jquery", "./utils"], function (a, b) {
@@ -3222,7 +3220,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
     }), b.define("select2/dropdown/search", ["jquery", "../utils"], function (a, b) {
       function c() {}return c.prototype.render = function (b) {
         var c = b.call(this),
-            d = a('<span class="select2-search select2-search--dropdown"><input class="select2-search__field" type="search" tabindex="-1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" /></span>');return this.$searchContainer = d, this.$search = d.find("input"), c.prepend(d), c;
+            d = a('<span class="select2-search select2-search--dropdown"><input class="select2-search__field" type="search" tabindex="-1" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="textbox" /></span>');return this.$searchContainer = d, this.$search = d.find("input"), c.prepend(d), c;
       }, c.prototype.bind = function (b, c, d) {
         var e = this;b.call(this, c, d), this.$search.on("keydown", function (a) {
           e.trigger("keypress", a), e._keyUpPrevented = a.isDefaultPrevented();
@@ -3237,10 +3235,10 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         }), c.on("close", function () {
           e.$search.attr("tabindex", -1), e.$search.val("");
         }), c.on("focus", function () {
-          c.isOpen() && e.$search.focus();
+          c.isOpen() || e.$search.focus();
         }), c.on("results:all", function (a) {
           if (null == a.query.term || "" === a.query.term) {
-            var b = e.showSearch(a);b ? e.$searchContainer.removeClass("select2-search--hide") : e.$searchContainer.addClass("select2-search--hide");
+            e.showSearch(a) ? e.$searchContainer.removeClass("select2-search--hide") : e.$searchContainer.addClass("select2-search--hide");
           }
         });
       }, c.prototype.handleSearch = function (a) {
@@ -3274,8 +3272,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
           e.lastParams = a, e.loading = !0;
         }), this.$results.on("scroll", function () {
           var b = a.contains(document.documentElement, e.$loadingMore[0]);if (!e.loading && b) {
-            var c = e.$results.offset().top + e.$results.outerHeight(!1),
-                d = e.$loadingMore.offset().top + e.$loadingMore.outerHeight(!1);c + 50 >= d && e.loadMore();
+            e.$results.offset().top + e.$results.outerHeight(!1) + 50 >= e.$loadingMore.offset().top + e.$loadingMore.outerHeight(!1) && e.loadMore();
           }
         });
       }, b.prototype.loadMore = function () {
@@ -3326,8 +3323,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, c.prototype._detachPositioningHandler = function (c, d) {
         var e = "scroll.select2." + d.id,
             f = "resize.select2." + d.id,
-            g = "orientationchange.select2." + d.id,
-            h = this.$container.parents().filter(b.hasScroll);h.off(e), a(window).off(e + " " + f + " " + g);
+            g = "orientationchange.select2." + d.id;this.$container.parents().filter(b.hasScroll).off(e), a(window).off(e + " " + f + " " + g);
       }, c.prototype._positionDropdown = function () {
         var b = a(window),
             c = this.$dropdown.hasClass("select2-dropdown--above"),
@@ -3352,7 +3348,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }function b(a, b, c, d) {
         this.minimumResultsForSearch = c.get("minimumResultsForSearch"), this.minimumResultsForSearch < 0 && (this.minimumResultsForSearch = 1 / 0), a.call(this, b, c, d);
       }return b.prototype.showSearch = function (b, c) {
-        return a(c.data.results) < this.minimumResultsForSearch ? !1 : b.call(this, c);
+        return !(a(c.data.results) < this.minimumResultsForSearch) && b.call(this, c);
       }, b;
     }), b.define("select2/dropdown/selectOnClose", [], function () {
       function a() {}return a.prototype.bind = function (a, b, c) {
@@ -3383,8 +3379,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
           var b = a.input.length - a.maximum,
               c = "Please delete " + b + " character";return 1 != b && (c += "s"), c;
         }, inputTooShort: function (a) {
-          var b = a.minimum - a.input.length,
-              c = "Please enter " + b + " or more characters";return c;
+          return "Please enter " + (a.minimum - a.input.length) + " or more characters";
         }, loadingMore: function () {
           return "Loading more results…";
         }, maximumSelected: function (a) {
@@ -3397,9 +3392,9 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
     }), b.define("select2/defaults", ["jquery", "require", "./results", "./selection/single", "./selection/multiple", "./selection/placeholder", "./selection/allowClear", "./selection/search", "./selection/eventRelay", "./utils", "./translation", "./diacritics", "./data/select", "./data/array", "./data/ajax", "./data/tags", "./data/tokenizer", "./data/minimumInputLength", "./data/maximumInputLength", "./data/maximumSelectionLength", "./dropdown", "./dropdown/search", "./dropdown/hidePlaceholder", "./dropdown/infiniteScroll", "./dropdown/attachBody", "./dropdown/minimumResultsForSearch", "./dropdown/selectOnClose", "./dropdown/closeOnSelect", "./i18n/en"], function (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C) {
       function D() {
         this.reset();
-      }D.prototype.apply = function (l) {
+      }return D.prototype.apply = function (l) {
         if (l = a.extend(!0, {}, this.defaults, l), null == l.dataAdapter) {
-          if (null != l.ajax ? l.dataAdapter = o : null != l.data ? l.dataAdapter = n : l.dataAdapter = m, l.minimumInputLength > 0 && (l.dataAdapter = j.Decorate(l.dataAdapter, r)), l.maximumInputLength > 0 && (l.dataAdapter = j.Decorate(l.dataAdapter, s)), l.maximumSelectionLength > 0 && (l.dataAdapter = j.Decorate(l.dataAdapter, t)), l.tags && (l.dataAdapter = j.Decorate(l.dataAdapter, p)), (null != l.tokenSeparators || null != l.tokenizer) && (l.dataAdapter = j.Decorate(l.dataAdapter, q)), null != l.query) {
+          if (null != l.ajax ? l.dataAdapter = o : null != l.data ? l.dataAdapter = n : l.dataAdapter = m, l.minimumInputLength > 0 && (l.dataAdapter = j.Decorate(l.dataAdapter, r)), l.maximumInputLength > 0 && (l.dataAdapter = j.Decorate(l.dataAdapter, s)), l.maximumSelectionLength > 0 && (l.dataAdapter = j.Decorate(l.dataAdapter, t)), l.tags && (l.dataAdapter = j.Decorate(l.dataAdapter, p)), null == l.tokenSeparators && null == l.tokenizer || (l.dataAdapter = j.Decorate(l.dataAdapter, q)), null != l.query) {
             var C = b(l.amdBase + "compat/query");l.dataAdapter = j.Decorate(l.dataAdapter, C);
           }if (null != l.initSelection) {
             var D = b(l.amdBase + "compat/initSelection");l.dataAdapter = j.Decorate(l.dataAdapter, D);
@@ -3422,17 +3417,17 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
             var M = K[L],
                 N = {};try {
               N = k.loadPath(M);
-            } catch (O) {
+            } catch (a) {
               try {
                 M = this.defaults.amdLanguageBase + M, N = k.loadPath(M);
-              } catch (P) {
+              } catch (a) {
                 l.debug && window.console && console.warn && console.warn('Select2: The language file for "' + M + '" could not be automatically loaded. A fallback will be used instead.');continue;
               }
             }J.extend(N);
           }l.translations = J;
         } else {
-          var Q = k.loadPath(this.defaults.amdLanguageBase + "en"),
-              R = new k(l.language);R.extend(Q), l.translations = R;
+          var O = k.loadPath(this.defaults.amdLanguageBase + "en"),
+              P = new k(l.language);P.extend(O), l.translations = P;
         }return l;
       }, D.prototype.reset = function () {
         function b(a) {
@@ -3442,11 +3437,10 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         }function c(d, e) {
           if ("" === a.trim(d.term)) return e;if (e.children && e.children.length > 0) {
             for (var f = a.extend(!0, {}, e), g = e.children.length - 1; g >= 0; g--) {
-              var h = e.children[g],
-                  i = c(d, h);null == i && f.children.splice(g, 1);
+              null == c(d, e.children[g]) && f.children.splice(g, 1);
             }return f.children.length > 0 ? f : c(d, f);
-          }var j = b(e.text).toUpperCase(),
-              k = b(d.term).toUpperCase();return j.indexOf(k) > -1 ? e : null;
+          }var h = b(e.text).toUpperCase(),
+              i = b(d.term).toUpperCase();return h.indexOf(i) > -1 ? e : null;
         }this.defaults = { amdBase: "./", amdLanguageBase: "./i18n/", closeOnSelect: !0, debug: !1, dropdownAutoWidth: !1, escapeMarkup: j.escapeMarkup, language: C, matcher: c, minimumInputLength: 0, maximumInputLength: 0, maximumSelectionLength: 0, minimumResultsForSearch: 0, selectOnClose: !1, sorter: function (a) {
             return a;
           }, templateResult: function (a) {
@@ -3457,7 +3451,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, D.prototype.set = function (b, c) {
         var d = a.camelCase(b),
             e = {};e[d] = c;var f = j._convertData(e);a.extend(this.defaults, f);
-      };var E = new D();return E;
+      }, new D();
     }), b.define("select2/options", ["require", "jquery", "./defaults", "./utils"], function (a, b, c, d) {
       function e(b, e) {
         if (this.options = b, null != e && this.fromElement(e), this.options = c.apply(this.options), e && e.is("input")) {
@@ -3483,9 +3477,9 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         var c = /^width:(([-+]?([0-9]*\.)?[0-9]+)(px|em|ex|%|in|cm|mm|pt|pc))/i;if ("resolve" == b) {
           var d = this._resolveWidth(a, "style");return null != d ? d : this._resolveWidth(a, "element");
         }if ("element" == b) {
-          var e = a.outerWidth(!1);return 0 >= e ? "auto" : e + "px";
+          var e = a.outerWidth(!1);return e <= 0 ? "auto" : e + "px";
         }if ("style" == b) {
-          var f = a.attr("style");if ("string" != typeof f) return null;for (var g = f.split(";"), h = 0, i = g.length; i > h; h += 1) {
+          var f = a.attr("style");if ("string" != typeof f) return null;for (var g = f.split(";"), h = 0, i = g.length; h < i; h += 1) {
             var j = g[h].replace(/\s/g, ""),
                 k = j.match(c);if (null !== k && k.length >= 1) return k[1];
           }return null;
@@ -3577,7 +3571,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
       }, e.prototype.focus = function (a) {
         this.hasFocus() || (this.$container.addClass("select2-container--focus"), this.trigger("focus", {}));
       }, e.prototype.enable = function (a) {
-        this.options.get("debug") && window.console && console.warn && console.warn('Select2: The `select2("enable")` method has been deprecated and will be removed in later Select2 versions. Use $element.prop("disabled") instead.'), (null == a || 0 === a.length) && (a = [!0]);var b = !a[0];this.$element.prop("disabled", b);
+        this.options.get("debug") && window.console && console.warn && console.warn('Select2: The `select2("enable")` method has been deprecated and will be removed in later Select2 versions. Use $element.prop("disabled") instead.'), null != a && 0 !== a.length || (a = [!0]);var b = !a[0];this.$element.prop("disabled", b);
       }, e.prototype.data = function () {
         this.options.get("debug") && arguments.length > 0 && window.console && console.warn && console.warn('Select2: Data can no longer be set using `select2("data")`. You should consider setting the value instead using `$element.val()`.');var a = [];return this.dataAdapter.current(function (b) {
           a = b;
@@ -3596,7 +3590,7 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
     }), b.define("jquery.select2", ["jquery", "jquery-mousewheel", "./select2/core", "./select2/defaults"], function (a, b, c, d) {
       if (null == a.fn.select2) {
         var e = ["open", "close", "destroy"];a.fn.select2 = function (b) {
-          if (b = b || {}, "object" == typeof b) return this.each(function () {
+          if ("object" == typeof (b = b || {})) return this.each(function () {
             var d = a.extend(!0, {}, b);new c(a(this), d);
           }), this;if ("string" == typeof b) {
             var d,
