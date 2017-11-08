@@ -8,7 +8,7 @@ var tagsCall = $.ajax({
 
 var indexCall = $.ajax({
     type: 'GET',
-    url: 'data/index_3140.json',
+    url: 'data/index_3560.json',
     dataType: 'json',
 });
 
