@@ -5,8 +5,20 @@
     position: relative;
     right: 35px;
 
-    img {
+    > img {
         height: 560px;
+    }
+
+    .gif-container {
+        position: absolute;
+        top: 32px;
+        left: 116px;
+        height: 464px;
+        width: 735px;
+        overflow: hidden;
+        > img {
+            height: 100%;
+        }
     }
 }
 
@@ -36,13 +48,34 @@
         line-height: 1.2;
     }
     p.description {
+        margin-bottom: 0;
         color: @darkGrayColor;
         .gothamBookFont(24px);
         line-height: 1.2;
+
+        b {
+            .gothamMediumFont(24px);
+        }
+
+        a {
+            text-decoration: none;
+        }
     }
 
     a {
         text-decoration: underline;
+    }
+}
+
+.tag-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+
+    li {
+        color: @darkGrayColor;
+        .gothamMediumFont(22px);
+        margin-bottom: 8px;
     }
 }
 

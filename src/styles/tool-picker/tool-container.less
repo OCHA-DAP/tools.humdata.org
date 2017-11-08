@@ -1,5 +1,5 @@
 @toolContainerPadding: 35px;
-@toolContainerWidth: 1170px;
+@toolContainerWidth: 1260px;
 @toolPickerArrowSize: 12px;
 
 .tool-container {
@@ -8,7 +8,10 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: @toolContainerWidth;
+    min-width: @toolContainerWidth;
+    width: 100%;
+    padding-right: @toolContainerPadding;
+
     .container-arrow {
         position: absolute;
         top: 1*@toolPickerBoxSize + @toolPickerBoxSize/2;
@@ -25,7 +28,8 @@
         padding-left: @toolContainerPadding + @toolPickerBoxSize;
         padding-top: @toolContainerPadding;
         padding-bottom: @toolContainerPadding;
-        height: 800px;
+        min-height: 800px;
+        height: 100%;
     }
 
     .tool-content {
@@ -33,5 +37,14 @@
         height: 100%;
         background-color: @whiteColor;
         border-radius: 10px;
+        overflow: hidden;
+
+        iframe {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+
+            border: none;
+        }
     }
 }
