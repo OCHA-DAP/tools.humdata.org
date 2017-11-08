@@ -18,7 +18,11 @@
 npm install
 ./node_modules/.bin/gulp
 ```
+### Pull latest for HXL Example submodule
 
+```bash
+git subtree pull --prefix src/hxl-example hxl-example hdx-styles --squash
+```
 # Author 
 
 Arti - aalecs@gmail.com
