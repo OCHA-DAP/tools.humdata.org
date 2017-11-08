@@ -15,13 +15,13 @@ DELAY = 2
 CKAN_URL = "https://data.humdata.org"
 """Base URL for the CKAN instance."""
 
-indexFile = {}
+#indexFile = {}
 
-with open('working/index_3140.json') as json_data:
+with open('working/index_3350.json') as json_data:
     indexFile = json.load(json_data)
 
 
-def populateIndex(uniqueTags,sampleData,i,attributes,md5,name,url):
+def populateIndex(uniqueTags,sampleData,i,attributes,md5,name,url,package_id):
     includeatts = False
     includefile = False
     print sampleData
@@ -45,11 +45,9 @@ def populateIndex(uniqueTags,sampleData,i,attributes,md5,name,url):
                 else:
                     indexFile[key]['attributes'][att]=1
     if includefile == True:
-        sample = {'data':sampleData,'name':name,'url':url}
+        sample = {'data':sampleData,'name':name,'url':url,'package_id':package_id}
         with open('working/sample_'+str(i)+'.json', 'w') as file:
             json.dump(sample, file)
-
-
 
 def processHXLData(dataset):
     x = dataset.values
@@ -163,26 +161,26 @@ def find_hxl_datasets(start, rows):
 
 # Open a connection to HDX
 ckan = ckanapi.RemoteCKAN(CKAN_URL)
-result_start_pos = 0
+result_start_pos = 1000
 result_page_size = 4000
 
-result = find_hxl_datasets(result_start_pos, result_page_size)
-result_total_count = result["count"]
-print(result["count"])
-print(result["results"][0]["title"])
-
-
+result = find_hxl_datasets(0, result_page_size)
 packages = result["results"]
+result2 = find_hxl_datasets(1000, result_page_size)
+packages2 = result2["results"]
+
+allpackages = packages + packages2
 
 # Iterate through all the datasets ("packages") and resources on HDX
 i=0
-for package in packages:
+for package in allpackages:
     # package = ckan.action.package_show(id=package_id)
     print("Package: " + format(package["title"]))
-
+    print package
     # for each resource in a package (some packages have multiple csv files for example), print the name, url and format
     for resource in package["resources"]:
-        if i>3140:
+#        if i>3140:
+        if i>3350:
             print "---------------------"
             print("  {}".format(resource["name"].encode('ascii', 'ignore')))
             print("    {}".format(resource["url"]))
@@ -191,17 +189,17 @@ for package in packages:
             if resource["format"] == "CSV":
                 file_data = readCsv(resource["url"])
                 if(file_data!=False):
-                    populateIndex(file_data[0],file_data[1],i,file_data[2],file_data[3],resource["name"],resource["url"])
+                    populateIndex(file_data[0],file_data[1],i,file_data[2],file_data[3],resource["name"],resource["url"],resource["package_id"])
 
             if resource["format"] == "XLSX":
                 file_data = readXlsx(resource["url"])
                 if(file_data!=False):
-                    populateIndex(file_data[0],file_data[1],i,file_data[2],file_data[3],resource["name"],resource["url"])
+                    populateIndex(file_data[0],file_data[1],i,file_data[2],file_data[3],resource["name"],resource["url"],resource["package_id"])
 
             if resource["format"] == "XLS":
                 file_data = readXls(resource["url"])
                 if(file_data!=False):
-                    populateIndex(file_data[0],file_data[1],i,file_data[2],file_data[3],resource["name"],resource["url"])
+                    populateIndex(file_data[0],file_data[1],i,file_data[2],file_data[3],resource["name"],resource["url"],resource["package_id"])
 
             if i%10==0:
                 with open('working/index_'+str(i)+'.json', 'w') as file:
