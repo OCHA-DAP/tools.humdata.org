@@ -12,77 +12,88 @@ var indexCall = $.ajax({
     dataType: 'json',
 });
 
-$('#taginst').on('mouseover click',function(){
-    $('#hover').html('Click or tap a tag and see examples of it in use');
-    $('#tags').slideDown();
-});
+
+// $('#taginst').on('mouseover click',function(){
+//     $('#hover').html('Click or tap a tag and see examples of it in use');
+//     $('#tags').slideDown();
+// });
 
 $.when(tagsCall,indexCall).then(function(tagsArgs,indexArgs){
     var tags = hxlProxyToJSON(tagsArgs[0]);
     cats = [];
-    console.log(tags);
-    tags.forEach(function(t){
-        if (cats.indexOf(t['#meta+category'])==-1) {
-            cats.push(t['#meta+category']);
-            $('#tags').append('<div id="'+t['#meta+category'].replace(',',' ').split(' ')[0]+'" class="tag_cat col-md-2 col-xs-4"><h4>' + t['#meta+category'] + '</h4></div>');
-        }
-        $('#'+t['#meta+category'].replace(',',' ').split(' ')[0]).append('<p id="'+t['#meta+tag'].substr(1)+'" class="tag">'+t['#meta+tag']+'</p>');
-        $(t['#meta+tag']).on('click',function(){
+    tags.forEach(function(t, index){
+    	if (cats.indexOf(t['#meta+category'])==-1) {
+    		cats.push(t['#meta+category']);
+    		$('#tags').append('<div id="'+t['#meta+category'].replace(',',' ').split(' ')[0]+'" class="tag_cat"><h4>' + t['#meta+category'] + '</h4></div>');
+    	}
+    	$('#'+t['#meta+category'].replace(',',' ').split(' ')[0]).append('<p id="'+t['#meta+tag'].substr(1)+'" class="tag">'+t['#meta+tag']+'</p>');
+
+        //print out all info for tags
+    	//$(t['#meta+tag']).on('click',function(){
             //window.location.search = $.query.set("tag", t['#meta+tag']);
-            $('#tags').slideUp();
-            $('#hover').html('Hover or tap here to select other tags');
-            indextag = indexArgs[0][t['#meta+tag']];
+            //$('#tags').slideUp();
+            //$('#hover').html('Hover or tap here to select other tags');
+    		indextag = indexArgs[0][t['#meta+tag']];
+            var currenttag = $('<div id="tag'+index+'"></div>');
+            currenttag.append('<div class="overview"><h2 class="overview-tag"></h2><div class="tagdescription"></div><div class="attributes"></div></div>');
+            currenttag.find('.overview-tag').html(t['#meta+tag']);
+            currenttag.find('.tagdescription').html(t['#description']);
+            $('#content').append(currenttag);
+
             if(indextag){
-                $('#tag').html(t['#meta+tag']);
-                $('#tagdescription').html(t['#description']);
-                var atts = [];
-                for (var key in indextag.attributes){
-                    atts.push({'key':key,'value':indextag.attributes[key]});
-                }
-                atts.sort(function(a,b){
-                    return b.value-a.value;
-                })
-                $('#attributes').html('<h3>Commonly used Attributes<h3>');
-                atts.forEach(function(a,i){
+        		var atts = [];
+        		for (var key in indextag.attributes){
+        			atts.push({'key':key,'value':indextag.attributes[key]});
+        		}
+        		atts.sort(function(a,b){
+        			return b.value-a.value;
+        		})
+        		currenttag.find('.attributes').html('<h5>Commonly used Attributes</h5>');
+        		atts.forEach(function(a,i){
                     if(i<8){
-                        $('#attributes').append('<p>+'+a.key+'</p>');
+        			     currenttag.find('.attributes').append('<p>+'+a.key+'</p>');
                     }
-                });
-                $('#samples').html('<h3>Examples</h3>');
-                indextag.samples.forEach(function(s,i){
-                    $.ajax({
-                        type: 'GET',
-                        url: 'data/'+s+'.json',
-                        dataType: 'json',
-                        success:function(response){
-                            $('#samples').append('<div id="sample'+i+'"></div>');
-                            $('#sample'+i).append('<h3>'+response.name+'</h3>');
-                            var hdx = 'https://data.humdata.org/dataset/'+response.package_id;
-                            $('#sample'+i).append('<p><a href="'+response.url+'">File Download</a> | <a href="'+hdx+'">HDX Page</a></p>');
-                            $('#sample'+i).append('<div id="sampletablediv'+i+'" class="sampletable pre-scrollable"></div>');
-                            $('#sampletablediv'+i).append('<table id="sampletable'+i+'"></table>');
-                            response.data.forEach(function(r,j){
-                                $('#sampletable'+i).append('<tr id="sampletable'+i+'row'+j+'" class="row'+j+'"></tr>');
-                                r.forEach(function(c,k){
-                                    cls = '';
-                                    if(response.data[1][k]!=null && response.data[1][k].split('+')[0]==t['#meta+tag']){
-                                        cls = 'highlight'+j;
-                                    }
-                                    if(c!=null && c.length>50){
-                                        c=c.substr(0,50)+'...';
-                                    }
-                                    $('#sampletable'+i+'row'+j).append('<td class="'+cls+'">'+c+'</td>');
-                                });
-                            });
-                        }
-                    });
-                });
+        		});
+        		currenttag.append('<div class="samples"><h3>Examples</h3></div>');
+        		indextag.samples.forEach(function(s,i){
+        			$.ajax({
+    				    type: 'GET',
+    				    url: 'data/'+s+'.json',
+    				    dataType: 'json',
+    				    success:function(response){
+    				    	currenttag.find('.samples').append('<div id="sample'+i+'"></div>');
+    				    	currenttag.find('#sample'+i).append('<p class="sample-name">'+response.name+'</p>');
+    				    	var hdx = response.url.split('resource')[0];
+    				    	currenttag.find('#sample'+i).append('<p><a href="'+response.url+'">File Download</a> | <a href="'+hdx+'" target="_blank">HDX Page</a></p>');
+    				    	currenttag.find('#sample'+i).append('<div id="sampletablediv'+i+'" class="sampletable"></div>');
+    				    	currenttag.find('#sampletablediv'+i).append('<table id="sampletable'+i+'"></table>');
+    				    	response.data.forEach(function(r,j){
+    				    		currenttag.find('#sampletable'+i).append('<tr id="sampletable'+i+'row'+j+'" class="row'+j+'"></tr>');
+    				    		r.forEach(function(c,k){
+    				    			cls = '';
+    				    			if(response.data[1][k]!=null && response.data[1][k].split('+')[0]==t['#meta+tag']){
+    				    				cls = 'highlight'+j;
+    				    			}
+    				    			if(c!=null && c.length>50){
+    				    				c=c.substr(0,50)+'...';
+    				    			}
+    				    			currenttag.find('#sampletable'+i+'row'+j).append('<td class="'+cls+'">'+c+'</td>');
+    				    		});
+    				    	});
+    				    }
+    				});
+        		});
             } else {
-                $('#tag').html(t['#meta+tag']);
-                $('#tagdescription').html(t['#description']);
-                $('#samples').html('<p id="noexample">No Examples found tagged on HDX</p>');
-                $('#attributes').html('');
+                currenttag.append('<div class="samples"><h3>Examples</h3></div>');
+                currenttag.find('.samples').html('<p id="noexample">No Examples found tagged on HDX</p>');
+                currenttag.find('.attributes').html('');
             }
+    	//});
+
+        //define click event for each tag
+        $(t['#meta+tag']).on('click',function(){
+            var tag = $('#tag'+ index);
+            $('html').animate({scrollTop: tag.offset().top-90}, 'slow');
         });
     });
 });
