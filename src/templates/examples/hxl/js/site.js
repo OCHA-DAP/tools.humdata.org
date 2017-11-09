@@ -63,7 +63,7 @@ $.when(tagsCall,indexCall).then(function(tagsArgs,indexArgs){
     				    success:function(response){
     				    	currenttag.find('.samples').append('<div id="sample'+i+'"></div>');
     				    	currenttag.find('#sample'+i).append('<p class="sample-name">'+response.name+'</p>');
-    				    	var hdx = 'https://data.humdata.org/dataset/'+response.package_id;//response.url.split('resource')[0];
+    				    	var hdx = 'https://data.humdata.org/dataset/'+response.package_id;
     				    	currenttag.find('#sample'+i).append('<p><a href="'+response.url+'">File Download</a> | <a href="'+hdx+'" target="_blank">HDX Page</a></p>');
     				    	currenttag.find('#sample'+i).append('<div id="sampletablediv'+i+'" class="sampletable"></div>');
     				    	currenttag.find('#sampletablediv'+i).append('<table id="sampletable'+i+'"></table>');

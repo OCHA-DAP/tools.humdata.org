@@ -182,17 +182,37 @@
         $(document).ready(function() {
             $("#tags").on("click", function(ev){
                 var target = ev.target;
-                var targetStr = "#" + target.id;
+                var targetStr = window.location.href + "#" + target.id;
+//                console.log("Target src: " + targetStr);
                 if (target.nodeName === "P") {
 //                    console.log("clicked " + targetStr);
                     mixpanel.track("link click", {
                         "page title": document.title,
                         "link type": "hxl example tag",
-                        "destination url": targetStr
+                        "destionation url": targetStr  //misspelled on purpose
                     });
                 }
-
             });
+            $("#content").on("click", function(ev){
+                var target = ev.target;
+                if (target.nodeName === "A") {
+                    ev.preventDefault();
+                    var targetStr = target.href;
+                    var cb = generate_callback(targetStr);
+//                    console.log("Target src: " + targetStr);
+                    mixpanel.track("link click", {
+                        "page title": document.title,
+                        "link type": "hxl example link",
+                        "destionation url": targetStr  //misspelled on purpose
+                    });
+                    setTimeout(cb, 500);
+                }
+            });
+            function generate_callback(href) {
+                return function() {
+                    window.open(href, '_blank');
+                }
+            }
         });
     </script>
 </body>

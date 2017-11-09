@@ -15,7 +15,7 @@ RUN apk add --update-cache \
 
 RUN npm install
 
-RUN ./node_modules/.bin/gulp --production build
+RUN ./node_modules/.bin/gulp build --production
 
 FROM alpine:3.6
 
