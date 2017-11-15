@@ -107,18 +107,11 @@ if (isProduction) {
 /* Compiling Tasks */
 
 
-//copy hxl example files
-gulp.task('copy', function () {
-    gulp.src(routes.files.hxlExample)
-        .pipe(gulp.dest(routes.examples.hxl));
-});
-
-
 // Templating
 
 gulp.task('templates', function() {
     return gulp.src(routes.templates.html)
-        .pipe(minifyHTML({collapseWhitespace: true}))
+        //.pipe(minifyHTML({collapseWhitespace: true}))
         .pipe(browserSync.stream())
         .pipe(gulp.dest(routes.files.html));
         // .pipe(notify({
@@ -303,9 +296,9 @@ gulp.task('hdxAssets', function() {
         .pipe(gulp.dest(baseDirs.assets + 'images/'));
 });
 
-gulp.task('dev', ['copy', 'templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve']);
+gulp.task('dev', ['templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve']);
 
-gulp.task('build', ['copy', 'templates', 'styles', 'scripts', 'images', 'hdxAssets']);
+gulp.task('build', ['templates', 'styles', 'scripts', 'images', 'hdxAssets']);
 
 gulp.task('optimize', ['uncss', 'critical', 'images']);
 
