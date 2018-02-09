@@ -13,6 +13,12 @@ var indexCall = $.ajax({
 });
 
 
+
+//make sure tags menu is not fixed on load
+if ($(window).scrollTop() < ($('#header').outerHeight()+$('header').height())) {
+    $('#tags').removeClass('affix');
+}
+
 // $('#taginst').on('mouseover click',function(){
 //     $('#hover').html('Click or tap a tag and see examples of it in use');
 //     $('#tags').slideDown();
