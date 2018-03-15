@@ -25,6 +25,7 @@ RUN apk add --update-cache \
     rm -rf /var/www && \
     mkdir -p /run/nginx/
 
+COPY --from=builder /src/dependency-deploy-config.txt /srv/
 COPY --from=builder /src/dist /var/www/
 COPY --from=builder /src/docker/default.conf /etc/nginx/conf.d/
 
