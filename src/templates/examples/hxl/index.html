@@ -14,7 +14,8 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/icons/hdx.ico">
     <title>HXL Tag Assist | HDX Tools</title>
-
+    <!-- Hotjar Tracking Code for https://tools.humdata.org --><script>    (function(h,o,t,j,a,r){        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};        h._hjSettings={hjid:793210,hjsv:6};        a=o.getElementsByTagName('head')[0];        r=o.createElement('script');r.async=1;        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;        a.appendChild(r);    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script>
+</head>
 <body class="">
 
     <header class="newHeader header-fixed">
@@ -66,7 +67,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <div id="tags" data-spy="affix" ></div>
+                                <div id="tags" data-spy="affix" data-offset-top="175" data-offset-bottom="310"></div>
                             </div>
                             <div class="col-md-10" id="content">
 
@@ -287,12 +288,12 @@
                     window.open(href, '_blank');
                 }
             }
-            $('#tags').affix({
-                offset: {
-                    top: 180,
-                    bottom: $('#footer').outerHeight(true)
-                }
-            });
+            // $('#tags').affix({
+            //     offset: {
+            //         top: 180,
+            //         bottom: $('#footer').outerHeight(true)
+            //     }
+            // });
         });
     </script>
 </body>
