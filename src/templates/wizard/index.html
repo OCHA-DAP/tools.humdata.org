@@ -15,7 +15,10 @@
             <li class="tool-item">
                 <a href="/"><img class="tool-img" src="/assets/images/hdx-logo-small.png"></a>
             </li>
-            <li class="tool-item" data-toggle="tooltip" data-placement="right" title="Quick Charts">
+            <li class="tool-item data-nav" data-nav="#quickcharts" data-toggle="tooltip" data-placement="right" title="Quick Charts">
+                <img class="tool-img" src="/assets/images/logo-quick-charts-small.png">
+            </li>
+            <li class="tool-item data-nav" data-nav="#datacheck" data-toggle="tooltip" data-placement="right" title="Data Check">
                 <img class="tool-img" src="/assets/images/logo-quick-charts-small.png">
             </li>
             <!--
@@ -50,16 +53,22 @@
     <script type="text/javascript" src="/assets/js/vendor.js"></script>
     <script type="text/javascript" src="/assets/js/script.js"></script>
     <script>
-        $(document).ready(function(){
-            var fullUrl = "/wizard/quickcharts/import",
+        var switchApp = function (hash) {
+            var urls = {
+                '#datacheck': 'http://localhost:4200/import', // /wizard/datacheck/import
+                '#quickcharts': '/wizard/quickcharts/import'
+            };
+            console.log('#->' + hash);
+            console.log(urls[hash]);
+            var fullUrl = urls[hash],
                 searchUrl;
 
             var searchStr = window.location.search;
-            if (searchStr && searchStr.length > 0){
+            if (searchStr && searchStr.length > 0) {
                 var paramsStr = searchStr.slice(1),
-                    params=paramsStr.split("&");
+                    params = paramsStr.split("&");
                 var paramMap = {};
-                $(params).each(function(idx, el) {
+                $(params).each(function (idx, el) {
                     var elements = el.split("=");
                     paramMap[elements[0]] = elements[1];
                 });
@@ -73,7 +82,17 @@
             if (searchUrl && searchUrl.length > 0) {
                 fullUrl += ";url=" + searchUrl;
             }
+            $('li.tool-item.data-nav').removeClass('active');
+            $('li.tool-item.data-nav[data-nav="'+ hash +'"]').addClass('active');
             $("#quickcharts-iframe").prop("src", fullUrl);
+        };
+        $(document).ready(function(){
+            var hash = location.hash || '#quickcharts';
+            $('li.tool-item.data-nav').click(function() {
+                var hash = $(this).attr('data-nav');
+                switchApp(hash);
+            });
+            switchApp(hash);
         });
     </script>
 </body>
