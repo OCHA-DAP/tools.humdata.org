@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/tool-picker.css">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/icons/hdx.ico">
-    <title>Quick Charts Wizard | HDX Tools</title>
+    <title>HDX Tools</title>
     <!-- Hotjar Tracking Code for https://tools.humdata.org --><script>    (function(h,o,t,j,a,r){        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};        h._hjSettings={hjid:793210,hjsv:6};        a=o.getElementsByTagName('head')[0];        r=o.createElement('script');r.async=1;        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;        a.appendChild(r);    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script>
 </head>
 <body>
@@ -15,8 +15,11 @@
             <li class="tool-item">
                 <a href="/"><img class="tool-img" src="/assets/images/hdx-logo-small.png"></a>
             </li>
-            <li class="tool-item" data-toggle="tooltip" data-placement="right" title="Quick Charts">
+            <li class="tool-item data-nav" data-nav="#quickcharts" data-toggle="tooltip" data-placement="right" title="Quick Charts">
                 <img class="tool-img" src="/assets/images/logo-quick-charts-small.png">
+            </li>
+            <li class="tool-item data-nav" data-nav="#datacheck" data-toggle="tooltip" data-placement="right" title="Data Check">
+                <img class="tool-img" src="/assets/images/logo-data-check-small.png">
             </li>
             <!--
             <li class="tool-item" data-toggle="tooltip" data-placement="right" title="Coming Soon">
@@ -36,9 +39,10 @@
     </nav>
 
     <div class="tool-container">
+        <!--
         <div class="container-arrow">
-
         </div>
+        -->
         <div class="container-padding">
             <div class="tool-content">
                 <iframe id="quickcharts-iframe"></iframe>
@@ -49,16 +53,22 @@
     <script type="text/javascript" src="/assets/js/vendor.js"></script>
     <script type="text/javascript" src="/assets/js/script.js"></script>
     <script>
-        $(document).ready(function(){
-            var fullUrl = "/wizard/quickcharts/import",
+        var switchApp = function (hash) {
+            var urls = {
+                '#datacheck': '/wizard/datacheck/import', // /wizard/datacheck/import
+                '#quickcharts': '/wizard/quickcharts/import'
+            };
+            console.log('#->' + hash);
+            console.log(urls[hash]);
+            var fullUrl = urls[hash],
                 searchUrl;
 
             var searchStr = window.location.search;
-            if (searchStr && searchStr.length > 0){
+            if (searchStr && searchStr.length > 0) {
                 var paramsStr = searchStr.slice(1),
-                    params=paramsStr.split("&");
+                    params = paramsStr.split("&");
                 var paramMap = {};
-                $(params).each(function(idx, el) {
+                $(params).each(function (idx, el) {
                     var elements = el.split("=");
                     paramMap[elements[0]] = elements[1];
                 });
@@ -72,7 +82,17 @@
             if (searchUrl && searchUrl.length > 0) {
                 fullUrl += ";url=" + searchUrl;
             }
+            $('li.tool-item.data-nav').removeClass('active');
+            $('li.tool-item.data-nav[data-nav="'+ hash +'"]').addClass('active');
             $("#quickcharts-iframe").prop("src", fullUrl);
+        };
+        $(document).ready(function(){
+            var hash = location.hash || '#quickcharts';
+            $('li.tool-item.data-nav').click(function() {
+                var hash = $(this).attr('data-nav');
+                switchApp(hash);
+            });
+            switchApp(hash);
         });
     </script>
 </body>

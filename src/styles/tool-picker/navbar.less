@@ -23,6 +23,7 @@ nav.tool-picker {
             height: @toolPickerBoxSize;
             width: @toolPickerBoxSize;
             position: relative;
+            cursor: pointer;
 
             img.tool-img {
                 position: absolute;
@@ -48,7 +49,7 @@ nav.tool-picker {
                 text-align: center;
             }
 
-            &:hover {
+            &:hover, &.active {
                 background-color: @blueColor;
             }
         }
