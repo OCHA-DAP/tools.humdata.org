@@ -62,11 +62,16 @@
                 '#datacheck': '/wizard/datacheck/import', // /wizard/datacheck/import
                 '#quickcharts': '/wizard/quickcharts/import'
             };
+            var titles = {
+                '#datacheck': 'Data Check | HDX Tools',
+                '#quickcharts': 'Quick Charts | HDX Tools'
+            };
             console.log('#->' + hash);
             console.log(urls[hash]);
             var fullUrl = urls[hash],
+                pageTitle = titles[hash],
                 searchUrl;
-
+            document.title = pageTitle;
             var searchStr = window.location.search;
             if (searchStr && searchStr.length > 0) {
                 var paramsStr = searchStr.slice(1),
