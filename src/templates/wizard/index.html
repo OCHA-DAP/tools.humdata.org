@@ -18,13 +18,13 @@
             <li class="tool-item data-nav" data-nav="#quickcharts" data-toggle="tooltip" data-placement="right" title="Quick Charts">
                 <img class="tool-img" src="/assets/images/logo-quick-charts-small.png">
             </li>
-            <li class="tool-item" data-toggle="tooltip" data-placement="right" title="Data Check">
-                <img class="tool-img" src="/assets/images/coming-soon.png">
-                <div class="tool-soon">Coming Soon</div>
-            </li>
-            <!--<li class="tool-item data-nav" data-nav="#datacheck" data-toggle="tooltip" data-placement="right" title="Data Check">-->
-                <!--<img class="tool-img" src="/assets/images/logo-data-check-small.png">-->
+            <!--<li class="tool-item" data-toggle="tooltip" data-placement="right" title="Data Check">-->
+                <!--<img class="tool-img" src="/assets/images/coming-soon.png">-->
+                <!--<div class="tool-soon">Coming Soon</div>-->
             <!--</li>-->
+            <li class="tool-item data-nav" data-nav="#datacheck" data-toggle="tooltip" data-placement="right" title="Data Check">
+                <img class="tool-img" src="/assets/images/logo-data-check-small.png">
+            </li>
             <!--
             <li class="tool-item" data-toggle="tooltip" data-placement="right" title="Coming Soon">
                 <img class="tool-img" src="/assets/images/coming-soon.png">
@@ -53,7 +53,21 @@
             </div>
         </div>
     </div>
+    <div class="allow-cookies-container" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 paddingLeftHack paddingRightHack">
+                    <div class="row" style="position: relative;">
+                        <div class="col-md-9 col-xs-12">
+                            HDX Tools, including Quick Charts, HXL Tag Assist and Data Check, aims to help humanitarians to clean and visualize data. The HDX Tools domain is not a secure service. Users should not use HDX Tools to process personal or otherwise sensitive data. Data uploaded to HDX Tools is not retained within the HDX infrastructure, while data downloaded by HDX Tools from public URLs is cashed only as long as necessary for processing. Please reach out to hdx.feedback@gmail.com with any related questions or comments.
+                        </div>
 
+                        <button class="allow-cookies-continue">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript" src="/assets/js/vendor.js"></script>
     <script type="text/javascript" src="/assets/js/script.js"></script>
     <script>
@@ -62,11 +76,16 @@
                 '#datacheck': '/wizard/datacheck/import', // /wizard/datacheck/import
                 '#quickcharts': '/wizard/quickcharts/import'
             };
+            var titles = {
+                '#datacheck': 'Data Check | HDX Tools',
+                '#quickcharts': 'Quick Charts | HDX Tools'
+            };
             console.log('#->' + hash);
             console.log(urls[hash]);
             var fullUrl = urls[hash],
+                pageTitle = titles[hash],
                 searchUrl;
-
+            document.title = pageTitle;
             var searchStr = window.location.search;
             if (searchStr && searchStr.length > 0) {
                 var paramsStr = searchStr.slice(1),
@@ -90,6 +109,16 @@
             $('li.tool-item.data-nav[data-nav="'+ hash +'"]').addClass('active');
             $("#quickcharts-iframe").prop("src", fullUrl);
         };
+        var initCookiePopup = function (){
+            var consent = $.cookie("hdx-tools-cookie-consent");
+            if (!consent) {
+                $(".allow-cookies-container .allow-cookies-continue").click(function () {
+                    $.cookie("hdx-tools-cookie-consent", true);
+                    $(".allow-cookies-container").hide();
+                });
+                $(".allow-cookies-container").show();
+            }
+        }
         $(document).ready(function(){
             var hash = location.hash || '#quickcharts';
             $('li.tool-item.data-nav').click(function() {
@@ -97,6 +126,7 @@
                 switchApp(hash);
             });
             switchApp(hash);
+            initCookiePopup();
         });
     </script>
 </body>

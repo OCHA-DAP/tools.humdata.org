@@ -69,6 +69,7 @@ var routes = {
         vendor: [
             baseDirs.src+'config/analytics.js',
             baseDirs.vendor+'jquery/dist/jquery.min.js',
+            baseDirs.vendor+'jquery.cookie/jquery.cookie.js',
             baseDirs.vendor+'bootstrap/dist/js/bootstrap.min.js',
             baseDirs.vendor+'select2/dist/js/select2.min.js'
         ],
