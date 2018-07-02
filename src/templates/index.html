@@ -90,9 +90,7 @@
                                             <div class="bottom">
                                                 <a href="/quickcharts/" class="btn btn-primary">GET STARTED</a>
                                                 <div class="secondary-actions">
-                                                    <!--<a href="#">Watch a demo</a>
-                                                    or -->
-                                                    <a href="/quickcharts/#examples">see examples</a>
+                                                    <a class="learn-more" onclick="$('#learn-quick-charts').modal('show');$('#learn-quick-charts iframe').focus();">Learn more</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +109,7 @@
                                                 See HXL hashtags in action and add them to your own spreadsheet
                                             </p>
                                             <div class="bottom">
-                                                <a href="examples/hxl/" class="btn btn-primary">GET STARTED</a>
+                                                <a href="examples/hxl/" class="btn btn-primary">Learn more</a>
                                                 <div class="secondary-actions">
                                                     <a href="http://hxlstandard.org" target="_blank">About HXL Standard</a>
                                                 </div>
@@ -131,32 +129,14 @@
                                             </p>
                                             <div class="bottom">
                                                 <a href="wizard/#datacheck" class="btn btn-primary">GET STARTED</a>
-                                                <!--<div style="padding-top: 20px; font-size: 16px;">Coming in Spring/Summer 2018</div>-->
-                                                <!--<div class="secondary-actions">-->
-                                                    <!--<a href="#">Watch a demo</a>-->
-                                                <!--</div>-->
+                                                <div class="secondary-actions">
+                                                    <a class="learn-more" onclick="$('#learn-data-check').modal('show');$('#learn-data-check iframe').focus();">Learn more</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!--
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <div class="tool">
-                                        <div class="tool-content">
-                                            <div class="tool-title">HXL Example</div>
-                                            <p class="description">
-                                                See HXL hashtag examples in action
-                                            </p>
-                                            <div class="bottom">
-                                                <a href="examples/hxl/" class="btn btn-primary">SEE EXAMPLES</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            -->
                         </div>
                     </div>
                 </div>
@@ -164,6 +144,23 @@
         </div>
     </div>
 
+    <div class="modal presentation-modal" id="learn-quick-charts" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="modal-content">
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR-gSY38muZE9SA27NjAcueKoobhKi_Dc3jN4BIDPTp7FJjOCiWIkhPU4ZkPyHvfR0pBdNpfswmKZ4p/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="560" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal presentation-modal" id="learn-data-check" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="modal-content">
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQmqK3qgUchHmZ5YQ8M-ktJ0UccIDeBeuqAqjIAbZ2HIXfmZ5OdqFRb7AM1YJI6N1vmimBAbOVa7QMe/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="560" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div>
+        </div>
+    </div>
 
     <footer class="hdx-footer">
         <div class="container">
@@ -336,5 +333,27 @@
     </footer>
     <script type="text/javascript" src="/assets/js/vendor.js"></script>
     <script type="text/javascript" src="/assets/js/script.js"></script>
+    <script>
+        !function() {
+            var t;
+            if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
+                t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+                t.factory = function(e) {
+                    return function() {
+                        var n;
+                        return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+                    };
+                }, t.methods.forEach(function(e) {
+                t[e] = t.factory(e);
+            }), t.load = function(t) {
+                var e, n, o, i;
+                e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
+                    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
+                    n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+            });
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('78e66wr87xr8');
+    </script>
 </body>
 </html>
