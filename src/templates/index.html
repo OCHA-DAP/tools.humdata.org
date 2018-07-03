@@ -90,7 +90,7 @@
                                             <div class="bottom">
                                                 <a href="/wizard/#quickcharts" class="btn btn-primary">GET STARTED</a>
                                                 <div class="secondary-actions">
-                                                    <a class="learn-more" onclick="$('#learn-quick-charts').modal('show');$('#learn-quick-charts iframe').focus();">Learn more</a>
+                                                    <a class="learn-more" onclick="showPresentationModal('#learn-quick-charts');">Learn more</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -130,7 +130,7 @@
                                             <div class="bottom">
                                                 <a href="wizard/#datacheck" class="btn btn-primary">GET STARTED</a>
                                                 <div class="secondary-actions">
-                                                    <a class="learn-more" onclick="$('#learn-data-check').modal('show');$('#learn-data-check iframe').focus();">Learn more</a>
+                                                    <a class="learn-more" onclick="showPresentationModal('#learn-data-check');">Learn more</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -148,7 +148,7 @@
         <div class="modal-dialog" role="document">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <div class="modal-content">
-                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR-gSY38muZE9SA27NjAcueKoobhKi_Dc3jN4BIDPTp7FJjOCiWIkhPU4ZkPyHvfR0pBdNpfswmKZ4p/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="560" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                <iframe load-src="https://docs.google.com/presentation/d/e/2PACX-1vR-gSY38muZE9SA27NjAcueKoobhKi_Dc3jN4BIDPTp7FJjOCiWIkhPU4ZkPyHvfR0pBdNpfswmKZ4p/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="560" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
             </div>
         </div>
     </div>
@@ -157,7 +157,7 @@
         <div class="modal-dialog" role="document">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <div class="modal-content">
-                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQmqK3qgUchHmZ5YQ8M-ktJ0UccIDeBeuqAqjIAbZ2HIXfmZ5OdqFRb7AM1YJI6N1vmimBAbOVa7QMe/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="560" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                <iframe load-src="https://docs.google.com/presentation/d/e/2PACX-1vQmqK3qgUchHmZ5YQ8M-ktJ0UccIDeBeuqAqjIAbZ2HIXfmZ5OdqFRb7AM1YJI6N1vmimBAbOVa7QMe/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="560" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
             </div>
         </div>
     </div>
@@ -333,6 +333,16 @@
     </footer>
     <script type="text/javascript" src="/assets/js/vendor.js"></script>
     <script type="text/javascript" src="/assets/js/script.js"></script>
+    <script>
+        function showPresentationModal(id){
+            var modal = $(id);
+            var iframe = $(id + ' iframe');
+            iframe.attr('src', '');
+            modal.modal('show');
+            iframe.attr('src', iframe.attr('load-src'));
+            iframe.focus();
+        }
+    </script>
     <script>
         !function() {
             var t;
