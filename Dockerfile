@@ -23,7 +23,7 @@ RUN apk add --update-cache \
         nginx && \
     rm -rv /var/cache/apk/* && \
     rm -rf /var/www && \
-    mkdir -p /run/nginx/
+    mkdir -p /run/nginx
 
 COPY --from=builder /src/dependency-deploy-config.txt /srv/
 COPY --from=builder /src/dist /var/www/
