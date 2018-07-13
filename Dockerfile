@@ -1,4 +1,4 @@
-FROM alpine:3.6 AS builder
+FROM unocha/nodejs-builder:8.11.3 AS builder
 
 WORKDIR /src
 
@@ -17,7 +17,7 @@ RUN npm install
 
 RUN ./node_modules/.bin/gulp build --production
 
-FROM alpine:3.6
+FROM unocha/nginx:1.14
 
 RUN apk add --update-cache \
         nginx && \
@@ -28,10 +28,6 @@ RUN apk add --update-cache \
 COPY --from=builder /src/dependency-deploy-config.txt /srv/
 COPY --from=builder /src/dist /var/www/
 COPY --from=builder /src/docker/default.conf /etc/nginx/conf.d/
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
-
-EXPOSE 80
 
 VOLUME /var/log/nginx
 
