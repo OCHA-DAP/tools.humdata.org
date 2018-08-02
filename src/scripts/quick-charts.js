@@ -32,8 +32,11 @@ $(document).ready(function() {
     var hash = window.location.hash;
     if (hash) {
         // $(hash).scrollTo();
-        $('html, body').animate({
-            scrollTop: $(hash).offset().top
-        }, 2000);
+        var offset = $(hash).offset();
+        if (offset){
+            $('html, body').animate({
+                scrollTop: offset.top
+            }, 2000);
+        }
     }
 });
