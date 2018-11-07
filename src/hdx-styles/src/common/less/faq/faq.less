@@ -17,17 +17,17 @@
     position: fixed;
     top: 15px;
     z-index: 99;
+    max-width: 270px;
   }
   .nav li a {
-    .menu-item-font(@grayColor);
     padding: 0;
+    color: @darkGrayColor;
+    letter-spacing: 0.01em;
+    font-family: @gothamBookFont;
+    font-size: 14px;
+    line-height: 20px;
     &:hover, &.active {
-      font-family: @gothamMediumFont;
-      font-size: 14px;
       color: @blueColor;
-      line-height: 20px;
-      letter-spacing: 0.01em;
-      padding: 0;
     }
   }
 
@@ -42,7 +42,9 @@
 }
 
 .hdx-wrapper .section-flag {
-  .menu-item-font(@grayColor);
+    font-family: @gothamMediumFont;
+    font-size: 18px;
+    color: @blueColor;
 }
 
 .hdx-wrapper .top-banner {
@@ -79,6 +81,12 @@
     }
 }
 
+.hdx-wrapper .top-banner-documentation {
+    .hdx-wrapper .top-banner;
+    background-image: url("/images/backgrounds/documentation_top_f.jpg");
+
+}
+
 .hdx-wrapper .hdx-panel-group {
   .panel {
     border: none;
@@ -92,20 +100,24 @@
       margin: 0;
     }
     .panel-heading {
-      height: 74px;
+      min-height: 74px;
       border: none;
       box-shadow: none;
       background-color: inherit;
       padding-top: 30px;
+      padding-bottom: 20px;
       cursor: pointer;
 
-      .panel-title a {
-        font-family: @sourceSansProFont;
-        font-weight: 400;
-        font-size: 18px;
-        color: @blackColor;
-        line-height: 24px;
-        letter-spacing: 0.01em;
+      .panel-title{
+        line-height: 20px;
+        .faq-question-link {
+          font-family: @sourceSansProFont;
+          font-weight: 400;
+          font-size: 18px;
+          color: @blackColor;
+          line-height: 24px;
+          letter-spacing: 0.01em;
+        }
       }
     }
 
@@ -115,7 +127,7 @@
 
       font-family: @sourceSansProFont;
       font-size: 14px;
-      color: @grayColor;
+      color: @darkGrayColor;
       line-height: 20px;
       letter-spacing: 0.01em;
 
@@ -126,4 +138,29 @@
     }
 
   }
+}
+
+.presentation-modal.in {
+    .modal-dialog {
+        .close {
+            position: absolute;
+            right: -30px;
+            top: -40px;
+            font-size: 40px;
+            opacity: 1;
+            color: white;
+        }
+        .modal-content {
+            box-shadow: none;
+            border: none;
+            border-radius: 0;
+            min-height: auto;
+            min-width: auto;
+            height: 560px;
+        }
+    }
+}
+
+a.link {
+    cursor: pointer;
 }
