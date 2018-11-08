@@ -7,16 +7,80 @@ h2 {
 
 .carousel-section {
     height: 400px;
-    background-image: url(/assets/images/carousel-item-1.png);
-    background-size: cover;
-}
+    background: @blueColor;
+    position: relative;
+    .carousel-content {
+        position: absolute;
+        top: 50%;
+        left: 150px;
+        width: 600px;
+        transform: translateY(-50%);
+        .gothamMediumFont(24px);
+        color: white;
+        h1 {
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+        .hero-description {
+            line-height: 1.25em;
+            white-space: pre-line;
+        }
+    }
 
+}
+.tool-categories {
+    position: relative;
+    margin-bottom: 20px;
+
+    .blue-line {
+        border-bottom: 1px solid @blueColor;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: auto;
+        position:absolute;
+        top: 10px;
+
+    }
+    .tool-category {
+        text-align: center;
+        .category-title {
+            margin-left: auto;
+            margin-right: auto;
+            display: inline;
+            padding: 0 40px;
+            .gothamMediumFont(18px);
+            color: @grayColor;
+            .uppercase();
+            background-color: @extraLightGrayColor;
+        }
+        .caret {
+            margin-top: 20px;
+            border-top: 10px solid @grayColor;
+            border-right-width: 8px;
+            border-left-width: 8px;
+        }
+    }
+}
+.tool-set {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+    .tool-extend-margin {
+        margin: 0 -10px;
+        height: 100%;
+    }
+    .tool-set-background {
+        background-color: @lightGrayColor;
+        height: 100%;
+    }
+}
 .tool {
   position: relative;
   margin-bottom: 50px;
 
   &.with-image{
-    padding-top: 50px;
+    padding-top: 85px;
     .tool-content {
       height: 355px;
       padding-top: 50px;
@@ -25,9 +89,10 @@ h2 {
 
   .tool-image {
     position: absolute;
-    top: -35px;
+    top: 0px;
     left: 50%;
     transform: translate(-50%, 0);
+    margin-left: -7px; //hack to adjust for optical illusion due to second circle on the left
     height: 150px;
   }
   .tool-content {
@@ -61,7 +126,15 @@ h2 {
     }
   }
 }
-
+.join-hdx {
+    text-align: center;
+    p {
+        white-space: pre-line;
+        margin-bottom: 15px;
+        .gothamBookFont(16px);
+        color: @darkGrayColor;
+    }
+}
 .presentation-modal.in {
     .modal-dialog {
         .close {
@@ -86,3 +159,39 @@ h2 {
 a.learn-more {
     cursor: pointer;
 }
+
+.tools-header {
+    .header-user-bg {
+        .header-user-box {
+            height: 35px;
+            position: relative;
+            .logo-ocha {
+                position: absolute;
+                height: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    .header-nav {
+        .mainLinks li > a::after {
+            content: ' ';
+        }
+    }
+}
+
+.btn {
+    &.btn-large {
+        @btnLargePadding: 24px;
+        padding-left: @btnLargePadding;
+        padding-right: @btnLargePadding;
+    }
+    &.btn-green {
+        background-color: @greenColor;
+        &:hover {
+            border-color: @greenColor;
+        }
+    }
+}
+
