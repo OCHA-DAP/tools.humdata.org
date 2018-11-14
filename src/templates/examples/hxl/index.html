@@ -18,15 +18,13 @@
 </head>
 <body class="">
 
-    <header class="newHeader header-fixed">
+    <header class="newHeader header-fixed tools-header">
         <div class="homepage-header-user-bg">
             <div class="container">
                 <div class="row paddingRowHack header-user-bg">
                     <div class="col-xs-12 paddingLeftHack paddingRightHack" style="position: relative;">
-                        <div class="header-user-box pull-right">
-                            <span>
-                              &nbsp;
-                            </span>
+                        <div class="header-user-box">
+                            <img class="logo-ocha" src="/assets/images/homepage/logo-ocha-gray.png" />
                         </div>
                     </div>
                 </div>
@@ -37,23 +35,68 @@
                 <div class="row paddingRowHack header-nav-bg">
                     <div class="span12 paddingLeftHack paddingRightHack header-nav-border">
                         <div class="header-nav">
-                            <span class="table-valign pull-left">
+                            <div class="table-valign pull-left">
                                 <span class="hdxLogo table-valign-content">
                                     <a class="logo" href="/"><div class="logo-img" alt="Humanitarian Data Exchange Logo"></div><span id="hdxVersion">1.0</span></a>
                                 </span>
-                            </span>
+                            </div>
+                            <div class="table-valign pull-right">
+                                <div class="table-valign-content">
+                                    <ul class="mainLinks">
+                                        <li><a href="/examples/hxl/">HXL Tag Assist</a></li>
+                                        <li><a href="/wizard/#datacheck">Data Check</a></li>
+                                        <li><a href="/wizard/#quickcharts">Quick Charts</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-
     <div role="main">
         <div class="container">
             <div class="row paddingRowHack whiteBackground">
-                <div class="hdx-wrapper wrapper no-nav hxl-example">
+                <div class="hdx-wrapper wrapper no-nav">
+                    <div class="hero-section">
+                        <div class="hero-content">
+                            <h1>HXL Tag Assist</h1>
+                            <div class="hero-description">See HXL hashtags in action classifying datasets.
+                                Then, HXL-ate your own spreadsheets to
+                                design and develop new data tools fast.
+                            </div>
+                        </div>
+                        <img src="/assets/images/hxl-assist.svg" class="hero-image">
+                    </div>
+                    <div class="hxl-section">
+                        <div class="hxl-content paddingLeftHack paddingRightHack">
+                            <p><strong>HXL (Humanitarian Exchange Language) hashtags</strong><br>define common attributes applied to humanitarian datasets, <br>including region, metadata and manner of response.</p>
+                            <div class="row">
+                                <div class="col-xs-offset-3 col-xs-3">
+                                    <div class="hxl-info-box">
+                                        <div class="hxl-info-box-content">
+                                            Want to know more <br>
+                                            about HXL hashtags?<br><br>
+                                            <a href="" class="btn btn-primary">Learn more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="hxl-info-box">
+                                        <div class="hxl-info-box-content">
+                                            Ready to add your<br>
+                                            HXL-ated data to HDX?<br><br>
+                                            <a href="" class="btn btn-primary">Share data</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="hxl-example">
                     <div class="paddingLeftHack paddingRightHack">
                         <div id="header" class="row">
                             <div class="col-xs-12">
@@ -67,7 +110,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
-                                <div id="tags" data-spy="affix" data-offset-top="175" data-offset-bottom="310"></div>
+                                <div id="tags" data-spy="affix" data-offset-top="923" data-offset-bottom="310"></div>
                             </div>
                             <div class="col-md-10" id="content">
 

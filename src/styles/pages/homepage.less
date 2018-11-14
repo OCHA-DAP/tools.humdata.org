@@ -5,11 +5,11 @@ h2 {
   text-align: center;
 }
 
-.carousel-section {
+.hero-section {
     height: 400px;
     background: @blueColor;
     position: relative;
-    .carousel-content {
+    .hero-content {
         position: absolute;
         top: 50%;
         left: 150px;
@@ -18,15 +18,22 @@ h2 {
         .gothamMediumFont(24px);
         color: white;
         h1 {
-            font-size: 40px;
+            .gothamMediumFont(40px);
             margin-bottom: 40px;
+            color: white;
         }
         .hero-description {
             line-height: 1.25em;
             white-space: pre-line;
         }
     }
-
+    .hero-image {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 300px;
+        right: 150px;
+    }
 }
 .tool-categories {
     position: relative;
