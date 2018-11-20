@@ -2,9 +2,9 @@
     background: none;
     color: @darkGrayColor;
     min-width: 0;
-    > div {
-        margin: 20px 0;
-    }
+    //> div {
+    //    margin: 20px 0;
+    //}
     h1 {
         .gothamBookFont(48px);
         color: @darkGrayColor;
@@ -23,7 +23,7 @@
         color: @darkGrayColor;
     }
     h4 {
-        .gothamBoldFont(16px);
+        .gothamMediumFont(18px);
         color: @darkGrayColor;
         height: auto;
         line-height: 20px;
@@ -85,7 +85,7 @@
         width: 185px;
         &.affix {
             position: fixed;
-            top: 76px;
+            top: 100px;
             height: 85vh;
         }
         &.affix-top {
@@ -96,6 +96,7 @@
         color: @orangeColor;
         cursor: pointer;
         margin-bottom: 0;
+        font-size: 16px;
         &:hover,
         &:focus {
             color: darken(@orangeColor, 20%);
@@ -129,4 +130,51 @@
         top: 0;
         width: 185px;
     }
+}
+
+.hero-section {
+    background: @whiteColor;
+    .hero-content {
+        color: @orangeColor;
+        h1 {
+            color: @orangeColor;
+        }
+    }
+}
+.hxl-section {
+    height: 400px;
+    background: @extraLightGrayColor;
+    .hxl-content {
+        padding-top: 40px;
+        p {
+            line-height: 1.3em;
+            margin-bottom: 30px;
+            @hxlSectionParagraphFontSize: 24px;
+            color: @darkGrayColor;
+            white-space: pre;
+            text-align: center;
+            .gothamBookFont(@hxlSectionParagraphFontSize);
+            strong {
+                .gothamMediumFont(@hxlSectionParagraphFontSize);
+            }
+        }
+
+        .hxl-info-box {
+            position: relative;
+            height: 180px;
+            background: @whiteColor;
+
+            .hxl-info-box-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                .gothamMediumFont(18px);
+                color: @darkGrayColor;
+                min-width: 240px;
+            }
+        }
+    }
+
 }

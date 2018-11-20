@@ -1,14 +1,11 @@
 @toolContainerPadding: 0;
-@toolContainerWidth: 1260px;
 @toolPickerArrowSize: 12px;
+@headerSize: 93px;
 
+.hdx-wrapper {
+    position: relative;
+}
 .tool-container {
-    position: absolute;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    height: 100%;
-    min-width: @toolContainerWidth;
     width: 100%;
     padding-right: @toolContainerPadding;
 
@@ -25,7 +22,7 @@
 
     }
     .container-padding {
-        padding-left: @toolContainerPadding + @toolPickerBoxSize;
+        padding-left: @toolContainerPadding;
         padding-top: @toolContainerPadding;
         padding-bottom: @toolContainerPadding;
         min-height: 800px;
