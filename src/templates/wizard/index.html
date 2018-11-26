@@ -335,16 +335,7 @@
             toolIframe.load(resizeIframeHeight);
             setInterval(function () { resizeIframeHeight()}, 500);
         };
-        var initCookiePopup = function (){
-            var consent = $.cookie("hdx-tools-cookie-consent");
-            if (!consent) {
-                $(".allow-cookies-container .allow-cookies-continue").click(function () {
-                    $.cookie("hdx-tools-cookie-consent", true);
-                    $(".allow-cookies-container").hide();
-                });
-                $(".allow-cookies-container").show();
-            }
-        };
+
         $(document).ready(function(){
             var hash = location.hash || '#quickcharts';
             $('li.tool-item.data-nav').click(function() {
@@ -352,7 +343,6 @@
                 switchApp(hash);
             });
             switchApp(hash);
-            initCookiePopup();
         });
     </script>
 </body>
