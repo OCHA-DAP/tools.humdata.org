@@ -1,6 +1,6 @@
 
 HDX_HXL_PROXY_URL=https://hub.docker.com/r/unocha/hxl-proxy/tags/
-HDX_HXL_PROXY_TAG=1.10
+HDX_HXL_PROXY_TAG=1.11
 
 HDX_HXL_PREVIEW_URL=https://hub.docker.com/r/unocha/hdx-hxl-preview/tags/
 HDX_HXL_PREVIEW_TAG=1.5.1-tools
