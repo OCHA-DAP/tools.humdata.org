@@ -75,9 +75,7 @@
                     <div class="row paddingRowHack hero-section">
                         <div class="hero-content">
                             <h1>HDX Tools</h1>
-                            <div class="hero-description">Do more on HDX and beyond with
-                                custom-designed tools that make humanitarian
-                                datasets easier to use and interpret.
+                            <div class="hero-description">Save time cleaning and visualizing your data with easy-to-use tools that work with the Humanitarian Exchange Language (HXL) standard
                             </div>
                         </div>
                     </div>
@@ -119,28 +117,6 @@
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="tool with-image">
-                                        <a href="/wizard/#quickcharts">
-                                            <img src="/assets/images/quick-chart.svg" class="tool-image"/>
-                                        </a>
-                                        <div class="tool-content">
-                                            <a href="/wizard/#quickcharts">
-                                                <div class="tool-title">Quick Charts</div>
-                                            </a>
-                                            <p class="description">
-                                                Automatically generate embeddable, live data charts, graphs and
-                                                key figures from your spreadsheet
-                                            </p>
-                                            <div class="bottom">
-                                                <a href="/wizard/#quickcharts" class="btn btn-primary">GET STARTED</a>
-                                                <div class="secondary-actions">
-                                                    <a class="learn-more" onclick="showPresentationModal('#learn-quick-charts');">Learn more</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="tool with-image">
                                         <a href="examples/hxl/">
                                             <img src="/assets/images/hxl-assist.svg" class="tool-image"/>
                                         </a>
@@ -149,7 +125,7 @@
                                                 <div class="tool-title">HXL Tag Assist</div>
                                             </a>
                                             <p class="description">
-                                                See HXL hashtags in action and add them to your own spreadsheet
+                                                Get help finding the right HXL hashtags for your data
                                             </p>
                                             <div class="bottom">
                                                 <a href="examples/hxl/" class="btn btn-primary">Learn more</a>
@@ -168,7 +144,7 @@
                                         <div class="tool-content">
                                             <div class="tool-title">Data Check</div>
                                             <p class="description">
-                                                Data cleaning for humanitarian data, automatically detects and highlights common errors including validation against CODs and other vocabularies.
+                                                Upload your data and get a report back highlighting potential errors
                                             </p>
                                             <div class="bottom">
                                                 <a href="wizard/#datacheck" class="btn btn-primary">GET STARTED</a>
@@ -179,14 +155,33 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-xs-4">
+                                    <div class="tool with-image">
+                                        <a href="/wizard/#quickcharts">
+                                            <img src="/assets/images/quick-chart.svg" class="tool-image"/>
+                                        </a>
+                                        <div class="tool-content">
+                                            <a href="/wizard/#quickcharts">
+                                                <div class="tool-title">Quick Charts</div>
+                                            </a>
+                                            <p class="description">
+                                                Create and share live, interactive charts and graphs from your data
+                                            </p>
+                                            <div class="bottom">
+                                                <a href="/wizard/#quickcharts" class="btn btn-primary">GET STARTED</a>
+                                                <div class="secondary-actions">
+                                                    <a class="learn-more" onclick="showPresentationModal('#learn-quick-charts');">Learn more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-xs-12">
                                     <div class="join-hdx mBottom40">
                                         <p>
-                                            HDX Tools are designed by data experts and informed by real user feedback.
-                                            Become a part of the global HDX community to find, use and share
-                                            humanitarian data all in one place.
+                                            Try the tools and get in touch if you need support or have feedback on how we can make them better.
                                         </p>
-                                        <a href="https://data.humdata.org/" class="btn btn-green btn-large">JOIN HDX</a>
+                                        <a href="https://centre.humdata.org/contact-us/" class="btn btn-green btn-large">CONTACT US</a>
                                     </div>
                                 </div>
                             </div>
@@ -396,26 +391,26 @@
         }
     </script>
     <script>
-        !function() {
-            var t;
-            if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
-                t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
-                t.factory = function(e) {
-                    return function() {
-                        var n;
-                        return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
-                    };
-                }, t.methods.forEach(function(e) {
-                t[e] = t.factory(e);
-            }), t.load = function(t) {
-                var e, n, o, i;
-                e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
-                    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
-                    n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
-            });
-        }();
-        drift.SNIPPET_VERSION = '0.3.1';
-        drift.load('78e66wr87xr8');
+        // !function() {
+        //     var t;
+        //     if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
+        //         t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+        //         t.factory = function(e) {
+        //             return function() {
+        //                 var n;
+        //                 return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+        //             };
+        //         }, t.methods.forEach(function(e) {
+        //         t[e] = t.factory(e);
+        //     }), t.load = function(t) {
+        //         var e, n, o, i;
+        //         e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
+        //             o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
+        //             n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+        //     });
+        // }();
+        // drift.SNIPPET_VERSION = '0.3.1';
+        // drift.load('78e66wr87xr8');
     </script>
 </body>
 </html>
