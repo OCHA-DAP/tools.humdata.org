@@ -13,7 +13,7 @@ body {
   background-color: @extraLightGrayColor;
 }
 
-.logo {
+.hdxLogo .logo {
   .logo-img {
     background-image: url(/assets/images/logo-tools.png);
     background-size: 100%;
@@ -21,6 +21,17 @@ body {
     min-height: 31px;
   }
   #hdxVersion {
-    left: 181px;
+    left: 184px;
   }
+}
+
+.hdx-header {
+    .header-nav {
+        .mainLinks {
+            margin-left: auto;
+            > li > a:after {
+                content: ' ';
+            }
+        }
+    }
 }

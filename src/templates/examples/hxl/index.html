@@ -17,44 +17,102 @@
     <!-- Hotjar Tracking Code for https://tools.humdata.org --><script>    (function(h,o,t,j,a,r){        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};        h._hjSettings={hjid:793210,hjsv:6};        a=o.getElementsByTagName('head')[0];        r=o.createElement('script');r.async=1;        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;        a.appendChild(r);    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script>
 </head>
 <body class="">
-    <header class="newHeader header-fixed tools-header">
-        <div class="homepage-header-user-bg">
-            <div class="container">
-                <div class="row paddingRowHack header-user-bg">
-                    <div class="col-xs-12 paddingLeftHack paddingRightHack" style="position: relative;">
-                        <div class="header-user-box">
-                            <img class="logo-ocha" src="/assets/images/homepage/logo-ocha-gray.png" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="homepage-header-nav-border">
-            <div class="container">
-                <div class="row paddingRowHack header-nav-bg">
-                    <div class="span12 paddingLeftHack paddingRightHack header-nav-border">
-                        <div class="header-nav">
-                            <div class="table-valign pull-left">
-                                <span class="hdxLogo table-valign-content">
-                                    <a class="logo" href="/"><div class="logo-img" alt="Humanitarian Data Exchange Logo"></div><span id="hdxVersion">1.0</span></a>
-                                </span>
-                            </div>
-                            <div class="table-valign pull-right">
-                                <div class="table-valign-content">
-                                    <ul class="mainLinks">
-                                        <li><a href="/examples/hxl/">HXL Tag Assist</a></li>
-                                        <li><a href="/wizard/#datacheck">Data Check</a></li>
-                                        <li><a href="/wizard/#quickcharts">Quick Charts</a></li>
+<header class="new-header">
+    <div class="global-header homepage-header-user-bg"> <!-- header is streched for the homepage -->
+        <div class="container">
+            <div class="row paddingRowHack global-header-bg">
+                <div class="col-xs-12 paddingLeftHack paddingRightHack global-header-content">
+                    <a href="#" data-toggle="dropdown" class="ocha-services">
+                        <span class="ocha-logo"></span>
+                        OCHA Services
+                        <svg class="icon-o-arrow-up" viewBox="0 0 48 48"><path d="M0,34a4,4,0,0,1,1.17-2.83l20-20a4,4,0,0,1,5.66,0l20,20a4,4,0,1,1-5.66,5.66L24,19.66,6.83,36.83A4,4,0,0,1,0,34Z"></path></svg>
+                        <svg class="icon-o-arrow-down" viewBox="0 0 48 48"><path d="M48,14a4,4,0,0,1-1.17,2.83l-20,20a4,4,0,0,1-5.66,0l-20-20a4,4,0,0,1,5.66-5.66L24,28.34,41.17,11.17A4,4,0,0,1,48,14Z"></path></svg>
+                    </a>
+                    <div class="dropdown-menu ocha-services-menu" role="menu">
+                        <div class="paddingLeftHack paddingRightHack ">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <p class="list-title">
+                                        Related Platforms
+                                    </p>
+                                    <ul class="ocha-links-list">
+                                        <li>
+                                            <a href="https://centre.humdata.org/" target="_blank" data-module="hdx_click_stopper" data-module-link_type="header">Centre for Humanitarian Data</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://data.humdata.org/" target="_blank" data-module="hdx_click_stopper" data-module-link_type="header">Humanitarian Data Exchange (HDX)</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://tools.humdata.org/" target="_blank" data-module="hdx_click_stopper" data-module-link_type="header">HDX Tools</a>
+                                        </li>
+                                        <li>
+                                            <a href="http://hxlstandard.org/" target="_blank" data-module="hdx_click_stopper" data-module-link_type="header">Humanitarian Exchange Language (HXL)</a>
+                                        </li>
                                     </ul>
+                                </div>
+                                <div class="col-xs-3">
+                                    <p class="list-title">
+                                        Other OCHA Services
+                                    </p>
+                                    <ul class="ocha-links-list">
+                                        <li>
+                                            <a href="https://fts.unocha.org/" target="_blank" data-module="hdx_click_stopper" data-module-link_type="header">Financial Tracking Service (FTS)</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://hum-insight.info/" target="_blank" data-module="hdx_click_stopper" data-module-link_type="header">Humanitarian InSight</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.humanitarianresponse.info" target="_blank" data-module="hdx_click_stopper" data-module-link_type="header">Humanitarian Response</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.unocha.org" target="_blank" data-module="hdx_click_stopper" data-module-link_type="header">UN OCHA</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-3">
+                                    <p class="list-title">
+                                        &nbsp;
+                                    </p>
+                                    <ul class="ocha-links-list">
+                                        <li>
+                                            <a href="https://reliefweb.int" target="_blank" data-module="hdx_click_stopper" data-module-link_type="header">Relief Web</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-xs-3">
+                                    <a href="https://www.unocha.org/ocha-digital-services" target="_blank" data-module="hdx_click_stopper" data-module-link_type="header" class="btn ocha-see-all">
+                                        See all
+                                    </a>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </header>
-    <div role="main">
+    </div>
+    <div class="hdx-header homepage-header-nav-border">
+        <div class="container">
+            <div class="row paddingRowHack hdx-header-bg">
+                <div class="paddingLeftHack paddingRightHack header-nav-border">
+                    <div class="header-nav">
+                            <span class="hdxLogo table-valign-content">
+                                <a class="logo" href="/"><div class="logo-img" alt="Humanitarian Data Exchange Logo"></div><span id="hdxVersion">1.0</span></a>
+                            </span>
+                        <ul class="mainLinks">
+                            <li><a href="/examples/hxl/">HXL Tag Assist</a></li>
+                            <li><a href="/wizard/#datacheck">Data Check</a></li>
+                            <li><a href="/wizard/#quickcharts">Quick Charts</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div role="main">
         <div class="container">
             <div class="row paddingRowHack whiteBackground">
                 <div class="hdx-wrapper wrapper no-nav">
@@ -260,46 +318,47 @@
                     </div>
                 </div>
             </div>
-
             <div class="row paddingRowHack" style="background-color: #252525;">
                 <div class="">
                     <div class="">
                         <div class="col-xs-12 paddingLeftHack paddingRightHack">
                             <div class="social-footer">
-                                <div class="social-links">
-                                    <!--
-                                    <a href="#" title="Facebook">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                                            <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path>
-                                        </svg>
-                                    </a>
-                                    -->
-                                    <a href="http://www.twitter.com/humdata" title="Twitter">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                                            <path d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
-                                        </svg>
-                                    </a>
-                                    <a href="https://github.com/OCHA-DAP" title="GitHub">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                                            <path d="M16 0.395c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
-                                        </svg>
-                                    </a>
+                                <div class="terms">
+                                    <a href="https://www.un.org/en/sections/about-website/privacy-notice/" target="_blank">Privacy Policy</a>
+                                    <a href="https://www.un.org/en/sections/about-website/terms-use/" target="_blank">Terms of Use</a>
                                 </div>
-                                <div class="product-links">
-                                    Product of
-                                    <a href="https://www.unocha.org" target="_blank">
-                                        <img style="height: 30px;" src="/assets/images/homepage/logo-ocha-gray.png" />
-                                    </a>
-                                    <a href="https://centre.humdata.org" target="_blank">
-                                        <img style="height: 38px; margin-bottom: -8px;" src="/assets/images/homepage/logo-centre-gray.png"/>
-                                    </a>
+                                <div class="service">
+                                    <div class="provided-by">
+                                        Service provided by
+                                    </div>
+                                    <div class="service-details">
+                                        <div class="ocha-service">
+                                            <img class="ocha-logo lazyloaded" src="/assets/images/homepage/logo-ocha-lockup-white.png">
+                                            <div class="spacer"></div>
+                                            <div class="ocha-text">
+                                                OCHA coordinates the global emergency response to save lives and protect people in humanitarian
+                                                crises. We advocate for effective and principled humanitarian action by all, for all.
+                                            </div>
+                                        </div>
+                                        <div class="license">
+                                            Except where otherwise noted, content on this site is
+                                            licensed under a Creative Commons Attribution 4.0
+                                            International license.
+                                        </div>
+                                        <div class="license-cc">
+                                            <svg width="40" height="40" viewBox="0 0 32 32">
+                                                <path d="M15.886 28.968c-7.159 0.009-12.857-5.804-12.884-12.802-0.027-7.097 5.847-13.062 12.902-12.881 6.356-0.152 12.793 4.975 12.829 12.839 0.035 7.721-6.201 12.836-12.847 12.844zM15.907 0.254c-9.353-0.056-15.873 7.837-15.907 15.828-0.036 8.503 6.961 15.927 15.827 15.918 8.53-0.009 15.954-6.753 15.885-15.803 0.111-8.79-6.935-15.89-15.805-15.943z"></path>
+                                                <path d="M25.263 18.406c-0.958 1.921-3.394 2.767-5.132 2.632-4.489-0.347-5.501-3.918-4.747-6.567 0.701-2.462 3.115-3.831 6.002-3.466 1.667 0.21 2.961 0.886 3.863 2.334-0.818 0.397-1.591 0.773-2.382 1.157-0.165-0.166-0.288-0.268-0.381-0.388-0.535-0.7-1.25-0.982-2.19-0.822-0.93 0.158-1.479 0.714-1.589 1.482-0.117 0.814-0.094 1.668 0.039 2.482 0.126 0.777 0.707 1.336 1.62 1.462 0.99 0.137 1.856-0.059 2.38-0.931 0.065-0.108 0.161-0.201 0.309-0.382 0.728 0.332 1.444 0.658 2.208 1.007z"></path>
+                                                <path d="M16.842 13.347c-0.871 0.415-1.613 0.768-2.391 1.138-0.156-0.15-0.304-0.262-0.412-0.4-0.545-0.698-1.269-0.964-2.203-0.797-0.888 0.159-1.44 0.687-1.541 1.432-0.115 0.841-0.101 1.718 0.030 2.557 0.122 0.784 0.725 1.323 1.637 1.444 0.956 0.126 1.8-0.056 2.326-0.887 0.081-0.128 0.193-0.241 0.346-0.43 0.737 0.339 1.452 0.667 2.206 1.014-0.357 0.81-0.978 1.311-1.659 1.759-2.518 1.661-6.749 0.909-7.962-1.851-1.013-2.305-0.422-5.145 1.656-6.505 2.136-1.398 5.664-1.088 7.33 0.691 0.212 0.226 0.376 0.49 0.636 0.834z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </footer>
 
