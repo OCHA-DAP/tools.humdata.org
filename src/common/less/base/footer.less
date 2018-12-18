@@ -31,6 +31,10 @@
         max-height: @logo-gray-height;
         max-width: 100%;
 
+        &.logo-hdx {
+          //used on tools
+          max-height: 30px;
+        }
         &.logo-centre {
           margin-bottom: -8px;
         }
@@ -128,6 +132,10 @@
                 text-transform: uppercase;
                 margin-right: 30px;
                 color: @extraLightGrayColor;
+
+                &:hover {
+                  text-decoration: underline;
+                }
 
                 &:last-child {
                   margin-right: 0;
