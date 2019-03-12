@@ -1,9 +1,9 @@
 
 HDX_HXL_PROXY_URL=https://hub.docker.com/r/unocha/hxl-proxy/tags/
-HDX_HXL_PROXY_TAG=1.14
+HDX_HXL_PROXY_TAG=1.14.1
 
 HDX_HXL_PREVIEW_URL=https://hub.docker.com/r/unocha/hdx-hxl-preview/tags/
-HDX_HXL_PREVIEW_TAG=1.5.16-tools
+HDX_HXL_PREVIEW_TAG=1.5.17-tools
 
 HDX_TOOLS_QUICKCHARTS_WIZARD_URL=https://hub.docker.com/r/unocha/hdx-tools-quickcharts-wizard/tags/
 HDX_TOOLS_QUICKCHARTS_WIZARD_TAG=2.1.5
