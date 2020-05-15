@@ -17,13 +17,7 @@ RUN npm install
 
 RUN ./node_modules/.bin/gulp build --production
 
-FROM unocha/nginx:1.14
-
-RUN apk add --update-cache \
-        nginx && \
-    rm -rv /var/cache/apk/* && \
-    rm -rf /var/www && \
-    mkdir -p /run/nginx
+FROM unocha/nginx:1.16
 
 COPY --from=builder /src/dependency-deploy-config.txt /srv/
 COPY --from=builder /src/dist /var/www/
