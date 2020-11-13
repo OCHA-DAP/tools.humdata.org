@@ -1,4 +1,4 @@
-FROM unocha/nodejs-builder:8.11.3 AS builder
+FROM unocha/nodejs-builder:12 AS builder
 
 WORKDIR /src
 
@@ -17,11 +17,11 @@ RUN npm install
 
 RUN ./node_modules/.bin/gulp build --production
 
-FROM unocha/nginx:1.16
+FROM unocha/nginx:1.18
 
 COPY --from=builder /src/dependency-deploy-config.txt /srv/
 COPY --from=builder /src/dist /var/www/
-COPY --from=builder /src/docker/default.conf /etc/nginx/conf.d/
+COPY --from=builder /src/docker/common.conf /src/docker/default.conf /etc/nginx/conf.d/
 
 VOLUME /var/log/nginx
 
