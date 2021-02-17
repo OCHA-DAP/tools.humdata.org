@@ -205,7 +205,7 @@ gulp.task('lint', function() {
 /* Image compressing task */
 
 gulp.task('images', function() {
-    gulp.src(routes.files.images)
+    return gulp.src(routes.files.images)
         // .pipe(imagemin())
         .pipe(gulp.dest(routes.files.imgmin));
 });
@@ -235,9 +235,9 @@ gulp.task('serve', function() {
         server: './dist/'
     });
 
-    gulp.watch([routes.styles.less, routes.styles._less], ['styles']);
-    gulp.watch(routes.templates.html, ['templates']);
-    gulp.watch(routes.scripts.js, ['scripts', 'beautify']);
+    gulp.watch([routes.styles.less, routes.styles._less], gulp.series('styles'));
+    gulp.watch(routes.templates.html, gulp.series('templates'));
+    gulp.watch(routes.scripts.js, gulp.series('scripts', 'beautify'));
 });
 
 /* Optimize your project */
@@ -297,13 +297,13 @@ gulp.task('hdxAssets', function() {
         .pipe(gulp.dest(baseDirs.assets + 'images/'));
 });
 
-gulp.task('dev', ['templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve']);
+gulp.task('dev', gulp.series('templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve'));
 
-gulp.task('build', ['templates', 'styles', 'scripts', 'images', 'hdxAssets']);
+gulp.task('build', gulp.series('templates', 'styles', 'scripts', 'images', 'hdxAssets'));
 
-gulp.task('optimize', ['uncss', 'critical', 'images']);
+gulp.task('optimize', gulp.series('uncss', 'critical', 'images'));
 
-gulp.task('deploy', ['optimize',  ]);
+gulp.task('deploy', gulp.series('optimize'));
 
 gulp.task('default', function() {
     gulp.start('dev');

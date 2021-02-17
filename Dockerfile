@@ -5,6 +5,9 @@ WORKDIR /src
 COPY . .
 
 RUN apk add --update-cache \
+    autoconf \
+    automake \
+    nasm \
 	nodejs \
 	nodejs-npm \
 	git \
