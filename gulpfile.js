@@ -1,20 +1,15 @@
 var gulp = require('gulp'),
     less = require('gulp-less'),
-    minifyHTML = require('gulp-htmlmin'),
     jshint = require('gulp-jshint'),
     concat = require('gulp-concat'),
     browserSync = require('browser-sync').create(),
     plumber = require('gulp-plumber'),
     notify = require('gulp-notify'),
-    imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
     minifyCss = require('gulp-cssnano'),
-    uncss = require('gulp-uncss'),
     autoprefixer = require('gulp-autoprefixer'),
     uglify = require('gulp-uglify'),
     babel = require('gulp-babel'),
-    cssimport = require('gulp-cssimport'),
-    beautify = require('gulp-beautify'),
     sourcemaps = require('gulp-sourcemaps'),
     critical = require('critical').stream,
     argv = require('yargs').argv,
@@ -147,7 +142,6 @@ gulp.task('styles', function() {
             .pipe(autoprefixer('last 3 versions'))
             .pipe(minifyCss())
         .pipe(sourcemaps.write())
-        // .pipe(cssimport({}))
         // .pipe(rename('style.css'))
         .pipe(gulp.dest(routes.styles.css))
         .pipe(browserSync.stream());
@@ -205,8 +199,7 @@ gulp.task('lint', function() {
 /* Image compressing task */
 
 gulp.task('images', function() {
-    gulp.src(routes.files.images)
-        // .pipe(imagemin())
+    return gulp.src(routes.files.images)
         .pipe(gulp.dest(routes.files.imgmin));
 });
 
@@ -235,31 +228,31 @@ gulp.task('serve', function() {
         server: './dist/'
     });
 
-    gulp.watch([routes.styles.less, routes.styles._less], ['styles']);
-    gulp.watch(routes.templates.html, ['templates']);
-    gulp.watch(routes.scripts.js, ['scripts', 'beautify']);
+    gulp.watch([routes.styles.less, routes.styles._less], gulp.series('styles'));
+    gulp.watch(routes.templates.html, gulp.series('templates'));
+    gulp.watch(routes.scripts.js, gulp.series('scripts', 'beautify'));
 });
 
 /* Optimize your project */
 
 gulp.task('uncss', function() {
-    return gulp.src(routes.files.cssFiles)
-        .pipe(uncss({
-            html:[routes.files.htmlFiles],
-            ignore:['*:*']
-        }))
-        .pipe(plumber({
-            errorHandler: notify.onError({
-                title: "Error: UnCSS failed.",
-                message:"<%= error.message %>"
-            })
-        }))
-        .pipe(minifyCss())
-        .pipe(gulp.dest(routes.styles.css));
-        // .pipe(notify({
-        //     title: 'Project Optimized!',
-        //     message: 'UnCSS completed!'
-        // }));
+    // return gulp.src(routes.files.cssFiles)
+    //     .pipe(uncss({
+    //         html:[routes.files.htmlFiles],
+    //         ignore:['*:*']
+    //     }))
+    //     .pipe(plumber({
+    //         errorHandler: notify.onError({
+    //             title: "Error: UnCSS failed.",
+    //             message:"<%= error.message %>"
+    //         })
+    //     }))
+    //     .pipe(minifyCss())
+    //     .pipe(gulp.dest(routes.styles.css));
+    //     // .pipe(notify({
+    //     //     title: 'Project Optimized!',
+    //     //     message: 'UnCSS completed!'
+    //     // }));
 });
 
 /* Extract CSS critical-path */
@@ -297,13 +290,13 @@ gulp.task('hdxAssets', function() {
         .pipe(gulp.dest(baseDirs.assets + 'images/'));
 });
 
-gulp.task('dev', ['templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve']);
+gulp.task('dev', gulp.series('templates', 'styles', 'scripts',  'images', 'hdxAssets', 'serve'));
 
-gulp.task('build', ['templates', 'styles', 'scripts', 'images', 'hdxAssets']);
+gulp.task('build', gulp.series('templates', 'styles', 'scripts', 'images', 'hdxAssets'));
 
-gulp.task('optimize', ['uncss', 'critical', 'images']);
+gulp.task('optimize', gulp.series('uncss', 'critical', 'images'));
 
-gulp.task('deploy', ['optimize',  ]);
+gulp.task('deploy', gulp.series('optimize'));
 
 gulp.task('default', function() {
     gulp.start('dev');
