@@ -1,5 +1,5 @@
 HDX_HXL_PREVIEW_URL=https://hub.docker.com/r/unocha/hdx-hxl-preview/tags/
-HDX_HXL_PREVIEW_TAG=1.8.0
+HDX_HXL_PREVIEW_TAG=1.8.1
 
 HDX_TOOLS_QUICKCHARTS_WIZARD_URL=https://hub.docker.com/r/unocha/hdx-tools-quickcharts-wizard/tags/
 HDX_TOOLS_QUICKCHARTS_WIZARD_TAG=2.3.0
