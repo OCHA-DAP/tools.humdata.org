@@ -10,10 +10,13 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     uglify = require('gulp-uglify'),
     babel = require('gulp-babel'),
+    replace = require('gulp-replace'),
     sourcemaps = require('gulp-sourcemaps'),
     critical = require('critical').stream,
     argv = require('yargs').argv,
-    gutil = require('gulp-util');
+    gutil = require('gulp-util'),
+    fs = require('fs'),
+    pkgJson = JSON.parse(fs.readFileSync('./package.json'));
 
 /* baseDirs: baseDirs for the project */
 
@@ -108,6 +111,7 @@ if (isProduction) {
 gulp.task('templates', function() {
     return gulp.src(routes.templates.html)
         //.pipe(minifyHTML({collapseWhitespace: true}))
+        .pipe(replace('$HDX_VERSION_TAG', pkgJson.version))
         .pipe(browserSync.stream())
         .pipe(gulp.dest(routes.files.html));
         // .pipe(notify({
@@ -298,6 +302,4 @@ gulp.task('optimize', gulp.series('uncss', 'critical', 'images'));
 
 gulp.task('deploy', gulp.series('optimize'));
 
-gulp.task('default', function() {
-    gulp.start('dev');
-});
+gulp.task('default', gulp.series('dev'));

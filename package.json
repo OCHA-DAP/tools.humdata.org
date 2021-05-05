@@ -1,6 +1,6 @@
 {
   "name": "tools",
-  "version": "0.0.0",
+  "version": "1.6.5",
   "description": "tools.humdata.org",
   "license": "MIT",
   "main": "",
@@ -45,6 +45,7 @@
     "yargs": "^16.2.0"
   },
   "devDependencies": {
+    "gulp-replace": "^1.1.2",
     "mocha": "^8.3.0"
   }
 }
