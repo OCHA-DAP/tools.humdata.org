@@ -20,11 +20,11 @@ RUN npm install
 
 RUN ./node_modules/.bin/gulp build --production
 
-FROM unocha/nginx:1.18
+FROM unocha/nginx:1.20
 
 COPY --from=builder /src/dependency-deploy-config.txt /srv/
 COPY --from=builder /src/dist /var/www/
-COPY --from=builder /src/docker/common.conf /src/docker/default.conf /etc/nginx/conf.d/
+COPY --from=builder /src/docker/common.conf /src/docker/default.conf /etc/nginx/http.d/
 
 VOLUME /var/log/nginx
 
