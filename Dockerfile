@@ -1,4 +1,4 @@
-FROM unocha/nodejs-builder:12 AS builder
+FROM public.ecr.aws/unocha/nodejs-builder:12-alpine AS builder
 
 WORKDIR /src
 
@@ -8,8 +8,6 @@ RUN apk add --update-cache \
     autoconf \
     automake \
     nasm \
-	nodejs \
-	nodejs-npm \
 	git \
 	build-base \
     libtool \
@@ -20,7 +18,7 @@ RUN npm install
 
 RUN ./node_modules/.bin/gulp build --production
 
-FROM unocha/nginx:1.20
+FROM public.ecr.aws/unocha/nginx:1.20
 
 COPY --from=builder /src/dependency-deploy-config.txt /srv/
 COPY --from=builder /src/dist /var/www/
