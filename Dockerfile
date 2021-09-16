@@ -8,8 +8,8 @@ RUN apk add --update-cache \
     autoconf \
     automake \
     nasm \
-	nodejs \
-	nodejs-npm \
+	# nodejs \
+	# nodejs-npm \
 	git \
 	build-base \
     libtool \
